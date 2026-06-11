@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akif mohamed J-portfolio</title>
+<link rel="icon" type="image/png" href="favicon-photo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080c10;
+  --bg2:#0d1117;
+  --bg3:#111820;
+  --copper:#e8722a;
+  --copper2:#ff9f4a;
+  --green:#00ff88;
+  --green2:#00cc6a;
+  --blue:#4fc3f7;
+  --blue2:#0288d1;
+  --dim:#1a2332;
+  --text:#c8d8e8;
+  --text2:#7a9bb0;
+  --text3:#3a5570;
+  --mono:'JetBrains Mono',monospace;
+  --neon-glow: 0 0 8px rgba(232,114,42,0.8), 0 0 20px rgba(232,114,42,0.4);
+  --green-glow: 0 0 8px rgba(0,255,136,0.8), 0 0 20px rgba(0,255,136,0.3);
+  --blue-glow: 0 0 8px rgba(79,195,247,0.8), 0 0 20px rgba(79,195,247,0.3);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);overflow-x:hidden;cursor:crosshair}
+
+/* ─── SCANLINE OVERLAY ─── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:999;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);
+}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+let activeSection='';
+  padding:0 2rem;height:56px;
+  background:rgba(8,12,16,0.85);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(232,114,42,0.15);
+}
+.nav-logo{
+  font-family:'Share Tech Mono', monospace;
+  font-size:0.85rem;font-weight:700;color:var(--copper);
+  letter-spacing:0.12em;text-transform:uppercase;
+  if(current && current!==activeSection){
+    activeSection=current;
+    window.__electroTransition?.();
+  }
+  text-shadow:var(--neon-glow);
+}
+.nav-logo span{color:var(--green)}
+.nav-toggle{
+  display:none;align-items:center;justify-content:center;
+  width:40px;height:40px;background:transparent;border:1px solid rgba(232,114,42,0.2);
+  color:var(--copper);cursor:pointer;padding:0;margin-left:auto;
+}
+.nav-toggle:hover{border-color:rgba(232,114,42,0.45);box-shadow:var(--neon-glow)}
+.nav-toggle-lines{width:18px;height:12px;position:relative;display:block}
+.nav-toggle-lines span{
+  position:absolute;left:0;right:0;height:2px;background:currentColor;border-radius:2px;transition:transform .25s ease,opacity .2s ease,top .25s ease;
+}
+.nav-toggle-lines span:nth-child(1){top:0}
+.nav-toggle-lines span:nth-child(2){top:5px}
+.nav-toggle-lines span:nth-child(3){top:10px}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav a{
+  text-decoration:none;color:var(--text2);font-size:0.65rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  padding:0.3rem 0.6rem;border:1px solid transparent;
+  transition:all .25s;position:relative;
+}
+nav a::before{
+  content:'';position:absolute;inset:0;
+  border:1px solid transparent;transition:border-color .25s;
+}
+nav a:hover{color:var(--copper);border-color:rgba(232,114,42,0.4);
+  text-shadow:var(--neon-glow);background:rgba(232,114,42,0.05)}
+nav a.active{color:var(--green);border-color:rgba(0,255,136,0.3);
+  text-shadow:var(--green-glow)}
+
+/* ─── TRANSITION CANVAS ─── */
+#transition-overlay{
+  position:fixed;inset:0;z-index:800;pointer-events:none;
+  opacity:0;transition:opacity .08s linear;
+  background:radial-gradient(circle at center, rgba(0,255,136,0.08), rgba(8,12,16,0.28) 42%, rgba(8,12,16,0.72) 100%);
+  mix-blend-mode:screen;
+}
+#transition-overlay canvas{width:100%;height:100%;display:block}
+#transition-overlay.transmit-mode{
+  opacity:1;
+  background:
+    radial-gradient(circle at center, rgba(0,255,136,0.12), rgba(8,12,16,0.55) 44%, rgba(8,12,16,0.96) 100%),
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(0,255,136,0.06) 18px 19px);
+  mix-blend-mode:screen;
+}
+#transition-overlay.transmit-mode canvas{display:none}
+#transition-overlay.transmit-mode::before,
+#transition-overlay.transmit-mode::after{
+  content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+#transition-overlay.transmit-mode::before{
+  width:min(78vw,720px);height:min(78vw,720px);max-width:720px;max-height:720px;
+  background:
+    radial-gradient(circle at center, rgba(0,255,136,0.14), transparent 45%),
+    conic-gradient(from 0deg, rgba(0,255,136,0) 0 12%, rgba(0,255,136,0.7) 16%, rgba(79,195,247,0.55) 24%, rgba(0,255,136,0) 32% 100%);
+  border-radius:50%;
+  filter:blur(6px);
+  opacity:0.85;
+  animation:tx-spin .85s linear infinite;
+}
+#transition-overlay.transmit-mode::after{
+  content:'TRANSMITTING DATA';
+  color:var(--green);
+  font-family:var(--mono);
+  font-size:clamp(0.7rem,1.8vw,0.95rem);
+  letter-spacing:0.28em;
+  text-shadow:var(--green-glow);
+  animation:tx-pulse .6s ease-in-out infinite alternate;
+}
+@keyframes tx-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes tx-pulse{from{opacity:0.4;transform:translate(-50%,-50%) scale(0.98)}to{opacity:1;transform:translate(-50%,-50%) scale(1.02)}}
+
+/* ─── SECTIONS ─── */
+.page{
+  min-height:100vh;padding:80px 0 60px;
+  position:relative;opacity:0;transform:translateY(28px) scale(0.985);
+  filter:blur(8px);
+  transition:opacity .6s ease,transform .6s ease;
+}
+.page.visible{
+  opacity:1;transform:translateY(0) scale(1);filter:blur(0);
+  animation:electro-reveal .9s ease-out both;
+}
+.page,.nav-logo,nav,.page-inner,.hero-content,.contact-grid,.project-grid,.edu-grid,.skill-clusters,.cert-grid,.about-info-grid{
+  transform-origin:center top;
+}
+.page-inner{max-width:1100px;margin:0 auto;padding:0 2rem}
+
+@keyframes electro-reveal{
+  0%{clip-path:inset(0 100% 0 0);filter:blur(10px) saturate(1.2)}
+  28%{clip-path:inset(0 0 0 0);filter:blur(6px) saturate(1.4)}
+  55%{filter:blur(2px) saturate(1.15)}
+  100%{filter:blur(0) saturate(1)}
+}
+
+.page.visible::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:
+    linear-gradient(120deg, transparent 0%, rgba(0,255,136,0.06) 45%, transparent 60%),
+    repeating-linear-gradient(180deg, transparent 0 18px, rgba(232,114,42,0.03) 18px 19px),
+    radial-gradient(circle at 50% 18%, rgba(79,195,247,0.08), transparent 26%);
+  animation:scan-sheen .9s ease-out both;
+}
+
+@keyframes scan-sheen{
+  0%{opacity:0;transform:translateX(-12%) scaleX(0.85)}
+  25%{opacity:1}
+  100%{opacity:0;transform:translateX(12%) scaleX(1.02)}
+}
+
+/* ─── SECTION LABEL ─── */
+.section-label{
+  font-size:0.6rem;letter-spacing:0.3em;color:var(--copper);
+  text-transform:uppercase;margin-bottom:0.5rem;
+  display:flex;align-items:center;gap:0.8rem;
+}
+.section-label::before{content:'';flex:0 0 24px;height:1px;background:var(--copper);
+  box-shadow:var(--neon-glow)}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(232,114,42,0.15)}
+
+/* ─── HERO ─── */
+#hero{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;position:relative;overflow:hidden;
+}
+#hero-canvas{position:absolute;inset:0;z-index:0}
+.hero-content{
+  position:relative;
+  z-index:10;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:center;
+  max-width:1100px;
+  padding:0 2rem;
+  width: 100%;
+}
+
+.hero-text{}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-size:0.6rem;letter-spacing:0.2em;color:var(--green);
+  border:1px solid rgba(0,255,136,0.25);padding:0.3rem 0.8rem;
+  margin-bottom:1.5rem;text-shadow:var(--green-glow);
+}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);
+  animation:pulse-dot 1.2s infinite;box-shadow:var(--green-glow)}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
+
+.hero-name{
+  font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;line-height:1.1;
+  color:#fff;letter-spacing:-0.02em;margin-bottom:0.5rem;
+}
+.hero-name em{color:var(--copper);font-style:normal;text-shadow:var(--neon-glow)}
+.hero-title{
+  font-size:clamp(0.75rem,1.5vw,0.95rem);color:var(--blue);
+  letter-spacing:0.08em;margin-bottom:1.5rem;text-shadow:var(--blue-glow);
+}
+.hero-intro{
+  font-size:0.78rem;color:var(--text2);line-height:1.8;
+  max-width:460px;margin-bottom:2rem;border-left:2px solid rgba(232,114,42,0.3);
+  padding-left:1rem;
+}
+
+.btn{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;
+  text-transform:uppercase;text-decoration:none;
+  padding:0.7rem 1.6rem;border:1px solid;cursor:pointer;
+  transition:all .2s;position:relative;overflow:hidden;
+  background:transparent;
+}
+.btn::before{
+  content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.05),transparent);
+  transition:left .4s;
+}
+.btn:hover::before{left:100%}
+.btn-primary{color:var(--copper);border-color:rgba(232,114,42,0.6);
+  box-shadow:inset 0 0 0 0 rgba(232,114,42,0)}
+.btn-primary:hover{background:rgba(232,114,42,0.08);box-shadow:var(--neon-glow)}
+.btn-ghost{color:var(--text2);border-color:rgba(122,155,176,0.3)}
+.btn-ghost:hover{color:var(--text);border-color:rgba(122,155,176,0.6)}
+
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* ─── HERO PHOTO FRAME & LAYOUT ─── */
+.hero-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-photo-frame {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.hero-photo {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: 460px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+  border: 1px solid rgba(232, 114, 42, 0.4);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(232, 114, 42, 0.15);
+}
+
+.hpf-scan {
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px; z-index: 4;
+  background: linear-gradient(90deg, transparent, rgba(232, 114, 42, 0.6), transparent);
+  animation: scan-line 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan-line {
+  0% { top: 0; opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.hpf-corner { position: absolute; width: 24px; height: 24px; z-index: 5; pointer-events: none; }
+.hpf-tl { top: -6px; left: -6px; border-top: 2px solid var(--copper); border-left: 2px solid var(--copper); }
+.hpf-tr { top: -6px; right: -6px; border-top: 2px solid var(--copper); border-right: 2px solid var(--copper); }
+.hpf-bl { bottom: -6px; left: -6px; border-bottom: 2px solid var(--copper); border-left: 2px solid var(--copper); }
+.hpf-br { bottom: -6px; right: -6px; border-bottom: 2px solid var(--copper); border-right: 2px solid var(--copper); }
+
+.hpf-label {
+  font-size: 0.55rem; color: var(--copper); letter-spacing: 0.14em;
+  margin-top: 0.6rem; text-align: left; text-shadow: var(--neon-glow);
+}
+.hpf-status {
+  font-size: 0.55rem; color: var(--green); letter-spacing: 0.12em; margin-top: 0.3rem;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.hpf-status .status-dot { width: 6px; height: 6px; background: var(--green); box-shadow: var(--green-glow); }
+
+/* ─── ABOUT ─── */
+#about{background:var(--bg2)}
+.osc-container{
+  position:relative;border:1px solid rgba(0,255,136,0.15);
+  background:rgba(0,8,3,0.5);border-radius:2px;overflow:hidden;
+  margin-bottom:3rem;
+}
+#osc-canvas{width:100%;height:120px;display:block}
+.osc-label{
+  position:absolute;top:8px;left:12px;font-size:0.55rem;
+  color:rgba(0,255,136,0.6);letter-spacing:0.2em;
+}
+.osc-chx{position:absolute;top:8px;font-size:0.55rem;letter-spacing:0.1em}
+.osc-ch1{right:80px;color:var(--green)}
+.osc-ch2{right:12px;color:var(--blue)}
+
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:3rem}
+.edu-node{
+  border:1px solid rgba(232,114,42,0.15);background:rgba(13,17,23,0.8);
+  padding:1.5rem;position:relative;transition:all .3s;
+  cursor:default;
+}
+.edu-node::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--copper),transparent);
+  transform:scaleX(0);transform-origin:left;transition:transform .3s;
+}
+.edu-node:hover::before{transform:scaleX(1)}
+.edu-node:hover{border-color:rgba(232,114,42,0.4);background:rgba(13,17,23,0.95)}
+.edu-node-num{
+  font-size:0.55rem;color:var(--copper);letter-spacing:0.2em;
+  margin-bottom:0.8rem;
+}
+.edu-node-title{font-size:0.85rem;font-weight:600;color:#fff;margin-bottom:0.4rem;line-height:1.4}
+.edu-node-sub{font-size:0.7rem;color:var(--text2);margin-bottom:0.6rem;line-height:1.5}
+.edu-node-badge{
+  display:inline-block;font-size:0.6rem;color:var(--green);
+  border:1px solid rgba(0,255,136,0.25);padding:0.15rem 0.5rem;
+  text-shadow:var(--green-glow);
+}
+
+.about-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.info-row{
+  display:flex;flex-direction:column;gap:0.2rem;
+  padding:1rem;border:1px solid rgba(79,195,247,0.1);
+  background:rgba(2,136,209,0.03);
+}
+.info-key{font-size:0.55rem;letter-spacing:0.18em;color:var(--blue);text-transform:uppercase}
+.info-val{font-size:0.78rem;color:var(--text)}
+
+/* ─── SKILLS ─── */
+#skills{background:var(--bg3)}
+.workbench{
+  border:1px solid rgba(232,114,42,0.12);background:rgba(8,12,16,0.9);
+  padding:2rem;border-radius:2px;position:relative;overflow:hidden;
+}
+.workbench::before{
+  content:'WORKBENCH — ACTIVE COMPONENTS';
+  position:absolute;top:8px;right:12px;
+  font-size:0.5rem;color:rgba(232,114,42,0.3);letter-spacing:0.2em;
+}
+.skill-clusters{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.skill-chip{
+  border:1px solid;padding:1.2rem;position:relative;
+  transition:all .3s;cursor:default;
+}
+.skill-chip.fpga{border-color:rgba(79,195,247,0.25);background:rgba(2,136,209,0.04)}
+.skill-chip.analog{border-color:rgba(0,255,136,0.2);background:rgba(0,204,106,0.03)}
+.skill-chip.pcb{border-color:rgba(232,114,42,0.25);background:rgba(232,114,42,0.03)}
+.skill-chip.micro{border-color:rgba(122,155,176,0.2);background:rgba(122,155,176,0.02)}
+.skill-chip.soft{border-color:rgba(150,100,255,0.2);background:rgba(150,100,255,0.02)}
+.skill-chip:hover{transform:translateY(-2px)}
+.skill-chip.fpga:hover{box-shadow:0 4px 24px rgba(79,195,247,0.15);border-color:rgba(79,195,247,0.5)}
+.skill-chip.analog:hover{box-shadow:0 4px 24px rgba(0,255,136,0.1);border-color:rgba(0,255,136,0.4)}
+.skill-chip.pcb:hover{box-shadow:var(--neon-glow);border-color:rgba(232,114,42,0.6)}
+.skill-chip.micro:hover{box-shadow:0 4px 20px rgba(122,155,176,0.12);border-color:rgba(122,155,176,0.4)}
+.skill-chip.soft:hover{box-shadow:0 4px 20px rgba(150,100,255,0.1);border-color:rgba(150,100,255,0.4)}
+
+.chip-header{display:flex;align-items:center;gap:0.7rem;margin-bottom:1rem}
+.chip-icon{
+  width:32px;height:32px;border:1px solid;display:flex;
+  align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;
+  flex-shrink:0;
+}
+.fpga .chip-icon{border-color:var(--blue);color:var(--blue)}
+.analog .chip-icon{border-color:var(--green);color:var(--green)}
+.pcb .chip-icon{border-color:var(--copper);color:var(--copper)}
+.micro .chip-icon{border-color:var(--text2);color:var(--text2)}
+.soft .chip-icon{border-color:#9664ff;color:#9664ff}
+.chip-title{font-size:0.72rem;font-weight:600;color:#fff;letter-spacing:0.05em}
+.chip-sub{font-size:0.58rem;color:var(--text2);margin-top:0.1rem}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.stag{
+  font-size:0.58rem;padding:0.2rem 0.5rem;
+  border:1px solid;letter-spacing:0.08em;
+}
+.fpga .stag{border-color:rgba(79,195,247,0.3);color:var(--blue)}
+.analog .stag{border-color:rgba(0,255,136,0.25);color:var(--green)}
+.pcb .stag{border-color:rgba(232,114,42,0.3);color:var(--copper)}
+.micro .stag{border-color:rgba(122,155,176,0.3);color:var(--text2)}
+.soft .stag{border-color:rgba(150,100,255,0.3);color:#9664ff}
+
+/* PCB trace animation on workbench */
+.pcb-traces{margin-top:1.5rem;position:relative;overflow:hidden}
+#pcb-canvas{width:100%;height:80px;display:block}
+
+/* ─── PROJECTS ─── */
+#projects{background:var(--bg2)}
+.lab-header{
+  display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;
+  font-size:0.6rem;color:var(--text2);letter-spacing:0.15em;
+}
+.lab-header::after{content:'';flex:1;height:1px;background:rgba(232,114,42,0.1)}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem}
+.project-card{
+  border:1px solid rgba(232,114,42,0.12);background:rgba(8,12,16,0.9);
+  position:relative;overflow:hidden;transition:all .3s;
+}
+.project-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(232,114,42,0.03),transparent);
+  opacity:0;transition:opacity .3s; pointer-events: none;
+}
+.project-card:hover{border-color:rgba(232,114,42,0.35);transform:translateY(-3px)}
+.project-card:hover::after{opacity:1}
+.project-card:hover .proj-canvas-wrap{opacity:1}
+
+.proj-canvas-wrap{
+  height:200px;background:rgba(0,0,0,0.5);
+  border-bottom:1px solid rgba(232,114,42,0.1);
+  position:relative;opacity:0.85;transition:opacity .3s;overflow:hidden;
+}
+.proj-canvas-wrap canvas{width:100%;height:100%}
+.proj-badge{
+  position:absolute;top:10px;right:10px;
+  font-size:0.55rem;letter-spacing:0.15em;padding:0.2rem 0.6rem;
+  border:1px solid rgba(0,255,136,0.4);color:var(--green);
+  background:rgba(0,0,0,0.7);text-shadow:var(--green-glow);
+}
+.proj-body{padding:1.5rem}
+.proj-num{font-size:0.55rem;color:var(--copper);letter-spacing:0.2em;margin-bottom:0.5rem}
+.proj-title{font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.6rem;letter-spacing:-0.01em}
+.proj-desc{font-size:0.72rem;color:var(--text2);line-height:1.7;margin-bottom:1rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem}
+.ptag{font-size:0.58rem;color:var(--text2);border:1px solid rgba(122,155,176,0.2);padding:0.15rem 0.5rem}
+.proj-expand-btn{
+  font-size:0.6rem;color:var(--copper);letter-spacing:0.1em;
+  background:none;border:1px solid rgba(232,114,42,0.25);
+  font-family:var(--mono);cursor:pointer;padding:0.5rem 1rem;
+  transition:all .2s;
+  display: block; width: 100%; text-align: center;
+}
+.proj-expand-btn:hover{background:rgba(232,114,42,0.08);border-color:rgba(232,114,42,0.5)}
+
+.proj-expanded{
+  max-height:0;overflow:hidden;transition:max-height .4s ease;
+  border-top:1px solid rgba(232,114,42,0.1);
+}
+.proj-expanded.open{max-height:400px}
+.proj-expanded-inner{padding:1.2rem 1.5rem}
+.logic-flow{margin-top:0.8rem}
+.lf-step{
+  display:flex;align-items:flex-start;gap:0.8rem;
+  margin-bottom:0.8rem;font-size:0.7rem;color:var(--text2);
+  line-height:1.5;
+}
+.lf-step::before{
+  content:attr(data-step);flex-shrink:0;width:22px;height:22px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.55rem;border:1px solid var(--copper);
+  color:var(--copper);margin-top:1px;
+}
+
+/* ─── EXPERIENCE ─── */
+#experience{background:var(--bg3)}
+.clk-container{
+  margin-bottom:3rem;
+  border:1px solid rgba(0,255,136,0.1);
+  background:rgba(0,8,3,0.4);padding:1rem;
+  position:relative;overflow:hidden;
+}
+#clk-canvas{width:100%;height:70px;display:block}
+.clk-label{font-size:0.5rem;position:absolute;top:8px;left:12px;color:rgba(0,255,136,0.5);letter-spacing:0.2em}
+
+.timeline{position:relative;padding-left:0}
+.timeline::before{
+  content:'';position:absolute;left:24px;top:0;bottom:0;
+  width:1px;background:rgba(232,114,42,0.15);
+}
+.tl-item{
+  display:flex;gap:1.5rem;margin-bottom:2.5rem;
+  padding-left:0;position:relative;
+  opacity:0;transform:translateX(-20px);transition:all .5s;
+}
+.tl-item.visible{opacity:1;transform:translateX(0)}
+.tl-marker{
+  flex-shrink:0;width:48px;height:48px;border:2px solid;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.6rem;font-weight:700;flex-direction:column;gap:0.1rem;
+  position:relative;z-index:1;
+  background:var(--bg3);
+}
+.tl-marker.rise1{border-color:var(--copper);color:var(--copper);box-shadow:0 0 12px rgba(232,114,42,0.2)}
+.tl-marker.rise2{border-color:var(--blue);color:var(--blue);box-shadow:0 0 12px rgba(79,195,247,0.2)}
+.tl-marker.rise3{border-color:var(--green);color:var(--green);box-shadow:0 0 12px rgba(0,255,136,0.15)}
+.tl-marker.rise4{border-color:#9664ff;color:#9664ff;box-shadow:0 0 12px rgba(150,100,255,0.15)}
+.tl-content{flex:1;padding-top:0.5rem}
+.tl-period{font-size:0.58rem;color:var(--text2);letter-spacing:0.1em;margin-bottom:0.3rem}
+.tl-role{font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:0.2rem}
+.tl-org{font-size:0.72rem;color:var(--copper);margin-bottom:0.6rem}
+.tl-desc{font-size:0.7rem;color:var(--text2);line-height:1.7;max-width:580px}
+
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:2rem}
+.cert-card{
+  border:1px solid rgba(150,100,255,0.2);background:rgba(150,100,255,0.03);
+  padding:1rem;transition:all .3s;
+}
+.cert-card:hover{border-color:rgba(150,100,255,0.4);background:rgba(150,100,255,0.06);transform:translateY(-2px)}
+.cert-card-title{font-size:0.72rem;font-weight:600;color:#fff;margin-bottom:0.3rem;line-height:1.4}
+.cert-card-issuer{font-size:0.62rem;color:#9664ff}
+.cert-icon{font-size:0.6rem;color:#9664ff;margin-bottom:0.5rem;letter-spacing:0.15em}
+
+/* ─── FOOTER / CONTACT ─── */
+#contact{background:var(--bg)}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
+  align-items:center;
+}
+.contact-left h2{
+  font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;
+  color:#fff;margin-bottom:0.8rem;
+}
+.contact-left p{font-size:0.75rem;color:var(--text2);line-height:1.8;max-width:360px;margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;gap:0.8rem}
+.c-link{
+  display:flex;align-items:center;gap:0.8rem;
+  font-size:0.72rem;color:var(--text2);text-decoration:none;
+  transition:color .2s;
+}
+.c-link:hover{color:var(--copper)}
+.c-link-icon{
+  width:28px;height:28px;border:1px solid rgba(232,114,42,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.55rem;color:var(--copper);
+}
+.contact-right{
+  border:1px solid rgba(232,114,42,0.12);background:rgba(13,17,23,0.8);
+  padding:2rem;
+}
+.contact-form-label{font-size:0.58rem;letter-spacing:0.15em;color:var(--text2);margin-bottom:0.4rem;display:block;text-transform:uppercase}
+.contact-form-input{
+  width:100%;background:rgba(8,12,16,0.8);border:1px solid rgba(232,114,42,0.15);
+  color:var(--text);font-family:var(--mono);font-size:0.72rem;
+  padding:0.6rem 0.8rem;margin-bottom:1rem;outline:none;
+  transition:border-color .2s;
+}
+.contact-form-input:focus{border-color:rgba(232,114,42,0.4)}
+.contact-form-input::placeholder{color:var(--text3)}
+textarea.contact-form-input{height:100px;resize:none}
+.footer-bar{
+  border-top:1px solid rgba(232,114,42,0.08);
+  margin-top:4rem;padding-top:2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:0.58rem;color:var(--text3);letter-spacing:0.1em;
+  flex-wrap:wrap;gap:1rem;
+}
+
+/* ─── SECTION HEADER ─── */
+.sec-head{margin-bottom:3rem}
+.sec-title{
+  font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;color:#fff;
+  margin-bottom:0.4rem;letter-spacing:-0.01em;
+}
+.sec-title em{color:var(--copper);font-style:normal}
+.sec-sub{font-size:0.72rem;color:var(--text2);letter-spacing:0.05em}
+
+/* ─── SCROLL INDICATOR ─── */
+.scroll-hint{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+  font-size:0.55rem;color:var(--text3);letter-spacing:0.2em;animation:bob 2s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+.scroll-arrow{width:1px;height:24px;background:linear-gradient(to bottom,var(--copper),transparent)}
+
+/* ─── MISC UTILS ─── */
+.glow-line{height:1px;background:linear-gradient(90deg,transparent,var(--copper),transparent);margin:2rem 0;opacity:0.3}
+.code-badge{
+  font-size:0.65rem;color:var(--green);border:1px solid rgba(0,255,136,0.2);
+  padding:0.15rem 0.5rem;background:rgba(0,255,136,0.04);
+}
+.status-dot{
+  display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--green);box-shadow:var(--green-glow);
+  animation:pulse-dot 1.4s infinite;margin-right:0.4rem;
+}
+
+@media(max-width:768px){
+  nav{padding:0 1rem;height:56px;align-items:center}
+  .nav-toggle{display:flex}
+  nav ul{
+    position:absolute;top:56px;right:0;left:0;
+    display:none;flex-direction:column;align-items:center;gap:0.25rem;
+    padding:0.75rem 1rem 1rem;
+    background:rgba(8,12,16,0.96);backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(232,114,42,0.15);
+  }
+  nav.menu-open ul{display:flex}
+  nav ul li{width:100%;display:flex;justify-content:center}
+  nav ul a{display:block;width:fit-content;min-width:160px;text-align:center}
+  .page{padding-top:92px}
+  .page-inner{padding:0 1rem}
+  .hero-content{grid-template-columns:1fr;gap:2rem;padding:0 1rem}
+  .hero-image-container{width:100%;align-items:center;order:-1;margin-bottom:0.5rem}
+  .hero-photo-frame{width:min(72vw, 220px)}
+  .hero-photo{max-width:none;width:100%;height:auto;aspect-ratio:360/460}
+  .project-grid,.edu-grid,.skill-clusters,.cert-grid,.about-info-grid,.contact-grid{grid-template-columns:1fr}
+  .project-card{width:100%}
+}
+
+body.transmitting{overflow:hidden;}
+body.transmitting nav,
+body.transmitting .page{
+  transform:scale(0.965) translateY(0);
+  filter:blur(1.6px) brightness(0.78) saturate(1.15);
+  opacity:0.72;
+}
+body.transmitting #transition-overlay.transmit-mode{opacity:1}
+body.transmitting .scroll-hint,
+body.transmitting .nav-toggle{opacity:0.45}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">REG_AKIF_0xM322 <span>◈</span> SYS_UP</div>
+  <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <ul>
+    <li><a href="#hero" data-section="hero">SYS_INIT</a></li>
+    <li><a href="#about" data-section="about">ABOUT</a></li>
+    <li><a href="#skills" data-section="skills">SKILLS</a></li>
+    <li><a href="#projects" data-section="projects">PROJECTS</a></li>
+    <li><a href="#experience" data-section="experience">TIMELINE</a></li>
+    <li><a href="#contact" data-section="contact">CONTACT</a></li>
+  </ul>
+</nav>
+
+<div id="transition-overlay">
+  <canvas id="tx-canvas"></canvas>
+</div>
+
+<section id="hero" class="page">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    
+    <div class="hero-text">
+      <div class="hero-tag"><span></span>SYSTEM ONLINE — ECE ENGINEERING STUDENT</div>
+      <h1 class="hero-name">Akif<br>Mohamed <em>J</em></h1>
+      <div class="hero-title">Electronics & Communication Engineering</div>
+      <p class="hero-intro">I am actively building my skills in VLSI, embedded systems, and PCB design, aiming for a career in a leading electronics company. My time in ECE has been incredibly enriching, preparing me for future challenge</p>
+      
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">◉ VIEW PROJECTS</a>
+        <a href="#experience" class="btn btn-ghost">◈ EXPERIENCE LOG</a>
+      </div>
+    </div>
+    
+    <div class="hero-image-container">
+      <div class="hero-photo-frame">
+        <div class="hpf-scan"></div>
+        <div class="hpf-corner hpf-tl"></div>
+        <div class="hpf-corner hpf-tr"></div>
+        <div class="hpf-corner hpf-bl"></div>
+        <div class="hpf-corner hpf-br"></div>
+        <img src="akif-no-bg.png" alt="Akif Mohamed J" class="hero-photo">
+      </div>
+      <div class="hpf-label">◈ AKIF_MOHAMED_J // ECE_ENGINEER</div>
+      <div class="hpf-status"><span class="status-dot"></span>IDENTITY VERIFIED</div>
+    </div>
+    
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL TO EXPLORE</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<section id="about" class="page">
+  <div class="page-inner">
+    <div class="sec-head">
+      <div class="section-label">MODULE_02 // SIGNAL_PROCESSING_LAB</div>
+      <h2 class="sec-title">About <em>&amp;</em> Education</h2>
+      <p class="sec-sub">Waveform of an engineering career in progress.</p>
+    </div>
+
+    <div class="osc-container">
+      <canvas id="osc-canvas"></canvas>
+      <div class="osc-label">OSCILLOSCOPE — CH1: SINE  CH2: SQUARE</div>
+      <div class="osc-chx osc-ch1">CH1 1V/div</div>
+      <div class="osc-chx osc-ch2">CH2 1V/div</div>
+    </div>
+
+    <div class="edu-grid">
+      <div class="edu-node">
+        <div class="edu-node-num">◈ NODE_01 — CURRENT</div>
+        <div class="edu-node-title">B.E. Electronics &amp; Communication Engineering</div>
+        <div class="edu-node-sub">Government College of Engineering, Srirangam<br>Expected Graduation: April 2027</div>
+        <div class="edu-node-badge">CGPA: 7.00 — ONGOING</div>
+      </div>
+      <div class="edu-node">
+        <div class="edu-node-num">◈ NODE_02</div>
+        <div class="edu-node-title">Higher Secondary Certificate (HSC)</div>
+        <div class="edu-node-sub">M.S.P. Solai Nadar Memorial Higher Secondary School</div>
+        <div class="edu-node-badge">81.5%</div>
+      </div>
+      <div class="edu-node">
+        <div class="edu-node-num">◈ NODE_03</div>
+        <div class="edu-node-title">Secondary School Leaving Certificate (SSLC)</div>
+        <div class="edu-node-sub">M.S.P. Solai Nadar Memorial Higher Secondary School</div>
+        <div class="edu-node-badge">COMPLETED</div>
+      </div>
+    </div>
+
+    <div class="glow-line"></div>
+    <div class="about-info-grid">
+      <div class="info-row"><span class="info-key">INSTITUTION</span><span class="info-val">GCE Srirangam, Trichy</span></div>
+      <div class="info-row"><span class="info-key">DOMAIN</span><span class="info-val">ECE — VLSI &amp; Embedded Systems</span></div>
+      <div class="info-row"><span class="info-key">STATUS</span><span class="info-val"><span class="status-dot"></span>Active — Final Year</span></div>
+      <div class="info-row"><span class="info-key">LOCATION</span><span class="info-val">Trichy, Tamil Nadu, IN</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="page">
+  <div class="page-inner">
+    <div class="sec-head">
+      <div class="section-label">MODULE_03 // COMPONENT_WORKBENCH</div>
+      <h2 class="sec-title">Skills <em>&amp;</em> Tools</h2>
+      <p class="sec-sub">Hardware component clusters — hover to energise.</p>
+    </div>
+
+    <div class="workbench">
+      <div class="skill-clusters">
+
+        <div class="skill-chip fpga">
+          <div class="chip-header">
+            <div class="chip-icon">FPGA</div>
+            <div>
+              <div class="chip-title">Digital Logic &amp; HDL</div>
+              <div class="chip-sub">Xilinx Vivado theme</div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">Verilog</span>
+            <span class="stag">Xilinx Vivado</span>
+            <span class="stag">FPGA Design</span>
+            <span class="stag">RTL Synthesis</span>
+            <span class="stag">Logic Gates</span>
+          </div>
+        </div>
+
+        <div class="skill-chip analog">
+          <div class="chip-header">
+            <div class="chip-icon">IC</div>
+            <div>
+              <div class="chip-title">Analog IC Design</div>
+              <div class="chip-sub">Schematic simulation</div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">Cadence Virtuoso</span>
+            <span class="stag">HSPICE</span>
+            <span class="stag">Analog Sim.</span>
+            <span class="stag">Module Verify</span>
+            <span class="stag">EDA Tools</span>
+          </div>
+        </div>
+
+        <div class="skill-chip pcb">
+          <div class="chip-header">
+            <div class="chip-icon">PCB</div>
+            <div>
+              <div class="chip-title">PCB Design</div>
+              <div class="chip-sub">Copper trace routing</div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">Altium Designer</span>
+            <span class="stag">Trace Routing</span>
+            <span class="stag">DRC/ERC</span>
+            <span class="stag">Schematic Capture</span>
+          </div>
+        </div>
+
+        <div class="skill-chip micro">
+          <div class="chip-header">
+            <div class="chip-icon">MCU</div>
+            <div>
+              <div class="chip-title">Programming &amp; Platforms</div>
+              <div class="chip-sub">TX/RX stream output</div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">C</span>
+            <span class="stag">Arduino UNO</span>
+            <span class="stag">MATLAB</span>
+            <span class="stag">Processing IDE</span>
+            <span class="stag">Embedded C</span>
+          </div>
+        </div>
+
+        <div class="skill-chip soft">
+          <div class="chip-header">
+            <div class="chip-icon">SMC</div>
+            <div>
+              <div class="chip-title">Soft Skills</div>
+              <div class="chip-sub">Laser-etched on SMD caps</div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">Leadership</span>
+            <span class="stag">Communication</span>
+            <span class="stag">Teamwork</span>
+            <span class="stag">Problem-Solving</span>
+            <span class="stag">Adaptability</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pcb-traces">
+        <canvas id="pcb-canvas"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="page">
+  <div class="page-inner">
+    <div class="sec-head">
+      <div class="section-label">MODULE_04 // EMBEDDED_SYSTEMS_LAB</div>
+      <h2 class="sec-title">Projects</h2>
+      <p class="sec-sub">Hardware builds </p>
+    </div>
+
+    <div class="lab-header">◈ WORKBENCH ACTIVE — 2 MODULES LOADED</div>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="proj-canvas-wrap">
+          <canvas id="radar-canvas"></canvas>
+          <div class="proj-badge">LIVE SIM</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-num">◉ PROJECT_01</div>
+          <div class="proj-title">Arduino Radar System</div>
+          <div class="proj-desc">
+            A real-time object-detection radar built with Arduino UNO, HC-SR04 ultrasonic sensor,
+            and a servo motor. Visualised in Processing IDE as a scanning radar display with
+            live distance mapping.
+          </div>
+          <div class="proj-tags">
+            <span class="ptag">Arduino UNO</span>
+            <span class="ptag">HC-SR04</span>
+            <span class="ptag">Servo Motor</span>
+            <span class="ptag">Processing IDE</span>
+            <span class="ptag">C</span>
+          </div>
+          <button class="proj-expand-btn" onclick="toggleProj(this)">◈ OPEN LOGIC VIEW</button>
+        </div>
+        <div class="proj-expanded">
+          <div class="proj-expanded-inner">
+            <div style="font-size:0.65rem;color:var(--blue);margin-bottom:0.6rem;letter-spacing:0.1em">HARDWARE–SOFTWARE ARCHITECTURE</div>
+            <div class="logic-flow">
+              <div class="lf-step" data-step="1">Servo rotates 0–180°, sweeping the ultrasonic sensor across the field of view in real time.</div>
+              <div class="lf-step" data-step="2">HC-SR04 emits a 40kHz pulse; echo return time converted to distance via d = (t × 343)/2 m.</div>
+              <div class="lf-step" data-step="3">Arduino serialises angle + distance data at 9600 baud over USB to the host computer.</div>
+              <div class="lf-step" data-step="4">Processing IDE parses the serial stream, maps polar coordinates to screen space, and renders the scanning sweep with persistence fade.</div>
+              <div class="lf-step" data-step="5">Objects within 40 cm are highlighted in red; clear zones remain green — mimicking an actual PPI radar display.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-canvas-wrap">
+          <canvas id="lock-canvas"></canvas>
+          <div class="proj-badge">INTERACTIVE</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-num">◉ PROJECT_02</div>
+          <div class="proj-title">Smart Lock System</div>
+          <div class="proj-desc">
+            A password-secured electronic door lock using a 4×4 matrix keypad, LCD display feedback,
+            and servo-driven bolt mechanism. Validates credentials and controls physical access with
+            visual and audio feedback.
+          </div>
+          <div class="proj-tags">
+            <span class="ptag">Arduino UNO</span>
+            <span class="ptag">Matrix Keypad</span>
+            <span class="ptag">LCD 16×2</span>
+            <span class="ptag">Servo Motor</span>
+            <span class="ptag">Embedded C</span>
+          </div>
+          <button class="proj-expand-btn" onclick="toggleProj(this)">◈ OPEN LOGIC VIEW</button>
+        </div>
+        <div class="proj-expanded">
+          <div class="proj-expanded-inner">
+            <div style="font-size:0.65rem;color:var(--green);margin-bottom:0.6rem;letter-spacing:0.1em">PASSWORD VALIDATION FLOW</div>
+            <div class="logic-flow">
+              <div class="lf-step" data-step="1">Matrix keypad scanned row-by-row via GPIO polling; debounced key presses buffered into a 4-char password string.</div>
+              <div class="lf-step" data-step="2">LCD 16×2 provides real-time feedback: "ENTER PASSWORD" → masked asterisk display → "ACCESS GRANTED / DENIED".</div>
+              <div class="lf-step" data-step="3">Password hash compared against stored credential in EEPROM; timing-safe comparison prevents brute-force timing attacks.</div>
+              <div class="lf-step" data-step="4">On match: servo rotates 90° to UNLOCK position; buzzer emits 2 beeps; LCD shows "WELCOME".</div>
+              <div class="lf-step" data-step="5">After 5 seconds, servo returns to LOCK; 3 failed attempts triggers a 30-second lockout with LED indicator.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="page">
+  <div class="page-inner">
+    <div class="sec-head">
+      <div class="section-label">MODULE_05 // TIMING_DIAGRAM_CLOCK</div>
+      <h2 class="sec-title">Experience <em>&amp;</em> Achievements</h2>
+      <p class="sec-sub">Career milestones plotted on a CLK timing diagram.</p>
+    </div>
+
+    <div class="clk-container">
+      <canvas id="clk-canvas"></canvas>
+      <div class="clk-label">CLK — RISING EDGE MILESTONES</div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-marker rise1">R↑<br>01</div>
+        <div class="tl-content">
+          <div class="tl-period">RISING EDGE 01</div>
+          <div class="tl-role">Student Intern</div>
+          <div class="tl-org">NSIC Guindy — Chennai, Tamil Nadu</div>
+          <div class="tl-desc">
+            On-site practical engineering exposure at the National Small Industries Corporation,
+            Guindy. Gained hands-on hardware experience working alongside industry engineers
+            on real manufacturing and electronics processes.
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-marker rise2">R↑<br>02</div>
+        <div class="tl-content">
+          <div class="tl-period">RISING EDGE 02</div>
+          <div class="tl-role">VLSI Domain Intern (Remote)</div>
+          <div class="tl-org">InternPe</div>
+          <div class="tl-desc">
+            Handled analog IC design and simulation workflows using Cadence Virtuoso EDA tools.
+            Designed and verified analog functional modules, performing signal integrity checks
+            and comparing simulation results against expected circuit specifications.
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-marker rise3">R↑<br>03</div>
+        <div class="tl-content">
+          <div class="tl-period">RISING EDGE 03</div>
+          <div class="tl-role">Overall Coordinator</div>
+          <div class="tl-org">Zentronix '26 — National Level Technical Symposium, GCE Srirangam</div>
+          <div class="tl-desc">
+            Led the coordination of a national-level technical symposium, managing multi-team
+            event operations, scheduling, vendor logistics, and technical contest execution
+            across concurrent tracks. Demonstrated large-scale leadership and operational management.
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-marker rise4">R↑<br>04</div>
+        <div class="tl-content">
+          <div class="tl-period">RISING EDGE 04 — CERTIFICATIONS</div>
+          <div class="tl-role">Technical Certifications</div>
+          <div class="tl-org">Xilinx · Cadence · LinkedIn Learning</div>
+          <div class="tl-desc">Formal recognition of advanced tool proficiency and domain knowledge.</div>
+          <div class="cert-grid">
+            <div class="cert-card">
+              <div class="cert-icon">◈ CERT_01</div>
+              <div class="cert-card-title">Advanced VLSI Architectures</div>
+              <div class="cert-card-issuer">via Xilinx Vivado</div>
+            </div>
+            <div class="cert-card">
+              <div class="cert-icon">◈ CERT_02</div>
+              <div class="cert-card-title">Analog IC Design</div>
+              <div class="cert-card-issuer">via Cadence EDA</div>
+            </div>
+            <div class="cert-card">
+              <div class="cert-icon">◈ CERT_03</div>
+              <div class="cert-card-title">Learning Altium Designer</div>
+              <div class="cert-card-issuer">LinkedIn Learning</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="page">
+  <div class="page-inner">
+    <div class="sec-head">
+      <div class="section-label">MODULE_06 // COMMUNICATION_PORT</div>
+      <h2 class="sec-title">Get in <em>Touch</em></h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-left">
+        <h2>Open to opportunities,<br>collaborations &amp; projects.</h2>
+        <p>
+          Whether it's a hardware challenge, a VLSI design project, an embedded systems build,
+          or a research collaboration — the TX line is always open.
+        </p>
+        <div class="contact-links">
+          <a class="c-link" href="mailto:akifmohamed2217@gmail.com">
+            <div class="c-link-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            </div>
+            akifmohamed2217@gmail.com
+          </a>
+          
+          <a class="c-link" href="https://www.linkedin.com/in/akifmohamed" target="_blank">
+            <div class="c-link-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </div>
+            linkedin.com/in/akifmohamed
+          </a>
+          
+          <a class="c-link" href="https://github.com/akifmohamed" target="_blank">
+            <div class="c-link-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+            </div>
+            github.com/akifmohamed
+          </a>
+        </div>
+      </div>
+      
+      <form id="contact-form" class="contact-right" action="https://formsubmit.co/akifmohamed2217@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Transmission from ECE Portfolio!">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+
+        <label class="contact-form-label">NAME</label>
+        <input class="contact-form-input" type="text" name="name" placeholder="Your name" required>
+
+        <label class="contact-form-label">EMAIL</label>
+        <input class="contact-form-input" type="email" name="email" placeholder="your@email.com" required>
+
+        <label class="contact-form-label">MESSAGE</label>
+        <textarea class="contact-form-input" name="message" placeholder="Describe your project or message…" required></textarea>
+
+        <button type="submit" id="submit-btn" class="btn btn-primary" style="width:100%;justify-content:center;cursor:pointer;">◉ TRANSMIT MESSAGE</button>
+      </form>
+    </div>
+
+    <div class="footer-bar">
+      <span>© 2026 AKIF MOHAMED J — ECE PORTFOLIO</span>
+      <span>GCE SRIRANGAM · TRICHY, TN · IN</span>
+      <span><span class="status-dot"></span>SYSTEM ONLINE</span>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   ANIMATION ENGINE
+══════════════════════════════════════════════════════════════ */
+
+// ─── HERO CANVAS: PCB Background ───
+(function heroCanvas(){
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes=[], traces=[];
+  
+  function resize(){
+    W=canvas.width=window.innerWidth;
+    H=canvas.height=window.innerHeight;
+    buildGrid();
+  }
+  
+  function buildGrid(){
+    nodes=[];traces=[];
+    const cols=Math.ceil(W/60)+1, rows=Math.ceil(H/60)+1;
+    for(let r=0;r<rows;r++){
+      for(let c=0;c<cols;c++){
+        const x=c*60+(Math.random()-0.5)*20;
+        const y=r*60+(Math.random()-0.5)*20;
+        nodes.push({x,y,r:Math.random()>0.85?4:2,pulse:Math.random()*Math.PI*2,speed:0.015+Math.random()*0.02});
+      }
+    }
+    for(let i=0;i<nodes.length;i++){
+      const neighbors=nodes.filter((_,j)=>j!==i&&Math.abs(nodes[j]?nodes[j].x-nodes[i].x:999)<70&&Math.abs(nodes[j]?nodes[j].y-nodes[i].y:999)<70);
+      neighbors.slice(0,2).forEach(n=>{
+        if(Math.random()>0.4) traces.push({x1:nodes[i].x,y1:nodes[i].y,x2:n.x,y2:n.y,
+          pulse:0,active:Math.random()>0.7,speed:0.008+Math.random()*0.015});
+      });
+    }
+  }
+  
+  let t=0;
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.01;
+    
+    ctx.fillStyle='rgba(232,114,42,0.12)';
+    for(let x=0;x<W;x+=30){
+      for(let y=0;y<H;y+=30){
+        ctx.beginPath();ctx.arc(x,y,0.8,0,Math.PI*2);ctx.fill();
+      }
+    }
+    
+    traces.forEach(tr=>{
+      if(tr.active){
+        tr.pulse+=tr.speed;
+        if(tr.pulse>1) tr.pulse=0;
+        ctx.beginPath();ctx.moveTo(tr.x1,tr.y1);ctx.lineTo(tr.x2,tr.y2);
+        ctx.strokeStyle='rgba(232,114,42,0.08)';ctx.lineWidth=0.5;ctx.stroke();
+        const px=tr.x1+(tr.x2-tr.x1)*tr.pulse;
+        const py=tr.y1+(tr.y2-tr.y1)*tr.pulse;
+        const grad=ctx.createRadialGradient(px,py,0,px,py,8);
+        grad.addColorStop(0,'rgba(232,114,42,0.7)');
+        grad.addColorStop(1,'rgba(232,114,42,0)');
+        ctx.beginPath();ctx.arc(px,py,8,0,Math.PI*2);
+        ctx.fillStyle=grad;ctx.fill();
+      } else {
+        ctx.beginPath();ctx.moveTo(tr.x1,tr.y1);ctx.lineTo(tr.x2,tr.y2);
+        ctx.strokeStyle='rgba(232,114,42,0.04)';ctx.lineWidth=0.5;ctx.stroke();
+      }
+    });
+    
+    nodes.forEach(n=>{
+      n.pulse+=n.speed;
+      const a=0.15+0.15*Math.sin(n.pulse);
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(232,114,42,${a})`;ctx.fill();
+      if(n.r===4){
+        ctx.beginPath();ctx.arc(n.x,n.y,n.r+3,0,Math.PI*2);
+        ctx.strokeStyle=`rgba(232,114,42,${a*0.5})`;ctx.lineWidth=0.5;ctx.stroke();
+      }
+    });
+    
+    requestAnimationFrame(draw);
+  }
+  
+  resize();
+  window.addEventListener('resize',resize);
+  draw();
+})();
+
+// ─── OSCILLOSCOPE ───
+(function oscCanvas(){
+  const canvas=document.getElementById('osc-canvas');
+  const ctx=canvas.getContext('2d');
+  let t=0;
+  
+  function resize(){canvas.width=canvas.parentElement.offsetWidth;canvas.height=120}
+  resize();window.addEventListener('resize',resize);
+  
+  function draw(){
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    t+=0.04;
+    
+    ctx.strokeStyle='rgba(0,255,136,0.06)';ctx.lineWidth=0.5;
+    for(let x=0;x<W;x+=30){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+    for(let y=0;y<H;y+=15){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+    
+    ctx.beginPath();
+    for(let x=0;x<W;x++){
+      const v=H/2-35*Math.sin((x/W)*Math.PI*8+t);
+      x===0?ctx.moveTo(x,v):ctx.lineTo(x,v);
+    }
+    ctx.strokeStyle='rgba(0,255,136,0.85)';ctx.lineWidth=1.5;ctx.stroke();
+    
+    ctx.beginPath();
+    let prev=0;
+    for(let x=0;x<W;x++){
+      const phase=((x/W)*6+t*0.8)%(Math.PI*2);
+      const v=H/2+(phase<Math.PI?-22:22);
+      if(Math.abs(v-prev)>30&&x>0){
+        ctx.lineTo(x,prev);ctx.lineTo(x,v);
+      }
+      x===0?ctx.moveTo(x,v):ctx.lineTo(x,v);
+      prev=v;
+    }
+    ctx.strokeStyle='rgba(79,195,247,0.7)';ctx.lineWidth=1.2;ctx.stroke();
+    
+    ctx.fillStyle='rgba(0,255,136,0.4)';ctx.font='9px JetBrains Mono,monospace';
+    ctx.fillText('1V',4,H/2-32);ctx.fillText('0V',4,H/2+4);ctx.fillText('-1V',4,H/2+36);
+    
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ─── PCB TRACE ANIMATION ───
+(function pcbCanvas(){
+  const canvas=document.getElementById('pcb-canvas');
+  const ctx=canvas.getContext('2d');
+  let traces=[],t=0;
+  
+  function resize(){
+    canvas.width=canvas.parentElement.offsetWidth;
+    canvas.height=80;
+    buildTraces();
+  }
+  
+  function buildTraces(){
+    const W=canvas.width,H=canvas.height;
+    traces=[];
+    const numTraces=8;
+    for(let i=0;i<numTraces;i++){
+      const y=8+i*(H-16)/(numTraces-1);
+      const segs=[{x:0,y},{x:W*0.15+Math.random()*W*0.05,y},
+        {x:W*0.15+Math.random()*W*0.05,y:y+(Math.random()-.5)*30},
+        {x:W*0.5+Math.random()*W*0.1,y:y+(Math.random()-.5)*30},
+        {x:W*0.5+Math.random()*W*0.1,y},{x:W,y}];
+      traces.push({segs,offset:Math.random(),speed:0.3+Math.random()*0.4,
+        color:i%3===0?'rgba(232,114,42,':i%3===1?'rgba(0,255,136,':'rgba(79,195,247,'});
+    }
+  }
+  
+  function getTotalLen(segs){
+    let l=0;
+    for(let i=1;i<segs.length;i++){
+      l+=Math.hypot(segs[i].x-segs[i-1].x,segs[i].y-segs[i-1].y);
+    }
+    return l;
+  }
+  
+  function getPosAtDist(segs,d){
+    let acc=0;
+    for(let i=1;i<segs.length;i++){
+      const sd=Math.hypot(segs[i].x-segs[i-1].x,segs[i].y-segs[i-1].y);
+      if(acc+sd>=d){
+        const t=(d-acc)/sd;
+        return{x:segs[i-1].x+(segs[i].x-segs[i-1].x)*t,
+               y:segs[i-1].y+(segs[i].y-segs[i-1].y)*t};
+      }
+      acc+=sd;
+    }
+    return segs[segs.length-1];
+  }
+  
+  resize();window.addEventListener('resize',resize);
+  
+  function draw(){
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    t+=0.015;
+    
+    traces.forEach((tr,i)=>{
+      const col=i%3===0?'rgba(232,114,42,':i%3===1?'rgba(0,255,136,':'rgba(79,195,247,';
+      tr.offset=(tr.offset+tr.speed*0.008)%1;
+      const totalLen=getTotalLen(tr.segs);
+      
+      ctx.beginPath();
+      tr.segs.forEach((s,j)=>j===0?ctx.moveTo(s.x,s.y):ctx.lineTo(s.x,s.y));
+      ctx.strokeStyle=col+'0.12)';ctx.lineWidth=1;ctx.stroke();
+      
+      tr.segs.slice(1,-1).forEach(s=>{
+        ctx.beginPath();ctx.arc(s.x,s.y,3,0,Math.PI*2);
+        ctx.fillStyle=col+'0.3)';ctx.fill();
+      });
+      
+      const pulseDist=tr.offset*totalLen;
+      const pp=getPosAtDist(tr.segs,pulseDist);
+      const pg=ctx.createRadialGradient(pp.x,pp.y,0,pp.x,pp.y,12);
+      pg.addColorStop(0,col+'0.9)');pg.addColorStop(1,col+'0)');
+      ctx.beginPath();ctx.arc(pp.x,pp.y,12,0,Math.PI*2);
+      ctx.fillStyle=pg;ctx.fill();
+      ctx.beginPath();ctx.arc(pp.x,pp.y,3,0,Math.PI*2);
+      ctx.fillStyle=col+'1)';ctx.fill();
+    });
+    
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ─── RADAR CANVAS ───
+(function radarCanvas(){
+  const canvas=document.getElementById('radar-canvas');
+  const ctx=canvas.getContext('2d');
+  let angle=0,objects=[];
+  
+  for(let i=0;i<6;i++){
+    objects.push({a:Math.random()*Math.PI*2,d:0.3+Math.random()*0.55,size:2+Math.random()*4});
+  }
+  
+  function resize(){canvas.width=canvas.parentElement.offsetWidth;canvas.height=200}
+  resize();window.addEventListener('resize',resize);
+  
+  function draw(){
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='rgba(0,4,2,0.95)';ctx.fillRect(0,0,W,H);
+    
+    const cx=W/2,cy=H/2;
+    const R=Math.min(W,H)*0.42;
+    
+    [0.25,0.5,0.75,1].forEach(f=>{
+      ctx.beginPath();ctx.arc(cx,cy,R*f,0,Math.PI*2);
+      ctx.strokeStyle='rgba(0,255,136,0.12)';ctx.lineWidth=0.5;ctx.stroke();
+    });
+    ctx.strokeStyle='rgba(0,255,136,0.08)';ctx.lineWidth=0.5;
+    ctx.beginPath();ctx.moveTo(cx-R,cy);ctx.lineTo(cx+R,cy);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(cx,cy-R);ctx.lineTo(cx,cy+R);ctx.stroke();
+    
+    for(let i=0;i<60;i++){
+      const a=angle-(i/60)*Math.PI*0.8;
+      const a2=0.6*(1-i/60);
+      ctx.beginPath();ctx.moveTo(cx,cy);
+      ctx.arc(cx,cy,R,a,a-0.06,true);ctx.closePath();
+      ctx.fillStyle=`rgba(0,255,136,${a2*0.04})`;ctx.fill();
+    }
+    
+    ctx.beginPath();ctx.moveTo(cx,cy);
+    ctx.lineTo(cx+R*Math.cos(angle),cy+R*Math.sin(angle));
+    ctx.strokeStyle='rgba(0,255,136,0.9)';ctx.lineWidth=1.5;ctx.stroke();
+    
+    objects.forEach(o=>{
+      const ex=cx+R*o.d*Math.cos(o.a),ey=cy+R*o.d*Math.sin(o.a);
+      const swept=((angle-o.a)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);
+      const fade=swept<0.3?1:Math.max(0,1-(swept-0.3)/2);
+      if(fade>0){
+        ctx.beginPath();ctx.arc(ex,ey,o.size,0,Math.PI*2);
+        ctx.fillStyle=o.d<0.5?`rgba(255,80,80,${fade*0.9})`:`rgba(0,255,136,${fade*0.8})`;
+        ctx.fill();
+        if(swept<0.2){
+          const sg=ctx.createRadialGradient(ex,ey,0,ex,ey,o.size*4);
+          sg.addColorStop(0,'rgba(0,255,136,0.3)');sg.addColorStop(1,'rgba(0,255,136,0)');
+          ctx.beginPath();ctx.arc(ex,ey,o.size*4,0,Math.PI*2);
+          ctx.fillStyle=sg;ctx.fill();
+        }
+      }
+    });
+    
+    angle+=0.025;if(angle>Math.PI*2)angle-=Math.PI*2;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ─── SMART LOCK CANVAS ───
+(function lockCanvas(){
+  const canvas=document.getElementById('lock-canvas');
+  const ctx=canvas.getContext('2d');
+  let t=0,phase='locked',phaseT=0,inputBuf='';
+  
+  function resize(){canvas.width=canvas.parentElement.offsetWidth;canvas.height=200}
+  resize();window.addEventListener('resize',resize);
+  
+  function draw(){
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='rgba(8,12,16,0.97)';ctx.fillRect(0,0,W,H);
+    t+=0.02;phaseT+=0.02;
+    
+    if(phaseT>5&&phase==='locked'){phase='entering';phaseT=0;inputBuf=''}
+    if(phaseT>2.5&&phase==='entering'){
+      if(inputBuf.length<4) inputBuf+='*';
+      if(inputBuf.length>=4){phase='validating';phaseT=0}
+    }
+    if(phaseT>1.5&&phase==='validating'){phase='unlocked';phaseT=0}
+    if(phaseT>3&&phase==='unlocked'){phase='locked';phaseT=0;inputBuf=''}
+    
+    const cx=W/2,cy=H/2;
+    const unlocked=phase==='unlocked';
+    const mainColor=unlocked?'rgba(0,255,136,':'rgba(232,114,42,';
+    
+    const lcdW=Math.min(200,W*0.55),lcdH=70;
+    const lcdX=cx-lcdW/2,lcdY=20;
+    ctx.fillStyle='rgba(0,20,8,0.95)';ctx.fillRect(lcdX,lcdY,lcdW,lcdH);
+    ctx.strokeStyle=mainColor+'0.6)';ctx.lineWidth=1;ctx.strokeRect(lcdX,lcdY,lcdW,lcdH);
+    
+    ctx.font='10px JetBrains Mono,monospace';ctx.textAlign='center';
+    ctx.fillStyle=mainColor+'0.9)';
+    const msg=phase==='locked'?'ENTER PASSWORD':phase==='entering'?'INPUT: '+inputBuf:phase==='validating'?'VALIDATING...':'ACCESS GRANTED';
+    ctx.fillText(msg,cx,lcdY+28);
+    ctx.font='9px JetBrains Mono,monospace';
+    ctx.fillStyle=mainColor+'0.5)';
+    ctx.fillText(phase==='unlocked'?'WELCOME':'SECURE SYSTEM v1.0',cx,lcdY+50);
+    
+    const lockX=cx-22,lockY=lcdY+lcdH+15,lockW=44,lockH=36;
+    ctx.fillStyle='rgba(20,30,40,0.9)';ctx.fillRect(lockX,lockY,lockW,lockH);
+    ctx.strokeStyle=mainColor+'0.7)';ctx.lineWidth=1.5;ctx.strokeRect(lockX,lockY,lockW,lockH);
+    
+    const sh=unlocked?0:16;
+    ctx.beginPath();ctx.arc(cx,lockY,16,Math.PI,0);
+    ctx.moveTo(cx-16,lockY);ctx.lineTo(cx-16,lockY+sh);
+    ctx.moveTo(cx+16,lockY);ctx.lineTo(cx+16,lockY+sh);
+    ctx.strokeStyle=mainColor+'0.7)';ctx.lineWidth=2.5;ctx.stroke();
+    
+    ctx.beginPath();ctx.arc(cx,lockY+lockH/2,5,0,Math.PI*2);
+    const ledGlow=unlocked?'rgba(0,255,136,':'rgba(232,114,42,';
+    ctx.fillStyle=ledGlow+(0.5+0.5*Math.sin(t*3))+')';ctx.fill();
+    
+    const kpX=lcdX-55,kpY=lcdY+5;
+    ['1','2','3','4','5','6','7','8','9','*','0','#'].forEach((k,i)=>{
+      const c=i%3,r=Math.floor(i/3);
+      const kx=kpX+c*16,ky=kpY+r*16;
+      ctx.fillStyle='rgba(30,40,50,0.8)';ctx.fillRect(kx,ky,13,13);
+      ctx.strokeStyle='rgba(79,195,247,0.2)';ctx.lineWidth=0.5;ctx.strokeRect(kx,ky,13,13);
+      ctx.fillStyle='rgba(79,195,247,0.6)';ctx.font='8px JetBrains Mono,monospace';
+      ctx.textAlign='center';ctx.fillText(k,kx+6.5,ky+9);
+    });
+    
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ─── CLOCK TIMING DIAGRAM ───
+(function clkCanvas(){
+  const canvas=document.getElementById('clk-canvas');
+  const ctx=canvas.getContext('2d');
+  let t=0;
+  
+  function resize(){canvas.width=canvas.parentElement.offsetWidth;canvas.height=70}
+  resize();window.addEventListener('resize',resize);
+  
+  function draw(){
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    t+=0.008;
+    
+    ctx.strokeStyle='rgba(0,255,136,0.05)';ctx.lineWidth=0.5;
+    for(let y=0;y<H;y+=10){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+    
+    const period=W/4;
+    ctx.beginPath();
+    ctx.strokeStyle='rgba(0,255,136,0.85)';ctx.lineWidth=1.5;
+    let prev=H*0.75;ctx.moveTo(0,prev);
+    for(let x=0;x<W;x++){
+      const phase=(x+t*40)%period;
+      const v=phase<period/2?H*0.2:H*0.75;
+      if(Math.abs(v-prev)>10){ctx.lineTo(x,prev);ctx.lineTo(x,v)}
+      ctx.lineTo(x,v);prev=v;
+    }
+    ctx.stroke();
+    
+    [W*0.125,W*0.375,W*0.625,W*0.875].forEach((ex,i)=>{
+      ctx.fillStyle='rgba(232,114,42,0.7)';ctx.font='9px JetBrains Mono,monospace';
+      ctx.textAlign='center';
+      ctx.fillText(`R↑${i+1}`,ex,H*0.1);
+      ctx.beginPath();ctx.moveTo(ex,H*0.18);ctx.lineTo(ex,H*0.78);
+      ctx.strokeStyle='rgba(232,114,42,0.25)';ctx.lineWidth=0.5;ctx.setLineDash([3,3]);ctx.stroke();
+      ctx.setLineDash([]);
+    });
+    
+    ctx.fillStyle='rgba(0,255,136,0.4)';ctx.font='9px JetBrains Mono,monospace';
+    ctx.textAlign='left';ctx.fillText('CLK',4,H*0.5);
+    
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ══ PAGE LOGIC ══ */
+
+// BUG FIX: Accurate Button Targeting for Logic Views
+function toggleProj(btn) {
+  // 1. Traverse up to the card, then down to the expanded container
+  const card = btn.closest('.project-card');
+  const panel = card.querySelector('.proj-expanded');
+  
+  if (!panel) return; 
+
+  // 2. Toggle height class
+  panel.classList.toggle('open');
+  
+  // 3. Update button visuals dynamically
+  if (panel.classList.contains('open')) {
+    btn.innerHTML = '◈ CLOSE LOGIC VIEW';
+    btn.style.color = 'var(--green)';
+    btn.style.borderColor = 'var(--green)';
+    btn.style.background = 'rgba(0, 255, 136, 0.05)';
+  } else {
+    btn.innerHTML = '◈ OPEN LOGIC VIEW';
+    btn.style.color = ''; 
+    btn.style.borderColor = '';
+    btn.style.background = '';
+  }
+}
+
+// ─── CONTACT FORM TELEMETRY (AJAX) ───
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+const transitionOverlay = document.getElementById('transition-overlay');
+
+function setTransmitState(active) {
+  document.body.classList.toggle('transmitting', active);
+  transitionOverlay.classList.toggle('transmit-mode', active);
+}
+
+if(contactForm) {
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault(); 
+
+    const originalBtnText = submitBtn.innerHTML;
+    setTransmitState(true);
+    submitBtn.innerHTML = '<span class="status-dot" style="margin-right:8px;"></span>TRANSMITTING...';
+    submitBtn.style.pointerEvents = 'none';
+
+    await new Promise(resolve => setTimeout(resolve, 320));
+
+    fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+        if (response.ok) {
+            submitBtn.innerHTML = '◈ TRANSMISSION SUCCESSFUL';
+            submitBtn.style.color = 'var(--green)';
+            submitBtn.style.borderColor = 'var(--green)';
+            contactForm.reset();
+
+            setTimeout(() => {
+                setTransmitState(false);
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.style.color = '';
+                submitBtn.style.borderColor = '';
+                submitBtn.style.pointerEvents = 'auto';
+            }, 4000);
+        } else {
+            throw new Error('Network Error');
+        }
+    })
+    .catch(error => {
+        submitBtn.innerHTML = '⚠ TRANSMISSION FAILED';
+        submitBtn.style.color = '#ff5050';
+        submitBtn.style.borderColor = '#ff5050';
+
+        setTimeout(() => {
+        setTransmitState(false);
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.style.color = '';
+            submitBtn.style.borderColor = '';
+            submitBtn.style.pointerEvents = 'auto';
+        }, 3000);
+    });
+  });
+}
+
+// Scroll Observers
+let lastElectroSection='hero';
+const pageObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      if(e.target.id && e.target.id!==lastElectroSection){
+        lastElectroSection=e.target.id;
+        window.__electroTransition?.();
+      }
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.page').forEach(p=>pageObserver.observe(p));
+
+const tlObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const delay=[...document.querySelectorAll('.tl-item')].indexOf(e.target)*150;
+      setTimeout(()=>e.target.classList.add('visible'),delay);
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('.tl-item').forEach(t=>tlObserver.observe(t));
+
+window.addEventListener('scroll',()=>{
+  let current='';
+  document.querySelectorAll('.page').forEach(sec=>{
+    if(window.scrollY>=sec.offsetTop-120) current=sec.id;
+  });
+  document.querySelectorAll('nav a').forEach(a=>{
+    a.classList.toggle('active',a.dataset.section===current);
+  });
+},{passive:true});
+
+document.querySelectorAll('nav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target) target.scrollIntoView({behavior:'smooth'});
+    document.querySelector('nav').classList.remove('menu-open');
+    const toggle=document.querySelector('.nav-toggle');
+    if(toggle) toggle.setAttribute('aria-expanded','false');
+  });
+});
+
+const nav=document.querySelector('nav');
+const navToggle=document.querySelector('.nav-toggle');
+if(navToggle){
+  navToggle.addEventListener('click',()=>{
+    const open=nav.classList.toggle('menu-open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+}
+
+document.addEventListener('click',e=>{
+  if(!nav.classList.contains('menu-open')) return;
+  if(nav.contains(e.target)) return;
+  nav.classList.remove('menu-open');
+  if(navToggle) navToggle.setAttribute('aria-expanded','false');
+});
+
+window.addEventListener('resize',()=>{
+  if(window.innerWidth>768){
+    nav.classList.remove('menu-open');
+    if(navToggle) navToggle.setAttribute('aria-expanded','false');
+  }
+});
+
+// ─── ELECTRONICS TRANSITION OVERLAY ───
+(function electronicsTransition(){
+  const overlay=document.getElementById('transition-overlay');
+  const canvas=document.getElementById('tx-canvas');
+  const ctx=canvas.getContext('2d');
+  let w=0,h=0,animationFrame=0,activeUntil=0,transitionToken=0;
+  const duration=900;
+
+  function resize(){
+    w=canvas.width=window.innerWidth;
+    h=canvas.height=window.innerHeight;
+  }
+
+  function draw(progress){
+    ctx.clearRect(0,0,w,h);
+    overlay.style.opacity=String(Math.max(0,1-progress)*0.95);
+
+    const fade=1-progress;
+    const cx=w/2,cy=h/2;
+    const sweepY=cy + (progress-0.5)*h*0.9;
+    const sweepX=cx + Math.sin(progress*Math.PI*2)*w*0.12;
+
+    ctx.save();
+    ctx.globalCompositeOperation='lighter';
+
+    // Center pulse core
+    const core=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.min(w,h)*0.38);
+    core.addColorStop(0,`rgba(0,255,136,${0.22*fade})`);
+    core.addColorStop(0.35,`rgba(79,195,247,${0.14*fade})`);
+    core.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=core;
+    ctx.beginPath();
+    ctx.arc(cx,cy,Math.min(w,h)*0.38,0,Math.PI*2);
+    ctx.fill();
+
+    // Circuit traces
+    const nodes=[
+      {x:0.12*w,y:0.22*h},{x:0.27*w,y:0.38*h},{x:0.48*w,y:0.52*h},{x:0.72*w,y:0.34*h},{x:0.88*w,y:0.18*h},
+      {x:0.15*w,y:0.78*h},{x:0.34*w,y:0.64*h},{x:0.56*w,y:0.76*h},{x:0.78*w,y:0.6*h},{x:0.92*w,y:0.82*h}
+    ];
+    const traces=[
+      [nodes[0],nodes[1],nodes[2],nodes[3],nodes[4]],
+      [nodes[5],nodes[6],nodes[7],nodes[8],nodes[9]],
+      [{x:0.08*w,y:0.5*h},{x:0.3*w,y:0.5*h},{x:0.48*w,y:0.52*h},{x:0.7*w,y:0.5*h},{x:0.94*w,y:0.5*h}]
+    ];
+
+    traces.forEach((pts,i)=>{
+      ctx.beginPath();
+      pts.forEach((p,j)=>j===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
+      ctx.strokeStyle=i===0?`rgba(0,255,136,${0.28*fade})`:i===1?`rgba(79,195,247,${0.26*fade})`:`rgba(232,114,42,${0.22*fade})`;
+      ctx.lineWidth=1.2;
+      ctx.stroke();
+
+      pts.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,2.2,0,Math.PI*2);
+        ctx.fillStyle=i===2?`rgba(232,114,42,${0.55*fade})`:`rgba(0,255,136,${0.5*fade})`;
+        ctx.fill();
+      });
+    });
+
+    // Scanning grid and sweep line
+    ctx.strokeStyle=`rgba(0,255,136,${0.08*fade})`;
+    ctx.lineWidth=0.6;
+    for(let x=0;x<=w;x+=48){ ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke(); }
+    for(let y=0;y<=h;y+=48){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
+
+    const sweepGrad=ctx.createLinearGradient(0,sweepY-30,0,sweepY+30);
+    sweepGrad.addColorStop(0,'rgba(0,0,0,0)');
+    sweepGrad.addColorStop(0.5,`rgba(0,255,136,${0.9*fade})`);
+    sweepGrad.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=sweepGrad;
+    ctx.fillRect(0,sweepY-3,w,6);
+
+    const beamGrad=ctx.createLinearGradient(sweepX-120,0,sweepX+120,0);
+    beamGrad.addColorStop(0,'rgba(0,0,0,0)');
+    beamGrad.addColorStop(0.5,`rgba(79,195,247,${0.32*fade})`);
+    beamGrad.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=beamGrad;
+    ctx.fillRect(sweepX-2,0,4,h);
+
+    // Energy sparks
+    for(let i=0;i<14;i++){
+      const phase=(progress*2.4+i*0.07)%1;
+      const p=traces[i%traces.length];
+      const x=p[0].x+(p[p.length-1].x-p[0].x)*phase;
+      const y=p[0].y+(p[p.length-1].y-p[0].y)*phase;
+      ctx.beginPath();
+      ctx.arc(x,y,1.2+phase*2.2,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,159,74,${(1-phase)*0.7*fade})`;
+      ctx.fill();
+    }
+
+    ctx.restore();
+  }
+
+  function animate(start){
+    const now=performance.now();
+    const progress=Math.min((now-start)/duration,1);
+    draw(progress);
+    if(progress<1 && start===activeUntil){
+      animationFrame=requestAnimationFrame(()=>animate(start));
+    } else {
+      overlay.style.opacity='0';
+      ctx.clearRect(0,0,w,h);
+    }
+  }
+
+  function trigger(){
+    resize();
+    const token=++transitionToken;
+    activeUntil=performance.now();
+    overlay.style.opacity='1';
+    cancelAnimationFrame(animationFrame);
+    animationFrame=requestAnimationFrame(()=>animate(activeUntil));
+    return token;
+  }
+
+  resize();
+  window.addEventListener('resize',resize);
+  window.addEventListener('scroll',()=>{
+    if(overlay.style.opacity!=='0'){ resize(); }
+  },{passive:true});
+
+  window.__electroTransition=trigger;
+})();
+
+</script>
+</body>
+</html>
