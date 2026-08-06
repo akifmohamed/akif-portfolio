@@ -3,18 +3,24 @@ name: Deploy Portfolio
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
+# Cancel in-progress runs to prevent deployment locks
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: "pages"
   cancel-in-progress: true
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+# Grant GitHub Pages permission to deploy the artifact
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -32,12 +38,17 @@ jobs:
         run: npm run build
         env:
           CI: false
-        timeout-minutes: 5
 
-      # Optional: Deploy to GitHub Pages (Uncomment if deploying to gh-pages branch)
-      # - name: Deploy to GitHub Pages
-      #   uses: peaceiris/actions-gh-pages@v4
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./dist  # Change to ./build if using Create React App
-      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Change path to match your framework's build output:
+          # Vite / Vue / Svelte: ./dist
+          # Create React App:   ./build
+          # Next.js static export: ./out
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        
