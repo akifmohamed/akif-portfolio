@@ -2,11 +2,10 @@ name: Deploy Portfolio
 
 on:
   push:
-    branches: [ "main" ]  # Change to "master" if your default branch is master
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
-# Auto-cancel any previous runs that are still in progress for this branch
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -14,7 +13,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10  # Automatically kills the job if it hangs past 10 minutes
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
@@ -31,5 +30,14 @@ jobs:
 
       - name: Build project
         run: npm run build
-        timeout-minutes: 5  # Step timeout: fails specifically if npm run build hangs
-        
+        env:
+          CI: false
+        timeout-minutes: 5
+
+      # Optional: Deploy to GitHub Pages (Uncomment if deploying to gh-pages branch)
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v4
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./dist  # Change to ./build if using Create React App
+      
