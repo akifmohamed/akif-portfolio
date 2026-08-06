@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="akif-no-bg.png">
-<title>Akif Mohamed J — VLSI Physical Design &amp; Embedded Systems Portfolio</title>
-<meta name="description" content="Portfolio of Akif Mohamed J — Electronics & Communication Engineer specializing in VLSI Physical Design (RTL-to-GDSII Sky130), Analog IC Design, Embedded Systems & PCB Architecture.">
+<title>Akif Mohamed J — VLSI Physical Design, Edge AI &amp; Embedded Hardware Portfolio</title>
+<meta name="description" content="Portfolio of Akif Mohamed J — Electronics & Communication Engineer specializing in VLSI Physical Design (RTL-to-GDSII Sky130), 6-Layer High-Speed PCB Design (APEX Edge AI), Analog IC Design & Embedded Systems.">
 
 <!-- Premium Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,12 +20,12 @@
   :root {
     --bg: #030708;
     --bg-surface: #060c0e;
-    --bg-card: rgba(8, 16, 18, 0.85);
-    --bg-card-hover: rgba(12, 24, 28, 0.95);
+    --bg-card: rgba(8, 16, 18, 0.88);
+    --bg-card-hover: rgba(12, 24, 28, 0.96);
     --line: #122123;
     --line-bright: #1c3637;
     
-    /* Semiconductor Color Palette */
+    /* Semiconductor & PCB Color Palette */
     --neon-green: #00ff88;
     --phosphor: #39ff7a;
     --phosphor-dim: #136934;
@@ -210,7 +210,7 @@
     letter-spacing: -0.02em;
   }
   h2 em { color: var(--neon-green); font-style: normal; text-shadow: 0 0 24px rgba(0, 255, 136, 0.35); }
-  .lede { color: var(--fg-muted); max-width: 60ch; font-size: 1.02rem; margin-bottom: 2.6rem; }
+  .lede { color: var(--fg-muted); max-width: 62ch; font-size: 1.02rem; margin-bottom: 2.6rem; }
   .reveal { opacity: 0; transform: translateY(28px); }
 
   /* Buttons */
@@ -276,18 +276,18 @@
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
   .hero-title-sub {
-    font-family: var(--font-mono); font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+    font-family: var(--font-mono); font-size: clamp(0.85rem, 1.8vw, 1.02rem);
     color: var(--neon-cyan); margin-bottom: 1.2rem; font-weight: 500; letter-spacing: 0.02em;
     display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
   }
   .hero p.intro {
-    color: var(--fg-muted); max-width: 48ch; font-size: 1.05rem; line-height: 1.65; margin-bottom: 2rem;
+    color: var(--fg-muted); max-width: 50ch; font-size: 1.05rem; line-height: 1.65; margin-bottom: 2rem;
   }
   .hero p.intro b { color: var(--fg); font-weight: 600; }
 
   /* Hero Telemetry Quick Specs */
   .hero-specs {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; margin-bottom: 2.2rem; max-width: 520px;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; margin-bottom: 2.2rem; max-width: 540px;
   }
   .hero-spec-item {
     background: rgba(7, 13, 15, 0.8); border: 1px solid var(--line); border-left: 2px solid var(--neon-green);
@@ -419,21 +419,32 @@
   .pill.cyan {
     color: var(--neon-cyan); border-color: rgba(0, 240, 255, 0.3); background: rgba(0, 240, 255, 0.06);
   }
+  .pill.amber {
+    color: var(--neon-amber); border-color: rgba(255, 184, 0, 0.3); background: rgba(255, 184, 0, 0.06);
+  }
   .chip-package:hover .pill { border-color: var(--line-bright); color: var(--fg); }
   .chip-package:hover .pill.highlight { border-color: var(--neon-green); color: #fff; box-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
 
   /* ─────────────────────────────────────────────────────────────
-     FLAGSHIP FEATURED PROJECT: PIPECORE-GDS (THE STAR)
+     FLAGSHIP FEATURED PROJECTS (PIPECORE-GDS & APEX NEURALEDGE)
      ───────────────────────────────────────────────────────────── */
   .flagship-card {
     border: 1px solid rgba(0, 255, 136, 0.35); background: linear-gradient(180deg, rgba(8, 18, 16, 0.95), rgba(4, 9, 10, 0.95));
-    border-radius: 12px; position: relative; overflow: hidden; margin-bottom: 3rem;
+    border-radius: 12px; position: relative; overflow: hidden; margin-bottom: 3.5rem;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 255, 136, 0.12);
+  }
+  .flagship-card.apex-theme {
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 240, 255, 0.14);
+    background: linear-gradient(180deg, rgba(6, 16, 20, 0.95), rgba(3, 8, 11, 0.95));
   }
   .flagship-ribbon {
     display: flex; align-items: center; justify-content: space-between;
     padding: 0.85rem 1.6rem; background: rgba(0, 255, 136, 0.08);
     border-bottom: 1px solid rgba(0, 255, 136, 0.25); flex-wrap: wrap; gap: 0.8rem;
+  }
+  .flagship-card.apex-theme .flagship-ribbon {
+    background: rgba(0, 240, 255, 0.08); border-bottom-color: rgba(0, 240, 255, 0.25);
   }
   .ribbon-badges { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
   .ribbon-tag {
@@ -442,6 +453,10 @@
   }
   .ribbon-tag.star {
     background: var(--neon-green); color: #030708; box-shadow: 0 0 12px var(--phosphor-glow);
+  }
+  .ribbon-tag.in-progress {
+    background: var(--neon-amber); color: #030708; box-shadow: 0 0 14px var(--amber-glow);
+    animation: pulseDot 2.2s infinite;
   }
   .ribbon-tag.pdk {
     background: rgba(0, 240, 255, 0.12); border: 1px solid var(--neon-cyan); color: var(--neon-cyan);
@@ -479,6 +494,17 @@
   }
   .flagship-desc b { color: #fff; font-weight: 600; }
 
+  /* In-Progress Live Status Box */
+  .progress-status-box {
+    background: rgba(255, 184, 0, 0.06); border: 1px solid rgba(255, 184, 0, 0.3);
+    border-left: 3px solid var(--neon-amber); border-radius: 6px; padding: 0.9rem 1.1rem;
+    margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.76rem;
+  }
+  .progress-status-box .status-head {
+    color: var(--neon-amber); font-weight: 700; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; font-size: 0.72rem; letter-spacing: 0.1em;
+  }
+  .progress-status-box p { color: var(--fg-muted); font-size: 0.78rem; line-height: 1.55; margin: 0; }
+
   /* Verified Metrics HUD Grid */
   .metrics-hud {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.6rem;
@@ -490,6 +516,7 @@
   }
   .metric-box.glow-green { border-color: rgba(0, 255, 136, 0.3); }
   .metric-box.glow-cyan { border-color: rgba(0, 240, 255, 0.3); }
+  .metric-box.glow-amber { border-color: rgba(255, 184, 0, 0.3); }
   .metric-label {
     font-family: var(--font-mono); font-size: 0.58rem; color: var(--fg-dim); letter-spacing: 0.1em; text-transform: uppercase;
   }
@@ -518,12 +545,15 @@
   .sim-tab-btn.active {
     color: var(--neon-green); border-bottom-color: var(--neon-green); background: rgba(0, 255, 136, 0.05);
   }
+  .sim-tab-btn.active.cyan-active {
+    color: var(--neon-cyan); border-bottom-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.05);
+  }
 
   .sim-view-pane { position: relative; height: 320px; background: #030708; overflow: hidden; display: none; }
   .sim-view-pane.active { display: block; }
 
-  /* Interactive Canvas Views */
-  #gdsCanvas, #pipelineCanvas, #timingCanvas { width: 100%; height: 100%; display: block; }
+  /* Interactive Canvas Views & Photo Views */
+  #gdsCanvas, #pipelineCanvas, #timingCanvas, #stackupCanvas, #telemetryCanvas { width: 100%; height: 100%; display: block; }
   .gds-photo-view { width: 100%; height: 100%; object-fit: contain; display: block; background: #000; }
 
   /* ALU Controls Bar */
@@ -562,6 +592,7 @@
     border-radius: 4px; font-family: var(--font-mono); font-size: 0.64rem; text-align: center;
   }
   .flow-step-item b { color: var(--neon-green); display: block; font-size: 0.7rem; margin-bottom: 0.2rem; }
+  .flow-step-item.cyan b { color: var(--neon-cyan); }
 
   /* ─────────────────────────────────────────────────────────────
      OTHER HARDWARE PROJECTS GRID
@@ -592,7 +623,7 @@
 
   /* Expandable Logic Drawers */
   .proj-drawer { overflow: hidden; max-height: 0; transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
-  .proj-drawer.open { max-height: 800px; }
+  .proj-drawer.open { max-height: 900px; }
   .proj-drawer-inner {
     padding: 1.2rem 1.6rem 1.4rem; background: #04090b; border-top: 1px solid var(--line);
     font-family: var(--font-mono); font-size: 0.78rem;
@@ -792,7 +823,7 @@
   <div class="brand">
     <span class="dot"></span>
     <span>REG_AKIF_22</span>
-    <span class="brand-badge">SKY130A</span>
+    <span class="brand-badge">SKY130A · APEX PCB</span>
   </div>
   <nav id="mainNav">
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -824,33 +855,33 @@
       <div>
         <div class="hero-status-pill reveal">
           <span class="pulse"></span>
-          <span>SYSTEM ONLINE // VLSI &amp; EMBEDDED ENGINEER</span>
+          <span>SYSTEM ONLINE // VLSI &amp; HARDWARE ARCHITECT</span>
         </div>
         <h1 id="heroTitle">Akif Mohamed <i>J</i></h1>
         <div class="hero-title-sub reveal">
           <span>◈ RTL-to-GDSII Physical Design</span>
           <span>·</span>
-          <span>Sky130 Silicon</span>
+          <span>6-Layer High-Speed PCB</span>
           <span>·</span>
-          <span>Embedded Systems</span>
+          <span>Edge AI Hardware</span>
         </div>
         <p class="intro reveal">
-          Final-year Electronics &amp; Communication Engineering student at <b>GCE Srirangam (2023–2027)</b>. Specializing in open-source ASIC physical design with <b>OpenLane 2 &amp; SkyWater 130nm</b>, analog IC simulation in Cadence Virtuoso, and high-performance embedded systems.
+          Final-year Electronics &amp; Communication Engineering student at <b>GCE Srirangam (2023–2027)</b>. Specializing in open-source ASIC physical design with <b>OpenLane 2 &amp; SkyWater 130nm</b>, complex multi-layer PCB design with <b>Altium Designer 2025</b>, and real-time edge computing.
         </p>
 
         <!-- Telemetry Matrix -->
         <div class="hero-specs reveal">
           <div class="hero-spec-item">
             <div class="hero-spec-label">Flagship Tapeout</div>
-            <div class="hero-spec-val">PipeCore-GDS <span>[Clean]</span></div>
+            <div class="hero-spec-val">PipeCore-GDS <span>[Sky130]</span></div>
           </div>
           <div class="hero-spec-item cyan">
-            <div class="hero-spec-label">Timing Signoff</div>
-            <div class="hero-spec-val">100 MHz <span>(0 TNS)</span></div>
+            <div class="hero-spec-label">Edge AI Hardware</div>
+            <div class="hero-spec-val">APEX NeuralEdge <span>[6-Layer]</span></div>
           </div>
           <div class="hero-spec-item amber">
-            <div class="hero-spec-label">Physical Die Area</div>
-            <div class="hero-spec-val">7,341 µm² <span>(300 cells)</span></div>
+            <div class="hero-spec-label">ASIC Timing Signoff</div>
+            <div class="hero-spec-val">100 MHz <span>(0 Violations)</span></div>
           </div>
           <div class="hero-spec-item purple">
             <div class="hero-spec-label">Academic Standing</div>
@@ -859,8 +890,8 @@
         </div>
 
         <div class="cta-row reveal">
-          <a class="btn magnetic" href="#projects">★ VIEW PIPECORE-GDS</a>
-          <a class="btn cyan magnetic" href="#workbench">⚡ LOGIC WORKBENCH</a>
+          <a class="btn magnetic" href="#projects">★ VIEW PROJECTS</a>
+          <a class="btn cyan magnetic" href="#workbench">⚡ LOGIC LAB</a>
           <a class="btn ghost magnetic" href="#contact">◈ TRANSMIT LINK</a>
         </div>
       </div>
@@ -880,8 +911,8 @@
             </div>
           </div>
           <div class="crt-foot">
-            <span>STATUS <b>TAPE-OUT READY</b></span>
-            <span>PDK <b>SKY130A</b></span>
+            <span>STATUS <b>SILICON + PCB</b></span>
+            <span>DOMAINS <b>ASIC &amp; EDGE AI</b></span>
             <span>MARGIN <b>+1.91 ns</b></span>
           </div>
         </div>
@@ -916,21 +947,21 @@
 
       <div class="node-card amber reveal">
         <span class="node-tag">◈ NODE_03 // CORE PHILOSOPHY</span>
-        <h3>Silicon &amp; Firmware Synergy</h3>
-        <div class="institute">Physical Design · FPGA · Embedded</div>
-        <p>Passionate about bridging high-level Verilog RTL synthesis with silicon physical implementation, static timing closure, and real-time microcontroller firmware.</p>
-        <div class="node-stat"><span>DOMAINS:</span> <span>ASIC + EMBEDDED</span></div>
+        <h3>Silicon &amp; Hardware Co-Design</h3>
+        <div class="institute">Physical Design · FPGA · High-Speed PCB</div>
+        <p>Passionate about bridging high-level Verilog RTL synthesis with silicon physical implementation, static timing closure, and multi-layer high-speed PCB hardware architecture.</p>
+        <div class="node-stat"><span>DOMAINS:</span> <span>ASIC + EDGE AI PCB</span></div>
       </div>
     </div>
   </section>
 
   <!-- ─────────────────────────────────────────────────────────────
-       SKILLS & TOOLCHAINS SECTION
-       ───────────────────────────────────────────────────────────── -->
+     SKILLS & TOOLCHAINS SECTION
+     ───────────────────────────────────────────────────────────── -->
   <section id="skills">
     <div class="module-tag reveal">MODULE_03 // SILICON_EDA_TOOLCHAIN</div>
     <h2 class="reveal">Skills <em>&amp;</em> Toolchains</h2>
-    <p class="lede reveal">Hardware component clusters and industry-standard EDA environments.</p>
+    <p class="lede reveal">Hardware component clusters, PCB engineering suites, and industry-standard EDA environments.</p>
 
     <div class="skill-grid">
       <!-- IC CHIP 01: VLSI Physical Design -->
@@ -956,62 +987,65 @@
         </div>
       </div>
 
-      <!-- IC CHIP 02: Analog IC Design -->
+      <!-- IC CHIP 02: High-Speed PCB Design (APEX) -->
+      <div class="chip-package reveal">
+        <div class="chip-header">
+          <span class="chip-id">PCB-6LAYER</span>
+          <span class="pill cyan">HARDWARE / PCB</span>
+        </div>
+        <h3>High-Speed PCB Architecture</h3>
+        <span class="chip-sub">Altium Designer 2025 &amp; KiCad</span>
+        <p class="chip-desc">6-layer stackup design, controlled impedance routing (USB 90Ω, RMII 50Ω, Ethernet 100Ω), differential pair matching, and SPICE circuit simulation.</p>
+        <div class="pill-row">
+          <span class="pill cyan">Altium Designer 2025</span>
+          <span class="pill cyan">6-Layer Stackup</span>
+          <span class="pill cyan">Impedance Matching</span>
+          <span class="pill">Differential Pairs</span>
+          <span class="pill">Power Integrity</span>
+          <span class="pill">Thermal Relief</span>
+          <span class="pill">DRC / ERC Signoff</span>
+          <span class="pill">SPICE Simulation</span>
+        </div>
+      </div>
+
+      <!-- IC CHIP 03: Edge AI & Embedded Systems -->
+      <div class="chip-package reveal">
+        <div class="chip-header">
+          <span class="chip-id">MCU-AI</span>
+          <span class="pill highlight">EMBEDDED &amp; AI</span>
+        </div>
+        <h3>Edge AI &amp; Embedded Systems</h3>
+        <span class="chip-sub">Microcontroller, FPGA &amp; TPU Platforms</span>
+        <p class="chip-desc">STM32H7 ARM Cortex-M7 (480MHz), Google Coral Edge TPU (4 TOPS), Lattice iCE40UP5K FPGA glue logic, and industrial fieldbuses.</p>
+        <div class="pill-row">
+          <span class="pill highlight">STM32H7 (ARM M7)</span>
+          <span class="pill highlight">Google Coral TPU</span>
+          <span class="pill highlight">Lattice iCE40 FPGA</span>
+          <span class="pill">CAN-FD</span>
+          <span class="pill">RS-485</span>
+          <span class="pill">10/100 Ethernet</span>
+          <span class="pill">Embedded C / C++</span>
+          <span class="pill">Arduino UNO</span>
+        </div>
+      </div>
+
+      <!-- IC CHIP 04: Analog IC Design -->
       <div class="chip-package reveal">
         <div class="chip-header">
           <span class="chip-id">EDA-CAD</span>
-          <span class="pill cyan">ANALOG IC</span>
+          <span class="pill amber">ANALOG IC</span>
         </div>
         <h3>Analog IC Design &amp; EDA</h3>
         <span class="chip-sub">Cadence Virtuoso &amp; SPICE</span>
         <p class="chip-desc">Transistor-level schematic entry, DC/AC operating point sweeps, transient simulations, and analog verification workflows.</p>
         <div class="pill-row">
-          <span class="pill cyan">Cadence Virtuoso</span>
-          <span class="pill cyan">HSPICE</span>
-          <span class="pill cyan">Spectre Sim</span>
+          <span class="pill amber">Cadence Virtuoso</span>
+          <span class="pill amber">HSPICE</span>
+          <span class="pill amber">Spectre Sim</span>
           <span class="pill">Analog Layout</span>
           <span class="pill">Signal Integrity</span>
           <span class="pill">Transient Analysis</span>
           <span class="pill">DRC/LVS Signoff</span>
-        </div>
-      </div>
-
-      <!-- IC CHIP 03: Embedded Systems -->
-      <div class="chip-package reveal">
-        <div class="chip-header">
-          <span class="chip-id">MCU-328</span>
-          <span class="pill highlight">EMBEDDED</span>
-        </div>
-        <h3>Embedded Systems &amp; Firmware</h3>
-        <span class="chip-sub">Microcontroller Architecture</span>
-        <p class="chip-desc">Bare-metal and HAL firmware development, sensor integration, serial communications, and hardware actuator control.</p>
-        <div class="pill-row">
-          <span class="pill highlight">Embedded C / C++</span>
-          <span class="pill highlight">Arduino UNO</span>
-          <span class="pill">ATmega328P</span>
-          <span class="pill">UART / SPI / I2C</span>
-          <span class="pill">Processing IDE</span>
-          <span class="pill">PWM &amp; Timers</span>
-          <span class="pill">Sensors / Servos</span>
-        </div>
-      </div>
-
-      <!-- IC CHIP 04: PCB Design -->
-      <div class="chip-package reveal">
-        <div class="chip-header">
-          <span class="chip-id">PCB-ALTIUM</span>
-          <span class="pill cyan">HARDWARE</span>
-        </div>
-        <h3>PCB Design &amp; Routing</h3>
-        <span class="chip-sub">Copper Routing &amp; Schematic Capture</span>
-        <p class="chip-desc">Multi-layer board layout, trace impedance matching, power distribution networks, and manufacturing rule validation.</p>
-        <div class="pill-row">
-          <span class="pill cyan">Altium Designer</span>
-          <span class="pill cyan">KiCad</span>
-          <span class="pill">Schematic Capture</span>
-          <span class="pill">Multi-Layer PnR</span>
-          <span class="pill">DRC / ERC Signoff</span>
-          <span class="pill">Gerber Outputs</span>
         </div>
       </div>
 
@@ -1054,14 +1088,14 @@
   </section>
 
   <!-- ─────────────────────────────────────────────────────────────
-       PROJECTS SECTION (FLAGSHIP PIPECORE-GDS + HARDWARE BUILDS)
+       PROJECTS SECTION
        ───────────────────────────────────────────────────────────── -->
   <section id="projects">
     <div class="module-tag reveal">MODULE_04 // SILICON_TAPEOUT &amp; HARDWARE_LAB</div>
     <h2 class="reveal">Featured Projects</h2>
-    <p class="lede reveal">Production-grade silicon physical design and interactive embedded hardware systems.</p>
+    <p class="lede reveal">Production-grade silicon physical design, high-speed multi-layer PCB hardware, and interactive embedded systems.</p>
 
-    <!-- ★ FLAGSHIP SHOWPIECE: PIPECORE-GDS -->
+    <!-- ★ FLAGSHIP PROJECT 01: PIPECORE-GDS -->
     <div class="flagship-card reveal" id="pipecoreCard">
       <div class="flagship-ribbon">
         <div class="ribbon-badges">
@@ -1287,17 +1321,181 @@
       </div>
     </div>
 
-    <!-- HARDWARE PROJECTS 02 & 03 -->
+    <!-- ★ FLAGSHIP PROJECT 02: APEX (NEURALEDGE) 6-LAYER PCB -->
+    <div class="flagship-card apex-theme reveal" id="apexCard">
+      <div class="flagship-ribbon">
+        <div class="ribbon-badges">
+          <span class="ribbon-tag in-progress">🔄 IN PROGRESS // SIMULATING CIRCUITS</span>
+          <span class="ribbon-tag pdk">6-Layer High Density PCB</span>
+          <span class="ribbon-tag timing">Altium Designer 2025</span>
+          <span class="ribbon-tag" style="background:rgba(0,255,136,0.12); border:1px solid var(--neon-green); color:var(--neon-green);">STM32H7 + Edge TPU + FPGA</span>
+        </div>
+        <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--neon-amber);">
+          ◈ 7-Sheet Hierarchical Schematic Clean (0 Errors)
+        </span>
+      </div>
+
+      <div class="flagship-body">
+        <!-- Left: Project Narrative & Verified Telemetry -->
+        <div class="flagship-info">
+          <h3>APEX (AI Processing &amp; Edge eXecution Platform)</h3>
+          <div class="flagship-subtitle" style="color:var(--neon-amber);">NeuralEdge · 6-Layer Edge AI Accelerator &amp; Industrial Monitor (100mm × 80mm)</div>
+          
+          <!-- Explicit In-Progress Notice Box -->
+          <div class="progress-status-box">
+            <div class="status-head">
+              <span>● PROJECT STATUS: IN PROGRESS // CIRCUIT SIMULATION PHASE</span>
+            </div>
+            <p>
+              <b>Currently performing rigorous SPICE circuit simulations</b> (power distribution network stability, buck regulator transient response, and high-speed signal integrity) across all 7 hierarchical schematic sheets before executing final 6-layer PCB layout routing.
+            </p>
+          </div>
+
+          <p class="flagship-desc">
+            A standalone 6-layer edge computing and industrial monitoring platform designed from scratch in <b>Altium Designer 2025</b>. Integrates a <b>480MHz STM32H743ZIT6 ARM Cortex-M7</b>, a <b>Google Coral Edge TPU (4 TOPS)</b> for local offline ML inference, and a <b>Lattice iCE40UP5K FPGA</b> with multi-protocol industrial fieldbuses (CAN-FD, RS-485, 10/100 Ethernet).
+          </p>
+
+          <!-- Metrics HUD -->
+          <div class="metrics-hud">
+            <div class="metric-box glow-cyan">
+              <div class="metric-label">PCB Stack-Up</div>
+              <div class="metric-val cyan">6 Layers <span>(1.6mm FR4)</span></div>
+            </div>
+            <div class="metric-box glow-green">
+              <div class="metric-label">Main Controller</div>
+              <div class="metric-val">STM32H7 <span>(480MHz M7)</span></div>
+            </div>
+            <div class="metric-box glow-amber">
+              <div class="metric-label">On-Device AI</div>
+              <div class="metric-val amber">Coral TPU <span>(4 TOPS)</span></div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Hardware Logic</div>
+              <div class="metric-val">iCE40 FPGA <span>(Lattice)</span></div>
+            </div>
+            <div class="metric-box glow-cyan">
+              <div class="metric-label">Industrial Bus</div>
+              <div class="metric-val cyan">CAN-FD + RS485 + ETH</div>
+            </div>
+            <div class="metric-box glow-green">
+              <div class="metric-label">Sensors</div>
+              <div class="metric-val">24-Bit ADC + Vib + Temp</div>
+            </div>
+          </div>
+
+          <div class="pill-row" style="margin-bottom:1.4rem;">
+            <span class="pill cyan">Altium Designer 2025</span>
+            <span class="pill highlight">STM32H743ZIT6</span>
+            <span class="pill highlight">Google Coral TPU</span>
+            <span class="pill">Lattice iCE40UP5K</span>
+            <span class="pill">ADS1256 (24-bit ADC)</span>
+            <span class="pill">ADXL355 (Vibration)</span>
+            <span class="pill">LTC2983 (Thermal)</span>
+            <span class="pill">INA3221 (Power)</span>
+            <span class="pill">USB2514B Hub</span>
+          </div>
+
+          <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
+            <button class="btn cyan sm magnetic proj-btn-inline" data-drawer="drawerApex">
+              ◈ VIEW 6-LAYER STACKUP &amp; SCHEMATICS ▾
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Multi-View Simulator Console -->
+        <div class="sim-container">
+          <div class="sim-nav">
+            <button class="sim-tab-btn active cyan-active" data-tab="tab-apex-3d">◈ 3D PCB RENDER</button>
+            <button class="sim-tab-btn" data-tab="tab-apex-stackup">📐 6-LAYER STACKUP</button>
+            <button class="sim-tab-btn" data-tab="tab-apex-sim">⚡ SENSORS &amp; SPICE</button>
+            <button class="sim-tab-btn" data-tab="tab-apex-schem">🔬 SCHEMATIC CAD</button>
+          </div>
+
+          <!-- Tab 1: 3D PCB Render Photo -->
+          <div class="sim-view-pane active" id="tab-apex-3d">
+            <img src="apex-pcb-render.png" alt="APEX NeuralEdge 6-Layer Edge AI PCB 3D Render" class="gds-photo-view">
+          </div>
+
+          <!-- Tab 2: 6-Layer Stackup Canvas View -->
+          <div class="sim-view-pane" id="tab-apex-stackup">
+            <canvas id="stackupCanvas"></canvas>
+          </div>
+
+          <!-- Tab 3: Live Sensor Telemetry Canvas -->
+          <div class="sim-view-pane" id="tab-apex-sim">
+            <canvas id="telemetryCanvas"></canvas>
+          </div>
+
+          <!-- Tab 4: Schematic CAD & Transient Sim Photo -->
+          <div class="sim-view-pane" id="tab-apex-schem">
+            <img src="apex-schematic-sim.png" alt="APEX Schematic Power & Signal Integrity Simulation" class="gds-photo-view">
+          </div>
+
+          <!-- Interactive Telemetry Strip -->
+          <div class="alu-controls">
+            <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--neon-cyan); display:flex; gap:1.2rem; align-items:center; flex-wrap:wrap;">
+              <span>DIMENSIONS: <b>100mm × 80mm</b></span>
+              <span>POWER: <b>USB-C (5V) → 3.3V / 1.2V Buck</b></span>
+              <span style="color:var(--neon-amber);">STATUS: <b>SIMULATING BEFORE ROUTE</b></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expandable Deep-Dive Architecture Drawer -->
+      <div class="proj-drawer" id="drawerApex">
+        <div class="proj-drawer-inner">
+          <span class="logic-title">◈ APEX NEURALEDGE // SYSTEM ARCHITECTURE, POWER TREE &amp; SIMULATION STRATEGY</span>
+
+          <div class="flow-steps-grid">
+            <div class="flow-step-item cyan"><b>01. SCHEMATIC</b>7 Hierarchical Sheets</div>
+            <div class="flow-step-item cyan"><b>02. ERC SIGN-OFF</b>0 Compile Errors</div>
+            <div class="flow-step-item cyan"><b>03. POWER SIM</b>TPS62130/085 SPICE</div>
+            <div class="flow-step-item cyan"><b>04. SIGNAL INTEGRITY</b>USB/RMII Diff Pairs</div>
+            <div class="flow-step-item"><b>05. 6-LAYER PNR</b>Top/GND/Sig/Pwr/GND/Bot</div>
+            <div class="flow-step-item"><b>06. THERMAL</b>TPU Heatsink Relief</div>
+            <div class="flow-step-item"><b>07. IMPEDANCE</b>90Ω USB / 100Ω ETH</div>
+            <div class="flow-step-item"><b>08. FABRICATION</b>ENIG Gold / FR4 1.6mm</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; margin:1rem 0;">
+            <div>
+              <ol>
+                <li><b>Compute Core:</b> STM32H743ZIT6 (480MHz ARM Cortex-M7 with 2MB Dual-Bank Flash, 1MB RAM) orchestrates real-time sensor processing and system control.</li>
+                <li><b>Hardware ML Acceleration:</b> Google Coral Edge TPU via M.2 A+E key socket delivers <b>4 TOPS of INT8 inference @ 2W</b>, allowing deep learning models (vibration anomaly detection, acoustic classification) to execute entirely offline.</li>
+                <li><b>FPGA Glue Logic:</b> Lattice iCE40UP5K FPGA handles microsecond-critical hardware timing, custom sensor sampling loops, and high-speed data buffering.</li>
+                <li><b>Industrial Precision Sensors:</b> ADS1256 (24-bit delta-sigma ADC with 30kSPS), ADXL355 (ultra-low noise 3-axis accelerometer for predictive maintenance), LTC2983 (universal temperature engine for RTDs/thermocouples), and INA3221 (3-channel power monitor).</li>
+              </ol>
+            </div>
+            <div>
+              <ol start="5">
+                <li><b>Industrial Fieldbuses:</b> 10/100 Ethernet (LAN8742A RMII PHY + integrated magnetics RJ45), CAN-FD (MCP2518FD controller + MCP2562FD transceiver), and RS-485 (THVD1450DR with 50Mbps data rate).</li>
+                <li><b>Robust Power Architecture:</b> USB-C input with TVS ESD protection → TPS62130 (3.3V / 3A buck converter) → TPS62085 (1.2V / 3A FPGA core buck) → LP5907 (ultra-low noise LDO for precision analog rails).</li>
+                <li><b>6-Layer Stackup Specification:</b> Layer 1 (Top Signal) · Layer 2 (GND Reference) · Layer 3 (High-Speed Signal) · Layer 4 (Split Power Plane) · Layer 5 (GND Reference) · Layer 6 (Bottom Signal). 1.6mm thickness with controlled 50Ω/90Ω/100Ω impedance.</li>
+                <li><b>Current Status:</b> Schematic capture complete with verified cross-sheet net labels; circuit simulations currently underway prior to layout floorplanning.</li>
+              </ol>
+            </div>
+          </div>
+
+          <div style="border-top: 1px dashed var(--line); padding-top: 0.9rem; margin-top: 1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;">
+            <span style="color:var(--neon-amber);">◈ Altium Designer 2025 Project · Pre-Layout Simulation Phase Active</span>
+            <span style="color:var(--neon-cyan);">Designed by Akif Mohamed · Aimed for Industrial &amp; Semiconductor Engineering</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HARDWARE PROJECTS 03 & 04 -->
     <div class="project-grid">
 
-      <!-- PROJECT 02: Arduino Radar System -->
+      <!-- PROJECT 03: Arduino Radar System -->
       <div class="proj-card reveal">
         <div class="proj-preview" id="radarPreview">
           <canvas id="radarCanvas"></canvas>
           <div class="proj-badge">LIVE SIM</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num">◉ PROJECT_02 // PHYSICAL COMPUTING</div>
+          <div class="proj-num">◉ PROJECT_03 // PHYSICAL COMPUTING</div>
           <h3>Arduino Radar System</h3>
           <p>A real-time ultrasonic object-detection radar using Arduino UNO, HC-SR04 sonar sensor, and a servo motor. Visualized in Processing IDE as a scanning PPI radar display with live distance and polar angle mapping.</p>
           <div class="pill-row">
@@ -1326,14 +1524,14 @@
         </button>
       </div>
 
-      <!-- PROJECT 03: Smart Lock System -->
+      <!-- PROJECT 04: Smart Lock System -->
       <div class="proj-card reveal">
         <div class="proj-preview" id="lockPreview">
           <canvas id="lockCanvas"></canvas>
           <div class="proj-badge">INTERACTIVE KEYPAD</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num">◉ PROJECT_03 // SECURITY FIRMWARE</div>
+          <div class="proj-num">◉ PROJECT_04 // SECURITY FIRMWARE</div>
           <h3>Smart Lock Access Control</h3>
           <p>A password-secured electronic lock utilizing a 4×4 matrix keypad, LCD feedback display, EEPROM credential validation, and a servo-driven mechanical deadbolt mechanism.</p>
           <div class="pill-row">
@@ -1487,12 +1685,12 @@
     <div class="module-tag reveal">MODULE_07 // COMMUNICATION_PORT</div>
     <div class="tx reveal">
       <h2>Get in <em>Touch</em></h2>
-      <p>Open to VLSI physical design roles, embedded systems engineering, internships, and hardware research collaborations. The TX communication link is live.</p>
+      <p>Open to VLSI physical design roles, embedded systems engineering, hardware architecture positions, and research collaborations. The TX communication link is live.</p>
 
       <form class="tx-form" id="txForm" novalidate>
         <input type="hidden" name="access_key" value="40aa4b47-361b-4908-813f-451ce2123685">
         <input type="hidden" name="subject" value="Portfolio Contact — New Message for Akif Mohamed">
-        <input type="hidden" name="from_name" value="Akif's VLSI Portfolio">
+        <input type="hidden" name="from_name" value="Akif's VLSI & Hardware Portfolio">
 
         <div class="field">
           <label for="fName">SENDER IDENTIFIER (NAME)</label>
@@ -1521,7 +1719,8 @@
           linkedin.com/in/akifmohamed
         </a>
         <a href="https://github.com/akifmohamed" target="_blank" rel="noopener" class="link-card magnetic">
-          <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
           github.com/akifmohamed
         </a>
       </div>
@@ -1530,7 +1729,7 @@
 </main>
 
 <footer>
-  © 2026 <b>AKIF MOHAMED J</b> — VLSI &amp; EMBEDDED SYSTEMS PORTFOLIO · GCE SRIRANGAM · TRICHY, TN, INDIA · ALL SIGNALS STABLE
+  © 2026 <b>AKIF MOHAMED J</b> — VLSI PHYSICAL DESIGN &amp; HARDWARE ARCHITECTURE · GCE SRIRANGAM · TRICHY, TN, INDIA · ALL SIGNALS STABLE
 </footer>
 
 <!-- ─────────────────────────────────────────────────────────────
@@ -1856,34 +2055,37 @@ if(!reduced){
       btn.setAttribute('aria-expanded', isOpen);
       AudioFX.click();
       if(isOpen){
-        var items = drawer.querySelectorAll('li');
-        gsap.fromTo(items, { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.35, stagger: 0.08, ease: 'power2.out' });
+        var items = drawer.querySelectorAll('li, .flow-step-item');
+        gsap.fromTo(items, { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.35, stagger: 0.05, ease: 'power2.out' });
       }
     });
   });
 })();
 
 /* ─────────────────────────────────────────────────────────────
-   FLAGSHIP: PIPECORE-GDS MULTI-VIEW INTERACTIVE SIMULATORS
+   FLAGSHIP 01: PIPECORE-GDS MULTI-VIEW INTERACTIVE SIMULATORS
    ───────────────────────────────────────────────────────────── */
 (function(){
-  // Tabs Switcher
-  var tabButtons = document.querySelectorAll('.sim-tab-btn');
-  var panes = document.querySelectorAll('.sim-view-pane');
-  tabButtons.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var targetId = btn.getAttribute('data-tab');
-      tabButtons.forEach(function(b){ b.classList.remove('active'); });
-      panes.forEach(function(p){ p.classList.remove('active'); });
-      btn.classList.add('active');
-      var targetPane = document.getElementById(targetId);
-      if(targetPane) targetPane.classList.add('active');
-      AudioFX.click();
+  // Tabs Switcher for PipeCore-GDS
+  var pipecoreCard = document.getElementById('pipecoreCard');
+  if(pipecoreCard){
+    var tabButtons = pipecoreCard.querySelectorAll('.sim-tab-btn');
+    var panes = pipecoreCard.querySelectorAll('.sim-view-pane');
+    tabButtons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var targetId = btn.getAttribute('data-tab');
+        tabButtons.forEach(function(b){ b.classList.remove('active'); });
+        panes.forEach(function(p){ p.classList.remove('active'); });
+        btn.classList.add('active');
+        var targetPane = document.getElementById(targetId);
+        if(targetPane) targetPane.classList.add('active');
+        AudioFX.click();
+      });
     });
-  });
+  }
 
   // State
-  var opcode = 0; // 0: ADD, 1: SUB, 2: AND, 3: OR, 4: XOR, 5: NOT, 6: SLL, 7: SRL
+  var opcode = 0;
   var inA = 42;
   var inB = 15;
   var stage1_A = 0, stage1_B = 0, stage1_Op = 0, stage1_Valid = false;
@@ -1912,7 +2114,6 @@ if(!reduced){
 
   function clockTick(){
     cycleCount++;
-    // Stage 2 registers Stage 1's computed result
     if(stage1_Valid){
       stage2_Result = computeALU(stage1_Op, stage1_A, stage1_B);
       stage2_Valid = true;
@@ -1921,7 +2122,6 @@ if(!reduced){
       stage2_Valid = false;
     }
 
-    // Stage 1 latches current inputs
     stage1_A = inA;
     stage1_B = inB;
     stage1_Op = opcode;
@@ -1933,7 +2133,6 @@ if(!reduced){
     drawTiming();
   }
 
-  // Bind inputs
   var opSelect = document.getElementById('aluOpcodeSelect');
   var inputAEl = document.getElementById('inputA');
   var inputBEl = document.getElementById('inputB');
@@ -1998,7 +2197,6 @@ if(!reduced){
     });
   }
 
-  // Copy Verilog RTL helper
   if(copyVerilogBtn){
     copyVerilogBtn.addEventListener('click', function(){
       var code = document.getElementById('verilogCodeBlock').innerText;
@@ -2009,7 +2207,7 @@ if(!reduced){
     });
   }
 
-  /* --- VIEW 1: GDSII Die Map Canvas --- */
+  /* View 1: GDSII Canvas */
   var gdsCanvas = document.getElementById('gdsCanvas');
   var gdsCtx = gdsCanvas ? gdsCanvas.getContext('2d') : null;
   function drawGds(){
@@ -2023,14 +2221,12 @@ if(!reduced){
     var dieW = w - dieMargin * 2, dieH = h - dieMargin * 2;
     var dieX = dieMargin, dieY = dieMargin;
 
-    // Silicon Substrate
     ctx.fillStyle = '#050c0e';
     ctx.fillRect(dieX, dieY, dieW, dieH);
     ctx.strokeStyle = 'rgba(0, 240, 255, 0.4)';
     ctx.lineWidth = 1.5;
     ctx.strokeRect(dieX, dieY, dieW, dieH);
 
-    // Outer Power Ring (VDD Gold & VSS Cyan)
     ctx.strokeStyle = 'rgba(255, 184, 0, 0.65)';
     ctx.lineWidth = 3;
     ctx.strokeRect(dieX + 6, dieY + 6, dieW - 12, dieH - 12);
@@ -2038,7 +2234,6 @@ if(!reduced){
     ctx.lineWidth = 2.5;
     ctx.strokeRect(dieX + 11, dieY + 11, dieW - 22, dieH - 22);
 
-    // Core Boundary (4,692 um²)
     var coreX = dieX + 22, coreY = dieY + 22;
     var coreW = dieW - 44, coreH = dieH - 44;
     ctx.fillStyle = 'rgba(0, 255, 136, 0.04)';
@@ -2047,7 +2242,6 @@ if(!reduced){
     ctx.lineWidth = 1;
     ctx.strokeRect(coreX, coreY, coreW, coreH);
 
-    // Standard Cell Rows (Placement Matrix - 50.5% util)
     var numRows = 12;
     var rowH = coreH / numRows;
     for(var r = 0; r < numRows; r++){
@@ -2055,7 +2249,6 @@ if(!reduced){
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
       ctx.strokeRect(coreX, ry, coreW, rowH);
 
-      // Stdcells blocks
       var cellsInRow = 14;
       var cellW = coreW / cellsInRow;
       for(var c = 0; c < cellsInRow; c++){
@@ -2077,7 +2270,6 @@ if(!reduced){
       }
     }
 
-    // CTS Clock Tree Routing Spines
     var clkPulse = (cycleCount % 2 === 0);
     ctx.strokeStyle = clkPulse ? 'rgba(192, 132, 252, 0.9)' : 'rgba(192, 132, 252, 0.35)';
     ctx.lineWidth = 1.5;
@@ -2090,7 +2282,6 @@ if(!reduced){
     }
     ctx.stroke();
 
-    // Pin Ports & Labels
     ctx.font = '9px "JetBrains Mono", monospace';
     ctx.fillStyle = '#00ff88';
     ctx.fillText('STAGE 1 LATCHES [FF: 19]', coreX + 6, coreY + 14);
@@ -2102,7 +2293,7 @@ if(!reduced){
     ctx.fillText('100MHz CLK BUS', coreX + coreW - 85, coreY + coreH - 6);
   }
 
-  /* --- VIEW 2: Live Pipeline Canvas --- */
+  /* View 2: Pipeline Canvas */
   var pipeCanvas = document.getElementById('pipelineCanvas');
   var pipeCtx = pipeCanvas ? pipeCanvas.getContext('2d') : null;
   function drawPipeline(){
@@ -2116,7 +2307,6 @@ if(!reduced){
     var boxW = w * 0.28, boxH = h * 0.68;
     var boxY = midY - boxH / 2;
 
-    // Stage 1 Box: Input Latch
     var s1X = w * 0.06;
     ctx.fillStyle = stage1_Valid ? 'rgba(0, 240, 255, 0.1)' : 'rgba(10, 20, 22, 0.6)';
     ctx.strokeStyle = stage1_Valid ? '#00f0ff' : 'var(--line-bright)';
@@ -2135,7 +2325,6 @@ if(!reduced){
     ctx.fillStyle = stage1_Valid ? '#00ff88' : '#556c64';
     ctx.fillText('Valid1:  ' + (stage1_Valid ? '1 [ACTIVE]' : '0'), s1X + 12, boxY + 116);
 
-    // Stage 2 Box: Execution & Output Latch
     var s2X = w * 0.65;
     ctx.fillStyle = stage2_Valid ? 'rgba(0, 255, 136, 0.1)' : 'rgba(10, 20, 22, 0.6)';
     ctx.strokeStyle = stage2_Valid ? '#00ff88' : 'var(--line-bright)';
@@ -2157,7 +2346,6 @@ if(!reduced){
     ctx.fillStyle = stage2_Valid ? '#00ff88' : '#556c64';
     ctx.fillText('Valid:   ' + (stage2_Valid ? '1 [VALID]' : '0'), s2X + 12, boxY + 116);
 
-    // Inter-stage Pipeline Data Bus Arrow
     var busX1 = s1X + boxW, busX2 = s2X;
     ctx.strokeStyle = 'rgba(255, 184, 0, 0.8)';
     ctx.lineWidth = 2.5;
@@ -2165,7 +2353,6 @@ if(!reduced){
     ctx.moveTo(busX1, midY); ctx.lineTo(busX2, midY);
     ctx.stroke();
 
-    // Data packet pulse
     var tOffset = (Date.now() * 0.003) % 1;
     var packetX = busX1 + (busX2 - busX1) * tOffset;
     ctx.beginPath();
@@ -2181,7 +2368,7 @@ if(!reduced){
     ctx.textAlign = 'left';
   }
 
-  /* --- VIEW 3: Timing Waveforms Canvas --- */
+  /* View 3: Timing Canvas */
   var timingCanvas = document.getElementById('timingCanvas');
   var timingCtx = timingCanvas ? timingCanvas.getContext('2d') : null;
   function drawTiming(){
@@ -2231,7 +2418,6 @@ if(!reduced){
     }
   }
 
-  // Initial draw
   drawGds();
   drawPipeline();
   drawTiming();
@@ -2241,7 +2427,148 @@ if(!reduced){
 })();
 
 /* ─────────────────────────────────────────────────────────────
-   RADAR CANVAS PREVIEW (PROJECT 02)
+   FLAGSHIP 02: APEX (NEURALEDGE) INTERACTIVE TABS & CANVAS
+   ───────────────────────────────────────────────────────────── */
+(function(){
+  var apexCard = document.getElementById('apexCard');
+  if(!apexCard) return;
+
+  var tabButtons = apexCard.querySelectorAll('.sim-tab-btn');
+  var panes = apexCard.querySelectorAll('.sim-view-pane');
+  tabButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var targetId = btn.getAttribute('data-tab');
+      tabButtons.forEach(function(b){ b.classList.remove('active'); });
+      panes.forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      var targetPane = document.getElementById(targetId);
+      if(targetPane) targetPane.classList.add('active');
+      AudioFX.click();
+      if(targetId === 'tab-apex-stackup') drawStackup();
+      if(targetId === 'tab-apex-sim') drawTelemetry();
+    });
+  });
+
+  // Canvas View 2: 6-Layer Stackup Visualizer
+  var stackCanvas = document.getElementById('stackupCanvas');
+  var sCtx = stackCanvas ? stackCanvas.getContext('2d') : null;
+  function drawStackup(){
+    if(!stackCanvas || !sCtx) return;
+    var w = stackCanvas.width = stackCanvas.offsetWidth;
+    var h = stackCanvas.height = stackCanvas.offsetHeight;
+    var ctx = sCtx;
+    ctx.clearRect(0, 0, w, h);
+
+    var layers = [
+      { name: 'Layer 1: TOP SIGNAL', type: 'Copper (35µm) + ENIG Gold', color: '#ffb800', desc: 'STM32H7, Coral TPU, iCE40, Sensors' },
+      { name: 'Layer 2: GROUND PLANE (GND)', type: 'Solid Copper Plane', color: '#00f0ff', desc: 'Continuous Reference & Shielding' },
+      { name: 'Layer 3: INNER SIGNAL 1', type: 'High-Speed Stripline', color: '#00ff88', desc: 'USB 90Ω, RMII 50Ω, ETH 100Ω Diff' },
+      { name: 'Layer 4: POWER PLANE (PWR)', type: 'Split Power Plane', color: '#ff503c', desc: '3.3V System, 1.2V FPGA, 5V TPU' },
+      { name: 'Layer 5: GROUND PLANE (GND)', type: 'Solid Copper Plane', color: '#00f0ff', desc: 'Return Current & EMI Shield' },
+      { name: 'Layer 6: BOTTOM SIGNAL', type: 'Copper (35µm)', color: '#ffb800', desc: 'Low-Speed Routing & Power Decoupling' }
+    ];
+
+    var marginX = 20, marginY = 18;
+    var layerH = (h - marginY * 2) / layers.length;
+
+    for(var i = 0; i < layers.length; i++){
+      var ly = marginY + i * layerH;
+      var lay = layers[i];
+
+      // Copper / Dielectric layer bar
+      ctx.fillStyle = (i % 2 === 1) ? 'rgba(0, 240, 255, 0.12)' : 'rgba(255, 184, 0, 0.12)';
+      ctx.fillRect(marginX, ly + 2, w - marginX * 2, layerH - 4);
+      ctx.strokeStyle = lay.color;
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(marginX, ly + 2, w - marginX * 2, layerH - 4);
+
+      // Layer Title
+      ctx.font = 'bold 10px "JetBrains Mono", monospace';
+      ctx.fillStyle = lay.color;
+      ctx.fillText(lay.name, marginX + 12, ly + layerH * 0.45);
+
+      // Specs
+      ctx.font = '9px "JetBrains Mono", monospace';
+      ctx.fillStyle = '#eaf3f0';
+      ctx.fillText(lay.desc, marginX + 12, ly + layerH * 0.8);
+
+      ctx.fillStyle = '#8ba29a';
+      ctx.textAlign = 'right';
+      ctx.fillText(lay.type, w - marginX - 12, ly + layerH * 0.6);
+      ctx.textAlign = 'left';
+    }
+  }
+
+  // Canvas View 3: Live Sensor Telemetry Simulation
+  var telemCanvas = document.getElementById('telemetryCanvas');
+  var tCtx = telemCanvas ? telemCanvas.getContext('2d') : null;
+  var wavePhase = 0;
+  function drawTelemetry(){
+    if(!telemCanvas || !tCtx) return;
+    var w = telemCanvas.width = telemCanvas.offsetWidth;
+    var h = telemCanvas.height = telemCanvas.offsetHeight;
+    var ctx = tCtx;
+    ctx.clearRect(0, 0, w, h);
+
+    // Dark grid
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.08)';
+    ctx.lineWidth = 1;
+    for(var x = 0; x < w; x += 40){ ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+    for(var y = 0; y < h; y += 30){ ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+
+    // Live Readout Badges
+    ctx.font = 'bold 11px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#00f0ff';
+    ctx.fillText('⚡ APEX SENSOR TELEMETRY & SPICE POWER MONITOR', 14, 20);
+
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#00ff88';
+    ctx.fillText('ADXL355 3-AXIS ACCEL (VIB): NORMAL [0.012g rms]', 14, 42);
+    ctx.fillStyle = '#ffb800';
+    ctx.fillText('LTC2983 THERMAL CORE: 34.2°C [PASS]', 14, 58);
+    ctx.fillStyle = '#c084fc';
+    ctx.fillText('INA3221 POWER: 3.3V @ 420mA · 1.2V @ 180mA · 5V @ 850mA', 14, 74);
+
+    // Live Vibration & Power Ripple Waveform
+    var startY = h * 0.62;
+    ctx.strokeStyle = '#00ff88';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    for(var px = 0; px < w; px += 4){
+      var py = startY + Math.sin(px * 0.04 + wavePhase) * 18 + Math.cos(px * 0.09 + wavePhase * 1.5) * 8;
+      if(px === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+
+    // Secondary 1.2V Ripple
+    var startY2 = h * 0.85;
+    ctx.strokeStyle = '#00f0ff';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    for(var px2 = 0; px2 < w; px2 += 4){
+      var py2 = startY2 + Math.sin(px2 * 0.08 - wavePhase * 2) * 8;
+      if(px2 === 0) ctx.moveTo(px2, py2); else ctx.lineTo(px2, py2);
+    }
+    ctx.stroke();
+
+    ctx.font = '9px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#00ff88';
+    ctx.fillText('VIB WAVEFORM [ADXL355 24-bit]', 14, startY - 24);
+    ctx.fillStyle = '#00f0ff';
+    ctx.fillText('TPS62085 1.2V DC-DC TRANSIENT RESPONSE [SPICE SIM]', 14, startY2 - 12);
+
+    wavePhase += 0.05;
+    requestAnimationFrame(drawTelemetry);
+  }
+
+  drawStackup();
+  window.addEventListener('resize', function(){
+    drawStackup();
+  });
+})();
+
+/* ─────────────────────────────────────────────────────────────
+   RADAR CANVAS PREVIEW (PROJECT 03)
    ───────────────────────────────────────────────────────────── */
 (function(){
   var canvas = document.getElementById('radarCanvas');
@@ -2258,7 +2585,6 @@ if(!reduced){
   function resize(){ canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
   resize(); window.addEventListener('resize', resize);
 
-  // Click to add radar blip obstacle
   canvas.addEventListener('click', function(e){
     var rect = canvas.getBoundingClientRect();
     var cx = canvas.width / 2, cy = canvas.height * 0.85;
@@ -2279,7 +2605,6 @@ if(!reduced){
     ctx.fillStyle = 'rgba(4, 8, 9, 0.22)';
     ctx.fillRect(0, 0, w, h);
 
-    // Polar Sweep Arc (0 to 180 degrees)
     ctx.strokeStyle = 'rgba(0, 255, 136, 0.2)';
     ctx.lineWidth = 1;
     for(var ring = 1; ring <= 4; ring++){
@@ -2288,7 +2613,6 @@ if(!reduced){
       ctx.stroke();
     }
 
-    // Angle Radial lines
     for(var deg = 0; deg <= 180; deg += 30){
       var rad = Math.PI + (deg * Math.PI / 180);
       ctx.beginPath();
@@ -2297,7 +2621,6 @@ if(!reduced){
       ctx.stroke();
     }
 
-    // Sweep Beam
     var sweepAngle = Math.PI + angle;
     ctx.beginPath();
     ctx.moveTo(cx, cy);
@@ -2309,7 +2632,6 @@ if(!reduced){
     ctx.stroke();
     ctx.shadowBlur = 0;
 
-    // Blips
     for(var k = 0; k < blips.length; k++){
       var b = blips[k];
       var diff = Math.abs(sweepAngle - b.a);
@@ -2328,7 +2650,6 @@ if(!reduced){
       }
     }
 
-    // Telemetry text
     ctx.font = '9px "JetBrains Mono", monospace';
     ctx.fillStyle = '#00ff88';
     var curDeg = Math.floor((angle / Math.PI) * 180);
@@ -2343,7 +2664,7 @@ if(!reduced){
 })();
 
 /* ─────────────────────────────────────────────────────────────
-   SMART LOCK CANVAS (PROJECT 03)
+   SMART LOCK CANVAS (PROJECT 04)
    ───────────────────────────────────────────────────────────── */
 (function(){
   var canvas = document.getElementById('lockCanvas');
@@ -2400,7 +2721,6 @@ if(!reduced){
     ctx.fillStyle = '#040809';
     ctx.fillRect(0, 0, w, h);
 
-    // Keypad Matrix (Left)
     var kx0 = w * 0.06, ky0 = h * 0.24, kw = w * 0.4, kh = h * 0.65;
     var cellW = kw / 3, cellH = kh / 4;
     for(var r = 0; r < 4; r++){
@@ -2419,7 +2739,6 @@ if(!reduced){
       }
     }
 
-    // LCD Screen (Right)
     var lx = w * 0.52, ly = h * 0.15, lw = w * 0.42, lh = h * 0.35;
     ctx.fillStyle = '#071813';
     ctx.fillRect(lx, ly, lw, lh);
@@ -2436,7 +2755,6 @@ if(!reduced){
     ctx.fillStyle = locked ? '#ffb800' : '#00ff88';
     ctx.fillText(line2, lx + lw / 2, ly + lh * 0.75);
 
-    // Servo Deadbolt status icon
     var lockX = lx + lw / 2, lockY = ly + lh + h * 0.22;
     ctx.font = 'bold 11px "JetBrains Mono", monospace';
     ctx.fillStyle = locked ? '#ffb800' : '#00ff88';
@@ -2496,14 +2814,12 @@ if(!reduced){
     var gateX = w * 0.45, gateY = midY;
     var gw = 70, gh = 50;
 
-    // Signal Wire A
     ctx.strokeStyle = inA ? '#00ff88' : '#556c64';
     ctx.lineWidth = 2.5;
     ctx.beginPath();
     ctx.moveTo(w * 0.1, midY - 14); ctx.lineTo(gateX, midY - 14);
     ctx.stroke();
 
-    // Signal Wire B (if not NOT gate)
     if(curGate !== 'NOT'){
       ctx.strokeStyle = inB ? '#00ff88' : '#556c64';
       ctx.beginPath();
@@ -2511,7 +2827,6 @@ if(!reduced){
       ctx.stroke();
     }
 
-    // Gate Body
     ctx.fillStyle = 'rgba(0, 240, 255, 0.12)';
     ctx.strokeStyle = '#00f0ff';
     ctx.lineWidth = 2;
@@ -2523,7 +2838,6 @@ if(!reduced){
     ctx.textAlign = 'center';
     ctx.fillText(curGate, gateX + gw / 2, gateY + 5);
 
-    // Output Wire Y
     ctx.strokeStyle = out ? '#00ff88' : '#556c64';
     ctx.beginPath();
     ctx.moveTo(gateX + gw, midY); ctx.lineTo(w * 0.88, midY);
@@ -2532,7 +2846,6 @@ if(!reduced){
     ctx.textAlign = 'left';
   }
 
-  // Switch Toggle Events
   if(switchA){
     switchA.addEventListener('click', function(){
       inA = inA ? 0 : 1;
@@ -2552,7 +2865,6 @@ if(!reduced){
     });
   }
 
-  // Gate Switcher Buttons
   document.querySelectorAll('.wb-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
       document.querySelectorAll('.wb-btn').forEach(function(b){ b.classList.remove('active'); });
