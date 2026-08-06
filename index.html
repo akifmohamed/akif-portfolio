@@ -12,6 +12,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+<!-- Preload Critical Visual Assets -->
+<link rel="preload" as="image" href="pipecore-gds-layout.jpg">
+<link rel="preload" as="image" href="apex-pcb-render.jpg">
+<link rel="preload" as="image" href="akif-no-bg.png">
+
 <!-- GSAP Animations -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -797,14 +802,48 @@
   }
   .toast.show { opacity: 1; transform: translateY(0); }
 
-  /* Mobile Overrides */
+  /* Mobile Overrides & Responsive Polish */
   @media (max-width: 900px) {
+    header { padding: 0.75rem 1.2rem; }
+    .hero { min-height: auto; padding-top: 5.5rem; padding-bottom: 3rem; }
     .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
     .hero p.intro, .hero-specs { margin-left: auto; margin-right: auto; }
     .hero-title-sub { justify-content: center; }
     .cta-row { justify-content: center; }
     .about-grid { grid-template-columns: 1fr; }
+    .skill-grid { grid-template-columns: 1fr; }
+    .flagship-body { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.2rem; }
+    .flagship-ribbon { padding: 0.8rem 1.2rem; }
     .crt { min-height: 380px; }
+    .exit-photo, .ghost-photo { max-width: 260px; }
+    .clk { padding-left: 2rem; }
+    .tick::before { left: -2.35rem; }
+    .sim-view-pane { height: 280px; }
+    .sim-nav { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .sim-nav::-webkit-scrollbar { display: none; }
+    .sim-tab-btn { padding: 0.65rem 0.85rem; font-size: 0.65rem; }
+    .alu-controls { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+    .alu-ctrl-group { justify-content: space-between; width: 100%; }
+    .flow-steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .metrics-hud { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+  }
+
+  @media (max-width: 580px) {
+    section { padding: 3.5rem 1rem; }
+    .hero h1 { font-size: clamp(2rem, 9vw, 3rem); }
+    .hero-specs { grid-template-columns: 1fr; max-width: 100%; }
+    .cta-row { flex-direction: column; width: 100%; }
+    .cta-row .btn { width: 100%; justify-content: center; }
+    .metrics-hud { grid-template-columns: 1fr 1fr; }
+    .metric-box { padding: 0.6rem 0.7rem; }
+    .metric-val { font-size: 0.82rem; }
+    .sim-view-pane { height: 250px; }
+    .flow-steps-grid { grid-template-columns: 1fr 1fr; }
+    .proj-drawer-inner { padding: 1rem; font-size: 0.72rem; }
+    .wb-schematic-pane, .wb-table-pane { padding: 1rem; }
+    .tx { padding: 1.8rem 1rem; }
+    .links { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+    .link-card { justify-content: center; width: 100%; }
   }
 </style>
 </head>
@@ -1193,7 +1232,7 @@
 
           <!-- Tab 4: High-Res Layout Image View -->
           <div class="sim-view-pane" id="tab-layout-photo">
-            <img src="pipecore-gds-layout.png" alt="PipeCore-GDS Sky130A Silicon Layout" class="gds-photo-view">
+            <img src="pipecore-gds-layout.jpg" alt="PipeCore-GDS Sky130A Silicon Layout" class="gds-photo-view" onerror="this.onerror=null; this.src='pipecore-die-macro.jpg';">
           </div>
 
           <!-- Interactive ALU Control Panel -->
@@ -1413,7 +1452,7 @@
 
           <!-- Tab 1: 3D PCB Render Photo -->
           <div class="sim-view-pane active" id="tab-apex-3d">
-            <img src="apex-pcb-render.png" alt="APEX NeuralEdge 6-Layer Edge AI PCB 3D Render" class="gds-photo-view">
+            <img src="apex-pcb-render.jpg" alt="APEX NeuralEdge 6-Layer Edge AI PCB 3D Render" class="gds-photo-view" onerror="this.onerror=null; this.src='apex-pcb-render.png';">
           </div>
 
           <!-- Tab 2: 6-Layer Stackup Canvas View -->
@@ -1428,7 +1467,7 @@
 
           <!-- Tab 4: Schematic CAD & Transient Sim Photo -->
           <div class="sim-view-pane" id="tab-apex-schem">
-            <img src="apex-schematic-sim.png" alt="APEX Schematic Power & Signal Integrity Simulation" class="gds-photo-view">
+            <img src="apex-schematic-sim.jpg" alt="APEX Schematic Power &amp; Signal Integrity Simulation" class="gds-photo-view" onerror="this.onerror=null; this.src='apex-schematic-sim.png';">
           </div>
 
           <!-- Interactive Telemetry Strip -->
