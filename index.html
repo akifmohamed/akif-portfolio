@@ -354,10 +354,36 @@
   }
   .crt-foot span b { color: var(--neon-green); }
 
+  /* Targeting Reticles & Hologram Scanner */
+  .hud-bracket {
+    position: absolute; width: 18px; height: 18px;
+    border-color: var(--neon-cyan); border-style: solid;
+    pointer-events: none; z-index: 10; opacity: 0.8;
+    transition: all 0.4s ease;
+  }
+  .hud-bracket.tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
+  .hud-bracket.tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
+  .hud-bracket.bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
+  .hud-bracket.br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
+  .crt:hover .hud-bracket { border-color: var(--neon-green); width: 24px; height: 24px; opacity: 1; }
+
+  .crt-scanner {
+    position: absolute; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-green), var(--neon-cyan), transparent);
+    box-shadow: 0 0 12px var(--phosphor-glow);
+    z-index: 8; pointer-events: none; opacity: 0.75;
+    animation: scanSweep 3.2s ease-in-out infinite alternate;
+  }
+  @keyframes scanSweep {
+    0% { top: 6%; opacity: 0.2; }
+    50% { opacity: 0.85; }
+    100% { top: 92%; opacity: 0.2; }
+  }
+
   /* ─────────────────────────────────────────────────────────────
      ABOUT SECTION
      ───────────────────────────────────────────────────────────── */
-  .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .about-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
   .node-card {
     border: 1px solid var(--line); background: var(--bg-card); padding: 1.6rem;
     border-radius: 8px; border-top: 2px solid var(--neon-green);
@@ -905,7 +931,7 @@
           <span>Edge AI Hardware</span>
         </div>
         <p class="intro reveal">
-          Final-year Electronics &amp; Communication Engineering student at <b>GCE Srirangam (2023–2027)</b>. Specializing in open-source ASIC physical design with <b>OpenLane 2 &amp; SkyWater 130nm</b>, complex multi-layer PCB design with <b>Altium Designer 2025</b>, and real-time edge computing.
+          Final-year Electronics &amp; Communication Engineering student at <b>GCE Srirangam (2023–2027)</b>. Specializing in open-source ASIC physical design with <b>OpenLane 2 &amp; SkyWater 130nm</b>, complex multi-layer PCB design with <b>Altium Designer 2025</b>, and real-time edge computing. <b>I am open to roles like Physical Design (PD), PCB Design, or any other VLSI role, internships or full-time opportunities.</b>
         </p>
 
         <!-- Telemetry Matrix -->
@@ -938,11 +964,16 @@
       <!-- Holographic CRT Console -->
       <div class="crt-wrap reveal">
         <div class="crt" id="crtBox">
+          <div class="hud-bracket tl"></div>
+          <div class="hud-bracket tr"></div>
+          <div class="hud-bracket bl"></div>
+          <div class="hud-bracket br"></div>
           <div class="crt-head">
             <span>CHIP_TELEMETRY: AKIF_J</span>
             <span>VDD: 1.8V · 100MHz LOCK</span>
           </div>
           <div class="crt-window">
+            <div class="crt-scanner"></div>
             <div class="photo-stage">
               <img src="akif-no-bg.png" alt="" class="ghost-photo cyan" id="ghostCyan">
               <img src="akif-no-bg.png" alt="" class="ghost-photo red" id="ghostRed">
@@ -950,9 +981,9 @@
             </div>
           </div>
           <div class="crt-foot">
-            <span>STATUS <b>SILICON + PCB</b></span>
+            <span>STATUS <b>OPEN TO HIRE (PD/PCB/VLSI)</b></span>
             <span>DOMAINS <b>ASIC &amp; EDGE AI</b></span>
-            <span>MARGIN <b>+1.91 ns</b></span>
+            <span>LOCK <b>100% VERIFIED</b></span>
           </div>
         </div>
       </div>
@@ -982,14 +1013,6 @@
         <div class="institute">M.S.P. Solai Nadar Memorial HSS</div>
         <p>Strong mathematical and physical sciences foundation, securing top marks in Physics, Chemistry, and Advanced Mathematics.</p>
         <div class="node-stat"><span>PERCENTAGE:</span> <span>81.5%</span></div>
-      </div>
-
-      <div class="node-card amber reveal">
-        <span class="node-tag">◈ NODE_03 // CORE PHILOSOPHY</span>
-        <h3>Silicon &amp; Hardware Co-Design</h3>
-        <div class="institute">Physical Design · FPGA · High-Speed PCB</div>
-        <p>Passionate about bridging high-level Verilog RTL synthesis with silicon physical implementation, static timing closure, and multi-layer high-speed PCB hardware architecture.</p>
-        <div class="node-stat"><span>DOMAINS:</span> <span>ASIC + EDGE AI PCB</span></div>
       </div>
     </div>
   </section>
@@ -2011,16 +2034,19 @@ var photoTimeline;
   }
 
   photoTimeline = gsap.timeline({ paused: true })
-    .to(photo, { duration: 0.6, filter: 'grayscale(0.8) brightness(0.55)', scale: 0.8, y: '8%', ease: 'none' }, 0)
+    .fromTo('.crt-scanner', { opacity: 0 }, { opacity: 0.85, duration: 0.4 }, 0)
+    .fromTo('.hud-bracket', { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 0.85, duration: 0.6, stagger: 0.08, ease: 'back.out(1.7)' }, 0.1)
+    .to(photo, { duration: 0.5, filter: 'grayscale(0.8) brightness(0.55)', scale: 0.8, y: '8%', ease: 'none' }, 0)
     .to(photo, {
       scale: 1.15, y: '-5%', filter: 'grayscale(0) brightness(1.05) contrast(1.05)',
       duration: 0.9, ease: 'power3.out'
     }, 0.5)
-    .to([ghostC, ghostR], { opacity: 0.55, duration: 0.05 }, 0.8)
-    .to(ghostC, { x: -8, duration: 0.08 }, 0.8)
-    .to(ghostR, { x: 8, duration: 0.08 }, 0.8)
+    .to([ghostC, ghostR], { opacity: 0.65, duration: 0.05 }, 0.8)
+    .to(ghostC, { x: -10, duration: 0.08 }, 0.8)
+    .to(ghostR, { x: 10, duration: 0.08 }, 0.8)
     .to([ghostC, ghostR], { opacity: 0, x: 0, duration: 0.35, ease: 'power2.out' }, 0.9)
-    .to(photo, { scale: 1.06, y: '-2%', duration: 0.5, ease: 'power2.inOut' }, 1.2);
+    .to(photo, { scale: 1.06, y: '-2%', duration: 0.5, ease: 'power2.inOut' }, 1.2)
+    .to('.crt', { boxShadow: 'inset 0 0 60px rgba(0, 0, 0, 0.85), 0 0 60px rgba(0, 255, 136, 0.22), 0 25px 60px rgba(0, 0, 0, 0.7)', duration: 0.4 }, 0.8);
 
   // 3D Tilt on mouse move
   if(crtBox){
