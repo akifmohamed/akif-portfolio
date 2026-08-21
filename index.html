@@ -6,19 +6,15 @@
 <link rel="icon" type="image/png" href="akif-no-bg.png">
 <title>Akif Mohamed J — AES-128 Crypto SoC, VLSI Physical Design &amp; Hardware Portfolio</title>
 <meta name="description" content="Portfolio of Akif Mohamed J — VLSI physical design engineer behind an AES-128 Crypto Accelerator SoC: RTL-to-GDSII on Sky130, timing-closed, NIST-verified, and validated on Basys3 FPGA hardware.">
-
 <!-- Premium Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
 <!-- Preload Above-the-Fold Portrait -->
 <link rel="preload" as="image" href="akif-no-bg.png">
-
 <!-- GSAP Animations -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
 <style>
   :root {
     --bg: #030708;
@@ -55,7 +51,6 @@
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', 'Courier New', monospace;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; color-scheme: dark; }
   body {
@@ -77,10 +72,8 @@
     }
     body { cursor: auto; }
   }
-
   a { color: var(--neon-green); text-decoration: none; transition: color .2s, border-color .2s; }
   ::selection { background: var(--phosphor-dim); color: #fff; }
-
   /* Background Canvas & Silicon Texture Layers */
   #bgCanvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.8; }
   .scanlines {
@@ -98,7 +91,6 @@
     background: radial-gradient(circle, rgba(0, 255, 136, 0.065) 0%, rgba(0, 240, 255, 0.03) 45%, transparent 70%);
     transform: translate(-50%, -50%); transition: opacity 0.3s; will-change: transform;
   }
-
   /* Custom Cursor */
   .cursor-dot, .cursor-ring {
     position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
@@ -119,14 +111,12 @@
     background: rgba(0, 240, 255, 0.08); box-shadow: 0 0 22px rgba(0, 240, 255, 0.45);
   }
   @media (max-width: 900px) { .cursor-dot, .cursor-ring, .ambient-glow { display: none; } }
-
   /* Scroll Progress Bar */
   .progress-rail {
     position: fixed; top: 0; left: 0; height: 3px;
     background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan), var(--neon-amber));
     z-index: 500; width: 0%; box-shadow: 0 0 12px var(--phosphor-glow);
   }
-
   /* Header & Navigation */
   header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 300;
@@ -149,7 +139,6 @@
     background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.3); color: var(--neon-green);
   }
   @keyframes pulseDot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.65); opacity: 0.4; } }
-
   nav { display: flex; align-items: center; gap: 1.5rem; }
   nav ul { display: flex; gap: clamp(0.75rem, 1.8vw, 1.5rem); list-style: none; align-items: center; }
   nav a {
@@ -163,7 +152,6 @@
   }
   nav a:hover::after, nav a.active::after { width: 100%; }
   nav a:hover, nav a.active { color: #fff; }
-
   /* Audio Sound FX Toggle */
   .sound-btn {
     font-family: var(--font-mono); font-size: 0.68rem; color: var(--fg-muted);
@@ -173,7 +161,6 @@
   }
   .sound-btn:hover { color: var(--neon-green); border-color: var(--neon-green); background: rgba(0, 255, 136, 0.08); }
   .sound-btn.on { color: var(--neon-cyan); border-color: rgba(0, 240, 255, 0.5); }
-
   /* Hamburger Menu */
   .nav-toggle {
     display: none; flex-direction: column; gap: 5px; background: none; border: none;
@@ -188,7 +175,6 @@
   .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .nav-backdrop { display: none; }
   body.nav-open .scanlines, body.nav-open .grain { opacity: 0; }
-
   @media (max-width: 860px) {
     .nav-toggle {
       display: flex; position: relative; z-index: 360; border: 1px solid rgba(0, 255, 136, 0.24);
@@ -233,7 +219,6 @@
     }
     nav .sound-btn { width: 100%; min-height: 44px; justify-content: center; font-size: .75rem; }
   }
-
   /* Main Container & Sections */
   main { position: relative; z-index: 1; }
   section {
@@ -253,7 +238,6 @@
   h2 em { color: var(--neon-green); font-style: normal; text-shadow: 0 0 24px rgba(0, 255, 136, 0.35); }
   .lede { color: var(--fg-muted); max-width: 62ch; font-size: 1.02rem; margin-bottom: 2.6rem; }
   .reveal { opacity: 0; transform: translateY(28px); }
-
   /* Buttons */
   .btn {
     font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
@@ -287,7 +271,6 @@
     background: var(--neon-amber); color: #030708; box-shadow: 0 0 24px var(--amber-glow);
   }
   .btn.sm { padding: 0.55rem 1rem; font-size: 0.72rem; }
-
   /* ─────────────────────────────────────────────────────────────
      HERO SECTION
      ───────────────────────────────────────────────────────────── */
@@ -325,7 +308,6 @@
     color: var(--fg-muted); max-width: 50ch; font-size: 1.05rem; line-height: 1.65; margin-bottom: 2rem;
   }
   .hero p.intro b { color: var(--fg); font-weight: 600; }
-
   /* Hero Telemetry Quick Specs */
   .hero-specs {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; margin-bottom: 2.2rem; max-width: 540px;
@@ -340,9 +322,7 @@
   .hero-spec-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--fg-dim); letter-spacing: 0.12em; text-transform: uppercase; }
   .hero-spec-val { font-family: var(--font-mono); font-size: 0.84rem; font-weight: 600; color: #fff; margin-top: 0.15rem; }
   .hero-spec-val span { color: var(--neon-green); }
-
   .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-
   /* CRT Hologram Photo Console */
   .crt-wrap { perspective: 1000px; position: relative; }
   .crt {
@@ -383,13 +363,11 @@
   }
   .ghost-photo.cyan { filter: drop-shadow(0 0 0) hue-rotate(150deg) saturate(3); }
   .ghost-photo.red { filter: drop-shadow(0 0 0) hue-rotate(-40deg) saturate(3); }
-
   .crt-foot {
     display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.62rem;
     color: var(--fg-dim); margin-top: 0.8rem; position: relative; z-index: 3; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 0.5rem;
   }
   .crt-foot span b { color: var(--neon-green); }
-
   /* Targeting Reticles & Hologram Scanner */
   .hud-bracket {
     position: absolute; width: 18px; height: 18px;
@@ -402,7 +380,6 @@
   .hud-bracket.bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
   .hud-bracket.br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
   .crt:hover .hud-bracket { border-color: var(--neon-green); width: 24px; height: 24px; opacity: 1; }
-
   .crt-scanner {
     position: absolute; left: 0; right: 0; height: 2px;
     background: linear-gradient(90deg, transparent, var(--neon-green), var(--neon-cyan), transparent);
@@ -415,7 +392,6 @@
     50% { opacity: 0.85; }
     100% { top: 92%; opacity: 0.2; }
   }
-
   /* ─────────────────────────────────────────────────────────────
      ABOUT SECTION
      ───────────────────────────────────────────────────────────── */
@@ -444,7 +420,6 @@
     font-family: var(--font-mono); color: var(--neon-green); font-size: 0.95rem; font-weight: 700;
     margin-top: 1rem; padding-top: 0.8rem; border-top: 1px dashed var(--line); display: flex; justify-content: space-between; align-items: center;
   }
-
   /* ─────────────────────────────────────────────────────────────
      SKILLS & EDA TOOLCHAINS (IC CHIP PACKAGES)
      ───────────────────────────────────────────────────────────── */
@@ -491,7 +466,6 @@
   }
   .chip-package:hover .pill { border-color: var(--line-bright); color: var(--fg); }
   .chip-package:hover .pill.highlight { border-color: var(--neon-green); color: #fff; box-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
-
   /* ─────────────────────────────────────────────────────────────
      FLAGSHIP FEATURED PROJECTS (PIPECORE-GDS & APEX NEURALEDGE)
      ───────────────────────────────────────────────────────────── */
@@ -542,13 +516,12 @@
     box-shadow: 0 0 18px var(--phosphor-glow);
   }
   .github-link-btn svg { width: 14px; height: 14px; fill: currentColor; }
-
   /* Flagship Content Grid */
   .flagship-body {
     display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; padding: clamp(1.4rem, 3vw, 2.4rem);
+    align-items: start;
   }
   @media (max-width: 960px) { .flagship-body { grid-template-columns: 1fr; } }
-
   .flagship-info h3 {
     font-family: var(--font-heading); font-size: clamp(1.4rem, 2.6vw, 1.9rem);
     color: #fff; line-height: 1.2; margin-bottom: 0.5rem; font-weight: 700;
@@ -560,7 +533,6 @@
     color: var(--fg-muted); font-size: 0.94rem; line-height: 1.65; margin-bottom: 1.4rem;
   }
   .flagship-desc b { color: #fff; font-weight: 600; }
-
   /* In-Progress Live Status Box */
   .progress-status-box {
     background: rgba(255, 184, 0, 0.06); border: 1px solid rgba(255, 184, 0, 0.3);
@@ -571,7 +543,6 @@
     color: var(--neon-amber); font-weight: 700; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; font-size: 0.72rem; letter-spacing: 0.1em;
   }
   .progress-status-box p { color: var(--fg-muted); font-size: 0.78rem; line-height: 1.55; margin: 0; }
-
   /* Verified Metrics HUD Grid */
   .metrics-hud {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.6rem;
@@ -593,11 +564,10 @@
   .metric-val span { color: var(--neon-green); font-size: 0.75rem; }
   .metric-val.cyan { color: var(--neon-cyan); }
   .metric-val.amber { color: var(--neon-amber); }
-
   /* Interactive Simulator Container */
   .sim-container {
     background: #040809; border: 1px solid var(--line-bright); border-radius: 8px;
-    display: flex; flex-direction: column; overflow: hidden;
+    display: flex; flex-direction: column; overflow: hidden; width: 100%; align-self: start;
   }
   .sim-nav {
     display: flex; background: rgba(10, 20, 22, 0.9); border-bottom: 1px solid var(--line);
@@ -615,13 +585,10 @@
   .sim-tab-btn.active.cyan-active {
     color: var(--neon-cyan); border-bottom-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.05);
   }
-
   .sim-view-pane { position: relative; height: 320px; background: #030708; overflow: hidden; display: none; }
   .sim-view-pane.active { display: block; }
-
   /* Interactive engineering canvases */
   #pipelineCanvas, #stackupCanvas { width: 100%; height: 100%; display: block; }
-
   /* ALU Controls Bar */
   .alu-controls {
     padding: 0.85rem 1rem; background: rgba(7, 13, 15, 0.95); border-top: 1px solid var(--line);
@@ -637,7 +604,6 @@
   }
   .alu-select:focus, .alu-input:focus { border-color: var(--neon-green); box-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
   .alu-input { width: 62px; text-align: center; }
-
   /* Code Viewer & Flow Steps */
   .code-viewer-wrap {
     background: #020506; border: 1px solid var(--line-bright); border-radius: 6px;
@@ -649,7 +615,6 @@
   .code-type { color: #c084fc; }
   .code-str { color: #ffb800; }
   .code-com { color: #556c64; font-style: italic; }
-
   .flow-steps-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.5rem; margin: 1rem 0;
   }
@@ -659,7 +624,6 @@
   }
   .flow-step-item b { color: var(--neon-green); display: block; font-size: 0.7rem; margin-bottom: 0.2rem; }
   .flow-step-item.cyan b { color: var(--neon-cyan); }
-
   /* ─────────────────────────────────────────────────────────────
      AES-128 CRYPTO SOC — FEATURED PROJECT CONSOLE
      ───────────────────────────────────────────────────────────── */
@@ -696,7 +660,6 @@
     display: block; color: #fff; font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700;
   }
   .evidence-value i { color: var(--neon-green); font-style: normal; }
-
   .crypto-theme .sim-tab-btn.active {
     color: var(--neon-purple); border-bottom-color: var(--neon-purple);
     background: rgba(139, 92, 246, 0.08);
@@ -705,6 +668,8 @@
   .silicon-media { position: relative; width: 100%; height: 100%; overflow: hidden; background: #020306; }
   .silicon-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .silicon-media.contain img { object-fit: contain; }
+  .silicon-media.fpga-proof img { padding: 0.55rem 0.55rem 2.35rem; }
+  .silicon-media.fpga-proof::after { background: linear-gradient(180deg, transparent 75%, rgba(2,3,6,.94)); }
   .silicon-media::after {
     content: ""; position: absolute; inset: 0; pointer-events: none;
     background: linear-gradient(180deg, transparent 60%, rgba(2, 3, 6, 0.9));
@@ -716,7 +681,6 @@
   }
   .silicon-media-caption b { color: var(--neon-cyan); letter-spacing: 0.08em; }
   .silicon-media-caption span:last-child { color: var(--neon-green); }
-
   .crypto-console {
     padding: 0.95rem; background: rgba(5, 8, 14, 0.98); border-top: 1px solid var(--line);
   }
@@ -745,7 +709,6 @@
     text-overflow: ellipsis; white-space: nowrap;
   }
   .crypto-output.error { color: #ff6b6b; border-color: rgba(255, 107, 107, 0.35); }
-
   .aes-round-lab {
     height: 100%; padding: 1.05rem; display: flex; flex-direction: column; justify-content: space-between;
     background:
@@ -789,7 +752,6 @@
   .aes-round-node.done { color: #03100a; border-color: var(--neon-green); background: var(--neon-green); }
   .aes-lab-foot { display: flex; justify-content: space-between; color: var(--fg-dim); font: 0.57rem var(--font-mono); }
   .aes-lab-foot b { color: var(--neon-green); }
-
   .project-deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; margin: 1rem 0; }
   .project-role-note {
     border-left: 3px solid var(--neon-purple); background: rgba(139, 92, 246, 0.06);
@@ -797,7 +759,6 @@
     color: var(--fg-muted); font-size: 0.82rem; line-height: 1.55;
   }
   .project-role-note b { color: #fff; }
-
   /* PipeCore uses the same evidence-first visual language as the AES project. */
   .flagship-card.pipecore-theme {
     border-color: rgba(0, 255, 136, 0.42);
@@ -819,7 +780,6 @@
   .pipecore-theme .sim-tab-btn.active {
     color: var(--neon-green); border-bottom-color: var(--neon-green); background: rgba(0, 255, 136, 0.06);
   }
-
   .signoff-console {
     height: 100%; padding: 1rem; background: #020607; font-family: var(--font-mono);
     display: flex; flex-direction: column; gap: 0.65rem; overflow: auto;
@@ -846,7 +806,6 @@
     color: var(--fg-dim); font-size: 0.56rem;
   }
   .signoff-console-foot b { color: var(--neon-amber); }
-
   /* APEX is intentionally presented as a pre-layout engineering project. */
   .apex-theme .project-role-note {
     border-left-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.045);
@@ -891,7 +850,6 @@
     box-shadow: inset 0 0 15px rgba(0,255,136,.05);
   }
   .apex-map-foot { color: var(--fg-dim); font: .5rem var(--font-mono); text-align: center; }
-
   .engineering-review {
     height: 100%; padding: .9rem; background: #03080b; display: flex; flex-direction: column; gap: .45rem;
     font-family: var(--font-mono); overflow: auto;
@@ -908,7 +866,6 @@
   .review-state.complete { color: var(--neon-green); border: 1px solid rgba(0,255,136,.3); background: rgba(0,255,136,.06); }
   .review-state.active { color: var(--neon-amber); border: 1px solid rgba(255,184,0,.34); background: rgba(255,184,0,.07); }
   .review-state.queued { color: var(--fg-muted); border: 1px solid var(--line-bright); background: rgba(255,255,255,.025); }
-
   .apex-stage-board {
     height: 100%; padding: .9rem; background: #03080b; display: flex; flex-direction: column; gap: .7rem;
   }
@@ -924,7 +881,6 @@
   .apex-stage.now { border-color: rgba(255,184,0,.42); background: rgba(255,184,0,.055); }
   .apex-stage.now span { color: var(--neon-amber); }
   .apex-stage.future span { color: var(--fg-dim); }
-
   @media (max-width: 700px) {
     .evidence-strip { grid-template-columns: repeat(2, 1fr); }
     .project-deep-grid { grid-template-columns: 1fr; gap: 0.7rem; }
@@ -950,13 +906,11 @@
     .apex-stage-grid { gap: .28rem; }
     .apex-stage { padding: .35rem; font-size: .48rem; }
   }
-
   /* ─────────────────────────────────────────────────────────────
      OTHER HARDWARE PROJECTS GRID
      ───────────────────────────────────────────────────────────── */
   .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; }
   @media (max-width: 860px) { .project-grid { grid-template-columns: 1fr; } }
-
   .proj-card {
     border: 1px solid var(--line); background: var(--bg-card); display: flex; flex-direction: column;
     border-radius: 8px; overflow: hidden; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
@@ -972,12 +926,10 @@
     letter-spacing: 0.14em; color: var(--neon-green); border: 1px solid var(--neon-green);
     padding: 0.25rem 0.6rem; background: rgba(0, 255, 136, 0.1); border-radius: 3px; backdrop-filter: blur(4px);
   }
-
   .proj-body { padding: 1.6rem; flex: 1; display: flex; flex-direction: column; gap: 0.8rem; }
   .proj-num { font-family: var(--font-mono); font-size: 0.65rem; color: var(--neon-amber); letter-spacing: 0.12em; }
   .proj-card h3 { font-family: var(--font-heading); font-size: 1.25rem; color: #fff; line-height: 1.2; font-weight: 700; }
   .proj-card p { color: var(--fg-muted); font-size: 0.88rem; line-height: 1.6; flex: 1; }
-
   /* Expandable Logic Drawers */
   .proj-drawer { overflow: hidden; max-height: 0; transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
   .proj-drawer.open { max-height: 4000px; }
@@ -991,7 +943,6 @@
   .proj-drawer-inner ol { padding-left: 1.1rem; }
   .proj-drawer-inner li { color: var(--fg-muted); margin-bottom: 0.6rem; line-height: 1.55; }
   .proj-drawer-inner li::marker { color: var(--neon-green); font-weight: bold; }
-
   .proj-btn {
     display: flex; align-items: center; justify-content: center; gap: 0.55rem;
     font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
@@ -1002,7 +953,6 @@
   .proj-btn:hover { background: rgba(255, 184, 0, 0.09); color: #fff; }
   .proj-btn .arrow { transition: transform 0.3s; }
   .proj-btn.open .arrow { transform: rotate(180deg); }
-
   /* ─────────────────────────────────────────────────────────────
      INTERACTIVE SILICON WORKBENCH / LOGIC LAB
      ───────────────────────────────────────────────────────────── */
@@ -1021,7 +971,6 @@
   }
   .wb-btn:hover { color: #fff; border-color: var(--neon-cyan); }
   .wb-btn.active { color: #030708; background: var(--neon-cyan); border-color: var(--neon-cyan); box-shadow: 0 0 14px var(--cyan-glow); }
-
   .wb-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.6rem; }
   @media (max-width: 780px) { .wb-grid { grid-template-columns: 1fr; } }
   
@@ -1041,9 +990,7 @@
     top: 2px; left: 3px; transition: transform 0.2s;
   }
   .toggle-switch.on .knob { transform: translateX(22px); background: #030708; }
-
   #gateCanvas { width: 100%; height: 150px; display: block; }
-
   .wb-table-pane {
     background: #030708; border: 1px solid var(--line-bright); border-radius: 8px;
     padding: 1.2rem; font-family: var(--font-mono); font-size: 0.76rem;
@@ -1056,7 +1003,6 @@
   .wb-table-pane tr.active-row td {
     background: rgba(0, 255, 136, 0.12); color: var(--neon-green); font-weight: 700;
   }
-
   /* ─────────────────────────────────────────────────────────────
      TIMELINE / EXPERIENCE SECTION
      ───────────────────────────────────────────────────────────── */
@@ -1091,7 +1037,6 @@
   }
   .cert:hover { border-color: var(--neon-green); color: #fff; background: rgba(0, 255, 136, 0.05); }
   .cert b { color: var(--neon-green); display: block; font-size: 0.68rem; margin-bottom: 0.2rem; }
-
   /* ─────────────────────────────────────────────────────────────
      CONTACT & TRANSCEIVER
      ───────────────────────────────────────────────────────────── */
@@ -1101,7 +1046,6 @@
   }
   .tx h2 { margin-bottom: 0.6rem; }
   .tx p { color: var(--fg-muted); max-width: 52ch; margin: 0 auto 2.2rem; }
-
   .tx-form { max-width: 540px; margin: 0 auto 2.4rem; text-align: left; }
   .tx-form .field { margin-bottom: 1.2rem; }
   .tx-form label {
@@ -1125,7 +1069,6 @@
     font-family: var(--font-mono); font-size: 0.75rem; color: var(--neon-green);
     margin-top: 1rem; min-height: 1.4em; text-align: center;
   }
-
   .links {
     display: flex; gap: 1.4rem; justify-content: center; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.85rem;
   }
@@ -1136,13 +1079,11 @@
   }
   .link-card:hover { border-color: var(--neon-green); color: #fff; background: rgba(0, 255, 136, 0.06); }
   .link-card svg { width: 16px; height: 16px; fill: currentColor; }
-
   footer {
     text-align: center; padding: 2.5rem 1rem; font-family: var(--font-mono); font-size: 0.7rem;
     color: var(--fg-dim); border-top: 1px solid var(--line); letter-spacing: 0.08em; position: relative; z-index: 1;
   }
   footer b { color: var(--neon-green); font-weight: normal; }
-
   /* Toast Notification */
   .toast {
     position: fixed; bottom: 2rem; right: 2rem; z-index: 1000;
@@ -1153,7 +1094,6 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); pointer-events: none;
   }
   .toast.show { opacity: 1; transform: translateY(0); }
-
   /* Mobile Overrides & Responsive Polish */
   @media (max-width: 900px) {
     header { padding: 0.75rem 1.2rem; }
@@ -1190,7 +1130,6 @@
     .flow-steps-grid { grid-template-columns: repeat(2, 1fr); }
     .metrics-hud { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
   }
-
   @media (max-width: 580px) {
     section { padding: 3.5rem 1rem; }
     .hero h1 { font-size: clamp(2rem, 9vw, 3rem); margin-bottom: 0.55rem; }
@@ -1216,7 +1155,6 @@
 </style>
 </head>
 <body>
-
 <canvas id="bgCanvas"></canvas>
 <div class="scanlines"></div>
 <div class="grain"></div>
@@ -1225,7 +1163,6 @@
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="progress-rail" id="progressRail"></div>
 <div class="toast" id="toast"><span style="color:var(--neon-green);">◈</span> <span id="toastMsg">Notification</span></div>
-
 <header>
   <div class="brand">
     <span class="dot"></span>
@@ -1252,7 +1189,6 @@
     </ul>
   </nav>
 </header>
-
 <main>
   <!-- ─────────────────────────────────────────────────────────────
        HERO SECTION
@@ -1275,7 +1211,6 @@
         <p class="intro reveal">
           Final-year Electronics &amp; Communication Engineering student at <b>GCE Srirangam (2023–2027)</b>, focused on <b>VLSI physical design and secure hardware</b>. Most recently, I led the <b>physical implementation and FPGA validation of an AES-128 Crypto Accelerator SoC</b>—from Sky130 floorplan through signoff, then end-to-end Basys3 proof against NIST FIPS-197 vectors. <b>Seeking internship or full-time roles in Physical Design, ASIC/SoC, FPGA, or hardware security.</b>
         </p>
-
         <!-- Telemetry Matrix -->
         <div class="hero-specs reveal">
           <div class="hero-spec-item">
@@ -1295,14 +1230,12 @@
             <div class="hero-spec-val">NIST 5/5 <span>[Basys3]</span></div>
           </div>
         </div>
-
         <div class="cta-row reveal">
           <a class="btn magnetic" href="#projects">★ VIEW PROJECTS</a>
           <a class="btn cyan magnetic" href="#workbench">⚡ LOGIC LAB</a>
           <a class="btn ghost magnetic" href="#contact">◈ TRANSMIT LINK</a>
         </div>
       </div>
-
       <!-- Holographic CRT Console -->
       <div class="crt-wrap reveal">
         <div class="crt" id="crtBox">
@@ -1331,7 +1264,6 @@
       </div>
     </div>
   </section>
-
   <!-- ─────────────────────────────────────────────────────────────
        ABOUT SECTION
        ───────────────────────────────────────────────────────────── -->
@@ -1348,7 +1280,6 @@
         <p>Comprehensive coursework in Digital VLSI, Analog Circuits, Microcontrollers, Signal Processing, and Semiconductor Physics. Graduation: April 2027.</p>
         <div class="node-stat"><span>CGPA:</span> <span>7.21 / 10.0</span></div>
       </div>
-
       <div class="node-card cyan reveal">
         <span class="node-tag">◈ NODE_02 // SECONDARY</span>
         <h3>Higher Secondary Certificate (HSC)</h3>
@@ -1358,7 +1289,6 @@
       </div>
     </div>
   </section>
-
   <!-- ─────────────────────────────────────────────────────────────
      SKILLS & TOOLCHAINS SECTION
      ───────────────────────────────────────────────────────────── -->
@@ -1366,7 +1296,6 @@
     <div class="module-tag reveal">MODULE_03 // SILICON_EDA_TOOLCHAIN</div>
     <h2 class="reveal">Skills <em>&amp;</em> Toolchains</h2>
     <p class="lede reveal">Hardware component clusters, PCB engineering suites, and industry-standard EDA environments.</p>
-
     <div class="skill-grid">
       <!-- IC CHIP 01: VLSI Physical Design -->
       <div class="chip-package reveal">
@@ -1391,7 +1320,6 @@
           <span class="pill">Xilinx Vivado</span>
         </div>
       </div>
-
       <!-- IC CHIP 02: Hardware Security & FPGA Validation -->
       <div class="chip-package reveal">
         <div class="chip-header">
@@ -1412,7 +1340,6 @@
           <span class="pill">Python Host Test</span>
         </div>
       </div>
-
       <!-- IC CHIP 03: High-Speed PCB Design (APEX) -->
       <div class="chip-package reveal">
         <div class="chip-header">
@@ -1433,7 +1360,6 @@
           <span class="pill">SPICE Simulation</span>
         </div>
       </div>
-
       <!-- IC CHIP 04: Edge AI & Embedded Systems -->
       <div class="chip-package reveal">
         <div class="chip-header">
@@ -1454,7 +1380,6 @@
           <span class="pill">Arduino UNO</span>
         </div>
       </div>
-
       <!-- IC CHIP 05: Analog IC Design -->
       <div class="chip-package reveal">
         <div class="chip-header">
@@ -1474,7 +1399,6 @@
           <span class="pill">DRC/LVS Signoff</span>
         </div>
       </div>
-
       <!-- IC CHIP 06: Mathematical Tools & Linux -->
       <div class="chip-package reveal">
         <div class="chip-header">
@@ -1493,7 +1417,6 @@
           <span class="pill">Logic Analyzers</span>
         </div>
       </div>
-
       <!-- IC CHIP 07: Leadership -->
       <div class="chip-package reveal">
         <div class="chip-header">
@@ -1512,7 +1435,6 @@
       </div>
     </div>
   </section>
-
   <!-- ─────────────────────────────────────────────────────────────
        PROJECTS SECTION
        ───────────────────────────────────────────────────────────── -->
@@ -1520,7 +1442,6 @@
     <div class="module-tag reveal">MODULE_04 // CRYPTO_SILICON &amp; HARDWARE_LAB</div>
     <h2 class="reveal">Featured Projects</h2>
     <p class="lede reveal">From NIST-verified crypto silicon and timing-clean GDSII to an honestly documented pre-layout PCB architecture and embedded hardware systems.</p>
-
     <!-- ★ FLAGSHIP PROJECT 01: AES-128 CRYPTO ACCELERATOR SOC -->
     <article class="flagship-card crypto-theme reveal" id="aesCard">
       <div class="flagship-ribbon">
@@ -1535,7 +1456,6 @@
           AES-Crypto-SoC ↗
         </a>
       </div>
-
       <div class="flagship-body">
         <div class="flagship-info">
           <div class="project-eyebrow">AES_SOC // SECURE EDGE SILICON</div>
@@ -1544,11 +1464,9 @@
           <p class="flagship-desc">
             A complete <b>AES-128 encryption accelerator</b> implemented from Verilog RTL through a <b>1 mm² Sky130 GDSII</b>. The iterative one-round datapath encrypts a 128-bit block in <b>10 cycles / 200 ns at 50 MHz</b>, returns the cipher over UART, and was proven on a real Digilent Basys3 against official NIST FIPS-197 vectors.
           </p>
-
           <div class="project-role-note">
             <b>My ownership:</b> physical design from floorplan through placement, CTS, routing and signoff; Cadence Virtuoso review; Basys3 integration and the end-to-end FPGA demonstration. RTL, Yosys synthesis and OpenSTA were developed by teammate Nandikha.
           </div>
-
           <div class="metrics-hud">
             <div class="metric-box" style="border-color:rgba(192,132,252,.42);">
               <div class="metric-label">Measured Latency</div>
@@ -1575,14 +1493,12 @@
               <div class="metric-val">DRC CLEAN <span>· LVS MATCH</span></div>
             </div>
           </div>
-
           <div class="evidence-strip" aria-label="AES project verification summary">
             <div class="evidence-item"><span class="evidence-label">ARCHITECTURE</span><span class="evidence-value">Iterative <i>10-round</i></span></div>
             <div class="evidence-item"><span class="evidence-label">THROUGHPUT GAIN</span><span class="evidence-value"><i>~250×</i> rep. vs MCU</span></div>
             <div class="evidence-item"><span class="evidence-label">ROUTING</span><span class="evidence-value">~1.8 m · 374k vias</span></div>
             <div class="evidence-item"><span class="evidence-label">FPGA TARGET</span><span class="evidence-value">Artix-7 <i>XC7A35T</i></span></div>
           </div>
-
           <div class="pill-row" style="margin-bottom:1.4rem;">
             <span class="pill" style="color:var(--neon-purple); border-color:rgba(192,132,252,.42);">AES-128</span>
             <span class="pill highlight">OpenLane 2.3.10</span>
@@ -1594,13 +1510,11 @@
             <span class="pill">Magic · Netgen</span>
             <span class="pill">UART 115200</span>
           </div>
-
           <div style="display:flex; gap:.8rem; flex-wrap:wrap;">
             <button class="btn sm magnetic" id="aesRunHeroBtn" style="background:var(--neon-purple); border-color:var(--neon-purple); box-shadow:0 0 16px var(--crypto-glow);">⚡ RUN NIST VECTOR</button>
             <button class="btn ghost sm magnetic proj-btn-inline" data-drawer="drawerAes" style="color:var(--neon-purple); border-color:rgba(192,132,252,.45);">◈ VIEW ARCHITECTURE &amp; SIGNOFF ▾</button>
           </div>
         </div>
-
         <div class="sim-container" aria-label="Interactive AES-128 project console">
           <div class="sim-nav" role="tablist" aria-label="AES project views">
             <button class="sim-tab-btn active" data-tab="tab-aes-layout" role="tab">◈ GDSII ROUTING</button>
@@ -1608,14 +1522,12 @@
             <button class="sim-tab-btn" data-tab="tab-aes-fpga" role="tab">✓ FPGA PROOF</button>
             <button class="sim-tab-btn" data-tab="tab-aes-virtuoso" role="tab">🔬 VIRTUOSO</button>
           </div>
-
           <div class="sim-view-pane active" id="tab-aes-layout" role="tabpanel">
             <div class="silicon-media">
               <img src="aes-klayout-metal-routing.png" loading="lazy" decoding="async" alt="AES-128 Crypto SoC detailed metal routing in KLayout">
               <div class="silicon-media-caption"><b>SKY130 · ROUTED GDSII</b><span>1.8 m wire · ~374k vias</span></div>
             </div>
           </div>
-
           <div class="sim-view-pane" id="tab-aes-rounds" role="tabpanel">
             <div class="aes-round-lab">
               <div class="aes-lab-head">
@@ -1636,21 +1548,18 @@
               <div class="aes-lab-foot"><span>INITIAL ADDROUNDKEY + 10 ROUNDS</span><span>BUSY WINDOW <b>10 CYCLES</b></span></div>
             </div>
           </div>
-
           <div class="sim-view-pane" id="tab-aes-fpga" role="tabpanel">
-            <div class="silicon-media">
+            <div class="silicon-media contain fpga-proof">
               <img src="aes-basys3-demo.jpeg" loading="lazy" decoding="async" alt="Digilent Basys3 FPGA running the AES-128 NIST hardware demonstration">
               <div class="silicon-media-caption"><b>BASYS3 · 20 AUG 2026</b><span>LEDs 0x97 · DONE asserted</span></div>
             </div>
           </div>
-
           <div class="sim-view-pane" id="tab-aes-virtuoso" role="tabpanel">
             <div class="silicon-media contain">
               <img src="aes-virtuoso-full-chip.png" loading="lazy" decoding="async" alt="AES Crypto SoC full-chip layout reviewed in Cadence Virtuoso">
               <div class="silicon-media-caption"><b>CADENCE VIRTUOSO 6.1.5</b><span>Sky130 XStream import</span></div>
             </div>
           </div>
-
           <div class="crypto-console">
             <div class="crypto-console-head"><span>LIVE AES-128 BLOCK CHECK</span><span class="nist-lock">● NIST TV1 LOADED</span></div>
             <div class="crypto-input-grid">
@@ -1664,7 +1573,6 @@
           </div>
         </div>
       </div>
-
       <div class="proj-drawer" id="drawerAes">
         <div class="proj-drawer-inner">
           <span class="logic-title" style="color:var(--neon-purple);">◈ AES_CRYPTO_SOC // ARCHITECTURE, PHYSICAL IMPLEMENTATION &amp; HARDWARE PROOF</span>
@@ -1678,7 +1586,6 @@
             <div class="flow-step-item"><b>07. SIGNOFF</b>DRC Clean / LVS Match</div>
             <div class="flow-step-item"><b>08. FPGA PROOF</b>10 Cycles Measured</div>
           </div>
-
           <div class="project-deep-grid">
             <div>
               <ol>
@@ -1697,7 +1604,6 @@
               </ol>
             </div>
           </div>
-
           <div style="border-top:1px dashed var(--line); padding-top:.9rem; margin-top:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.7rem;">
             <span style="color:var(--neon-purple);">◈ Akif: Physical Design · Signoff · Virtuoso Review · FPGA Demo</span>
             <a href="https://github.com/akifmohamed/AES-Crypto-SoC" target="_blank" rel="noopener" style="color:var(--neon-cyan); font-weight:600;">Explore RTL, reports, GDS, docs &amp; FPGA demo on GitHub →</a>
@@ -1705,7 +1611,6 @@
         </div>
       </div>
     </article>
-
     <!-- ★ FLAGSHIP PROJECT 02: PIPECORE-GDS -->
     <article class="flagship-card pipecore-theme reveal" id="pipecoreCard">
       <div class="flagship-ribbon">
@@ -1720,7 +1625,6 @@
           PipeCore-GDS ↗
         </a>
       </div>
-
       <div class="flagship-body">
         <!-- Left: Project Narrative & Verified Telemetry -->
         <div class="flagship-info">
@@ -1730,11 +1634,9 @@
           <p class="flagship-desc">
             A complete <b>8-bit, 2-stage pipelined ALU</b> carried from synthesizable Verilog through floorplan, placement, CTS, routing and a <b>signoff-clean GDSII</b>. The verified implementation sustains one operation per cycle at 100 MHz with <b>+1.91 ns setup</b> and <b>+0.28 ns hold</b> margin.
           </p>
-
           <div class="project-role-note">
             <b>My ownership:</b> the complete physical-design flow—floorplan, PDN, placement, clock-tree synthesis, timing repair, routing, GDS generation and signoff. RTL, Yosys synthesis and standalone STA were developed by teammate Nandhika.
           </div>
-
           <!-- Metrics HUD -->
           <div class="metrics-hud">
             <div class="metric-box glow-green">
@@ -1762,14 +1664,12 @@
               <div class="metric-val cyan">DRC / LVS <span>CLEAN</span></div>
             </div>
           </div>
-
           <div class="evidence-strip" aria-label="PipeCore verification evidence">
             <div class="evidence-item"><span class="evidence-label">RTL TESTBENCH</span><span class="evidence-value"><i>25 / 25</i> tests pass</span></div>
             <div class="evidence-item"><span class="evidence-label">MULTI-CORNER DATA</span><span class="evidence-value"><i>9 SDF</i> corners</span></div>
             <div class="evidence-item"><span class="evidence-label">ROUTED WIRE</span><span class="evidence-value">3,745 <i>µm</i></span></div>
             <div class="evidence-item"><span class="evidence-label">SIGNOFF VIOLATIONS</span><span class="evidence-value"><i>0</i> total</span></div>
           </div>
-
           <div class="pill-row" style="margin-bottom:1.4rem;">
             <span class="pill highlight">OpenLane 2.3.10</span>
             <span class="pill highlight">Yosys</span>
@@ -1780,7 +1680,6 @@
             <span class="pill">KLayout</span>
             <span class="pill">2-Stage Datapath</span>
           </div>
-
           <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
             <button class="btn sm magnetic" id="toggleAluRunBtn">⚡ CLOCK TICK (STEP)</button>
             <button class="btn ghost sm magnetic" id="autoAluRunBtn">▶ RUN CYCLE MODEL</button>
@@ -1789,7 +1688,6 @@
             </button>
           </div>
         </div>
-
         <!-- Right: Real Layout Evidence + Interactive RTL Model -->
         <div class="sim-container" aria-label="PipeCore physical-design evidence and ALU model">
           <div class="sim-nav" role="tablist" aria-label="PipeCore project views">
@@ -1798,7 +1696,6 @@
             <button class="sim-tab-btn" data-tab="tab-pipeline" role="tab">⚡ RTL CYCLE MODEL</button>
             <button class="sim-tab-btn" data-tab="tab-timing" role="tab">✓ SIGNOFF REPORT</button>
           </div>
-
           <!-- Tab 1: Authentic KLayout full-chip screenshot from the repository -->
           <div class="sim-view-pane active" id="tab-gds" role="tabpanel">
             <div class="silicon-media contain">
@@ -1806,7 +1703,6 @@
               <div class="silicon-media-caption"><b>ACTUAL GDSII · KLAYOUT</b><span>80.49 × 91.21 µm die</span></div>
             </div>
           </div>
-
           <!-- Tab 2: Authentic routed standard-cell detail -->
           <div class="sim-view-pane" id="tab-layout-photo" role="tabpanel">
             <div class="silicon-media contain">
@@ -1814,12 +1710,10 @@
               <div class="silicon-media-caption"><b>ROUTED DETAIL · SKY130 HD</b><span>cells · rails · vias · signal metal</span></div>
             </div>
           </div>
-
           <!-- Tab 3: Interactive behavioral visualization of the RTL pipeline -->
           <div class="sim-view-pane" id="tab-pipeline" role="tabpanel">
             <canvas id="pipelineCanvas" aria-label="Interactive two-stage ALU pipeline model"></canvas>
           </div>
-
           <!-- Tab 4: Verified values sourced from metrics.json and the signoff summary -->
           <div class="sim-view-pane" id="tab-timing" role="tabpanel">
             <div class="signoff-console">
@@ -1834,7 +1728,6 @@
               <div class="signoff-console-foot"><span>SOURCE: deliverables/reports/metrics.json</span><b>TAPEOUT-CLEAN</b></div>
             </div>
           </div>
-
           <!-- Interactive ALU Control Panel -->
           <div class="alu-controls">
             <div class="alu-ctrl-group">
@@ -1850,19 +1743,16 @@
                 <option value="7">SRL (111)</option>
               </select>
             </div>
-
             <div class="alu-ctrl-group">
               <label for="inputA">A [7:0]:</label>
               <input type="number" id="inputA" class="alu-input" value="42" min="0" max="255">
               <label for="inputB">B [7:0]:</label>
               <input type="number" id="inputB" class="alu-input" value="15" min="0" max="255">
             </div>
-
             <button class="btn sm ghost" id="randomAluBtn" style="padding:0.35rem 0.65rem; font-size:0.68rem;">🎲 RANDOM</button>
           </div>
         </div>
       </div>
-
       <!-- Expandable Deep-Dive Architecture Drawer -->
       <div class="proj-drawer" id="drawerPipeCore">
         <div class="proj-drawer-inner">
@@ -1878,7 +1768,6 @@
             <div class="flow-step-item"><b>07. TIMING STA</b>+1.91ns Margin @100MHz</div>
             <div class="flow-step-item"><b>08. GDSII SIGNOFF</b>Magic DRC &amp; Netgen LVS</div>
           </div>
-
           <div class="project-deep-grid">
             <div>
               <ol>
@@ -1896,7 +1785,6 @@
               </ol>
             </div>
           </div>
-
           <!-- Verilog RTL Code Snippet -->
           <div style="margin-top:1.2rem;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
@@ -1915,7 +1803,6 @@
   <span class="code-kw">reg</span> [7:0] a_reg, b_reg, alu_result;
   <span class="code-kw">reg</span> [2:0] opcode_reg;
   <span class="code-kw">reg</span>       valid_stage1;
-
   <span class="code-com">// Stage 1: Input Registration on posedge clk</span>
   <span class="code-kw">always</span> @(<span class="code-kw">posedge</span> clk <span class="code-kw">or posedge</span> rst) <span class="code-kw">begin</span>
     <span class="code-kw">if</span> (rst) <span class="code-kw">begin</span>
@@ -1924,7 +1811,6 @@
       a_reg &lt;= a; b_reg &lt;= b; opcode_reg &lt;= opcode; valid_stage1 &lt;= 1'b1;
     <span class="code-kw">end</span>
   <span class="code-kw">end</span>
-
   <span class="code-com">// Combinational ALU Execution</span>
   <span class="code-kw">always</span> @(*) <span class="code-kw">begin</span>
     <span class="code-kw">case</span> (opcode_reg)
@@ -1939,7 +1825,6 @@
       <span class="code-kw">default</span>: alu_result = 8'b0;
     <span class="code-kw">endcase</span>
   <span class="code-kw">end</span>
-
   <span class="code-com">// Stage 2: Output Registration</span>
   <span class="code-kw">always</span> @(<span class="code-kw">posedge</span> clk <span class="code-kw">or posedge</span> rst) <span class="code-kw">begin</span>
     <span class="code-kw">if</span> (rst) <span class="code-kw">begin</span>
@@ -1951,7 +1836,6 @@
 <span class="code-kw">endmodule</span></code></pre>
             </div>
           </div>
-
           <div style="border-top: 1px dashed var(--line); padding-top: 0.9rem; margin-top: 1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;">
             <span style="color:var(--neon-green);">◈ OpenLane 2 / Sky130A Clean Signoff Matrix Active</span>
             <a href="https://github.com/akifmohamed/PipeCore-GDS" target="_blank" rel="noopener" style="color:var(--neon-cyan); font-weight:600;">Explore Full GDS, DEF, LEF &amp; SDF Deliverables on GitHub →</a>
@@ -1959,7 +1843,6 @@
         </div>
       </div>
     </article>
-
     <!-- ★ FLAGSHIP PROJECT 03: APEX (NEURALEDGE) 6-LAYER PCB -->
     <article class="flagship-card apex-theme reveal" id="apexCard">
       <div class="flagship-ribbon">
@@ -1973,28 +1856,23 @@
           ◈ Altium Designer 2025 · 6-Layer Plan
         </span>
       </div>
-
       <div class="flagship-body">
         <div class="flagship-info">
           <div class="project-eyebrow" style="color:var(--neon-cyan);">APEX // PRE-LAYOUT HARDWARE ARCHITECTURE</div>
           <h3>APEX — AI Processing &amp; Edge eXecution Platform</h3>
           <div class="flagship-subtitle" style="color:var(--neon-amber);">NeuralEdge · planned 100 mm × 80 mm industrial edge-computing board</div>
-
           <div class="progress-status-box">
             <div class="status-head"><span>● CURRENT PHASE: SCHEMATIC REVIEW &amp; CIRCUIT SIMULATION</span></div>
             <p>
               The <b>7-sheet hierarchical schematic compiles with 0 reported errors</b>. Power-rail transient models and high-speed interface constraints are under review before component placement. PCB routing, fabrication and bench validation are future stages—not presented as completed work.
             </p>
           </div>
-
           <p class="flagship-desc">
             A 6-layer edge-computing platform being developed in <b>Altium Designer 2025</b>. The selected architecture combines an <b>STM32H743ZIT6</b>, a <b>Google Coral Edge TPU</b>, and a <b>Lattice iCE40UP5K FPGA</b> with CAN-FD, RS-485, 10/100 Ethernet and precision sensor front ends. Values below describe the current design specification, not fabricated-board measurements.
           </p>
-
           <div class="project-role-note">
             <b>My scope:</b> system partitioning, component selection, seven-sheet hierarchical capture, power-tree planning, interface definition and pre-layout design review. Current work is focused on simulation and constraint closure before PCB placement and routing.
           </div>
-
           <div class="metrics-hud">
             <div class="metric-box glow-cyan">
               <div class="metric-label">Planned Stack-Up</div>
@@ -2021,14 +1899,12 @@
               <div class="metric-val">24-bit ADC <span>· vib · temp</span></div>
             </div>
           </div>
-
           <div class="evidence-strip" aria-label="APEX project maturity">
             <div class="evidence-item"><span class="evidence-label">SCHEMATIC CAPTURE</span><span class="evidence-value"><i>7 sheets</i> complete</span></div>
             <div class="evidence-item"><span class="evidence-label">COMPILE / ERC</span><span class="evidence-value"><i>0</i> reported errors</span></div>
             <div class="evidence-item"><span class="evidence-label">PCB LAYOUT</span><span class="evidence-value"><i>NOT STARTED</i></span></div>
             <div class="evidence-item"><span class="evidence-label">FAB / BENCH TEST</span><span class="evidence-value"><i>NOT STARTED</i></span></div>
           </div>
-
           <div class="pill-row" style="margin-bottom:1.4rem;">
             <span class="pill cyan">Altium Designer 2025</span>
             <span class="pill highlight">STM32H743ZIT6</span>
@@ -2040,14 +1916,12 @@
             <span class="pill">INA3221</span>
             <span class="pill">USB2514B</span>
           </div>
-
           <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
             <button class="btn cyan sm magnetic proj-btn-inline" data-drawer="drawerApex">
               ◈ VIEW ENGINEERING PLAN &amp; DESIGN STATUS ▾
             </button>
           </div>
         </div>
-
         <div class="sim-container" aria-label="APEX pre-layout engineering views">
           <div class="sim-nav" role="tablist" aria-label="APEX project views">
             <button class="sim-tab-btn active cyan-active" data-tab="tab-apex-architecture" role="tab">◈ SYSTEM MAP</button>
@@ -2055,7 +1929,6 @@
             <button class="sim-tab-btn" data-tab="tab-apex-review" role="tab">⚡ POWER / SI REVIEW</button>
             <button class="sim-tab-btn" data-tab="tab-apex-status" role="tab">✓ DELIVERY STATUS</button>
           </div>
-
           <div class="sim-view-pane active" id="tab-apex-architecture" role="tabpanel">
             <div class="apex-architecture">
               <div class="apex-view-head"><span>PRE-LAYOUT SYSTEM ARCHITECTURE</span><span>SPECIFICATION VIEW</span></div>
@@ -2085,11 +1958,9 @@
               <div class="apex-map-foot">LOGICAL PARTITIONING ONLY · PLACEMENT AND ROUTING NOT YET PERFORMED</div>
             </div>
           </div>
-
           <div class="sim-view-pane" id="tab-apex-stackup" role="tabpanel">
             <canvas id="stackupCanvas" aria-label="Planned APEX six-layer PCB stackup"></canvas>
           </div>
-
           <div class="sim-view-pane" id="tab-apex-review" role="tabpanel">
             <div class="engineering-review">
               <div class="apex-view-head"><span>PRE-LAYOUT POWER &amp; SIGNAL REVIEW</span><span>NO BENCH DATA</span></div>
@@ -2103,7 +1974,6 @@
               <div class="signoff-console-foot"><span>Targets require stackup-field-solver verification</span><b>WORK IN PROGRESS</b></div>
             </div>
           </div>
-
           <div class="sim-view-pane" id="tab-apex-status" role="tabpanel">
             <div class="apex-stage-board">
               <div class="apex-view-head"><span>PROJECT MATURITY GATE</span><span>HONEST STATUS</span></div>
@@ -2119,7 +1989,6 @@
               </div>
             </div>
           </div>
-
           <div class="alu-controls">
             <div style="font-family:var(--font-mono); font-size:0.68rem; color:var(--neon-cyan); display:flex; gap:1.1rem; align-items:center; flex-wrap:wrap;">
               <span>BOARD TARGET: <b>100 mm × 80 mm</b></span>
@@ -2129,11 +1998,9 @@
           </div>
         </div>
       </div>
-
       <div class="proj-drawer" id="drawerApex">
         <div class="proj-drawer-inner">
           <span class="logic-title">◈ APEX NEURALEDGE // ENGINEERING PLAN, CURRENT EVIDENCE &amp; NEXT GATES</span>
-
           <div class="flow-steps-grid">
             <div class="flow-step-item cyan"><b>01. ARCHITECTURE ✓</b>System Partitioned</div>
             <div class="flow-step-item cyan"><b>02. COMPONENTS ✓</b>Core Parts Selected</div>
@@ -2144,7 +2011,6 @@
             <div class="flow-step-item"><b>07. PCB LAYOUT ○</b>Not Started</div>
             <div class="flow-step-item"><b>08. FAB / TEST ○</b>Not Started</div>
           </div>
-
           <div class="project-deep-grid">
             <div>
               <ol>
@@ -2163,7 +2029,6 @@
               </ol>
             </div>
           </div>
-
           <div style="border-top:1px dashed var(--line); padding-top:.9rem; margin-top:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.7rem;">
             <span style="color:var(--neon-amber);">◈ Pre-layout project · simulations and constraints still in progress</span>
             <span style="color:var(--neon-cyan);">Designed by Akif Mohamed · no fabrication or bench-test claim</span>
@@ -2171,10 +2036,8 @@
         </div>
       </div>
     </article>
-
     <!-- HARDWARE PROJECTS 04 & 05 -->
     <div class="project-grid">
-
       <!-- PROJECT 03: Arduino Radar System -->
       <div class="proj-card reveal">
         <div class="proj-preview" id="radarPreview">
@@ -2210,7 +2073,6 @@
           ◈ OPEN LOGIC VIEW <span class="arrow">▾</span>
         </button>
       </div>
-
       <!-- PROJECT 04: Smart Lock System -->
       <div class="proj-card reveal">
         <div class="proj-preview" id="lockPreview">
@@ -2246,10 +2108,8 @@
           ◈ OPEN LOGIC VIEW <span class="arrow">▾</span>
         </button>
       </div>
-
     </div>
   </section>
-
   <!-- ─────────────────────────────────────────────────────────────
        INTERACTIVE SILICON WORKBENCH (LOGIC GATES & OSCILLOSCOPE)
        ───────────────────────────────────────────────────────────── -->
@@ -2257,7 +2117,6 @@
     <div class="module-tag reveal">MODULE_05 // INTERACTIVE_SILICON_WORKBENCH</div>
     <h2 class="reveal">Digital Logic <em>&amp;</em> Waveform Lab</h2>
     <p class="lede reveal">Test fundamental gate primitives and verify truth tables in real time.</p>
-
     <div class="workbench-box reveal">
       <div class="workbench-header">
         <div>
@@ -2273,7 +2132,6 @@
           <button class="wb-btn magnetic" data-gate="NOT">NOT (~a)</button>
         </div>
       </div>
-
       <div class="wb-grid">
         <!-- Interactive Circuit Schematic & Toggle Switches -->
         <div class="wb-schematic-pane">
@@ -2295,7 +2153,6 @@
           
           <canvas id="gateCanvas"></canvas>
         </div>
-
         <!-- Real-Time Truth Table -->
         <div class="wb-table-pane">
           <div style="color:var(--neon-cyan); font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
@@ -2317,7 +2174,6 @@
       </div>
     </div>
   </section>
-
   <!-- ─────────────────────────────────────────────────────────────
        TIMELINE & EXPERIENCE SECTION
        ───────────────────────────────────────────────────────────── -->
@@ -2325,10 +2181,8 @@
     <div class="module-tag reveal">MODULE_06 // TIMING_DIAGRAM_CLOCK</div>
     <h2 class="reveal">Experience <em>&amp;</em> Milestones</h2>
     <p class="lede reveal">Career progression plotted as synchronized rising-edge clock pulses.</p>
-
     <div class="clk">
       <div class="clk-line"><div class="fill" id="clkFill"></div></div>
-
       <div class="tick reveal">
         <div class="rise">R↑ 01 // RISING EDGE 01 — CRYPTO SILICON HARDWARE PROOF</div>
         <h3>Physical Design &amp; FPGA Validation — AES-128 Crypto Accelerator SoC</h3>
@@ -2346,7 +2200,6 @@
           <span class="pill">OpenLane 2</span>
         </div>
       </div>
-
       <div class="tick reveal">
         <div class="rise">R↑ 02 // RISING EDGE 02 — EMBEDDED AI &amp; IOT INTERNSHIP</div>
         <h3>Intern — Embedded Systems with AI &amp; IoT</h3>
@@ -2364,7 +2217,6 @@
           <span class="pill">Cert #57300</span>
         </div>
       </div>
-
       <div class="tick reveal">
         <div class="rise">R↑ 03 // RISING EDGE 03 — ASIC / EDA INTERNSHIP</div>
         <h3>VLSI Domain Intern (Remote)</h3>
@@ -2381,7 +2233,6 @@
           <span class="pill">DRC / LVS</span>
         </div>
       </div>
-
       <div class="tick reveal">
         <div class="rise">R↑ 04 // RISING EDGE 04 — LEADERSHIP &amp; OPERATIONS</div>
         <h3>Overall Coordinator</h3>
@@ -2397,7 +2248,6 @@
           <span class="pill">Team Leadership</span>
         </div>
       </div>
-
       <div class="tick reveal">
         <div class="rise">R↑ 05 // RISING EDGE 05 — CERTIFICATIONS &amp; ACCREDITATIONS</div>
         <h3>Technical Certifications</h3>
@@ -2413,7 +2263,6 @@
       </div>
     </div>
   </section>
-
   <!-- ─────────────────────────────────────────────────────────────
        CONTACT SECTION & TRANSCEIVER
        ───────────────────────────────────────────────────────────── -->
@@ -2422,12 +2271,10 @@
     <div class="tx reveal">
       <h2>Get in <em>Touch</em></h2>
       <p>Open to VLSI physical design, ASIC/SoC, FPGA, hardware security, embedded systems, and hardware architecture opportunities. The TX communication link is live.</p>
-
       <form class="tx-form" id="txForm" novalidate>
         <input type="hidden" name="access_key" value="40aa4b47-361b-4908-813f-451ce2123685">
         <input type="hidden" name="subject" value="Portfolio Contact — New Message for Akif Mohamed">
         <input type="hidden" name="from_name" value="Akif's VLSI & Hardware Portfolio">
-
         <div class="field">
           <label for="fName">SENDER IDENTIFIER (NAME)</label>
           <input type="text" id="fName" name="name" placeholder="Your name / Organization" required>
@@ -2440,11 +2287,9 @@
           <label for="fMsg">PAYLOAD DATA (MESSAGE)</label>
           <textarea id="fMsg" name="message" placeholder="Describe your project, opportunity, or collaboration inquiry…" rows="5" required></textarea>
         </div>
-
         <button type="submit" class="btn transmit magnetic">◉ TRANSMIT MESSAGE</button>
         <p class="tx-status" id="txStatus" aria-live="polite"></p>
       </form>
-
       <div class="links">
         <button class="link-card magnetic" id="emailCopyBtn" style="cursor:pointer; font-size:0.85rem;">
           <svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -2463,18 +2308,15 @@
     </div>
   </section>
 </main>
-
 <footer>
   © 2026 <b>AKIF MOHAMED J</b> — VLSI PHYSICAL DESIGN · CRYPTO HARDWARE · FPGA VALIDATION · GCE SRIRANGAM · TRICHY, TN, INDIA
 </footer>
-
 <!-- ─────────────────────────────────────────────────────────────
      JAVASCRIPT LOGIC, AUDIO SYNTHESIS & INTERACTIVE SIMULATORS
      ───────────────────────────────────────────────────────────── -->
 <script>
 gsap.registerPlugin(ScrollTrigger);
 var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 /* ---------- Toast Notification Helper ---------- */
 function showToast(msg){
   var toast = document.getElementById('toast');
@@ -2484,18 +2326,15 @@ function showToast(msg){
   toast.classList.add('show');
   setTimeout(function(){ toast.classList.remove('show'); }, 2600);
 }
-
 /* ---------- Web Audio Synthesizer (Cyber Audio FX) ---------- */
 var AudioFX = (function(){
   var audioCtx = null;
   var enabled = true;
-
   function init(){
     if(!audioCtx && (window.AudioContext || window.webkitAudioContext)){
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     }
   }
-
   function playTone(freq, type, dur, vol){
     if(!enabled) return;
     try {
@@ -2514,7 +2353,6 @@ var AudioFX = (function(){
       osc.stop(audioCtx.currentTime + dur);
     } catch(e){}
   }
-
   return {
     click: function(){ playTone(880, 'sine', 0.04, 0.025); },
     tick: function(){ playTone(1200, 'triangle', 0.03, 0.03); },
@@ -2533,7 +2371,6 @@ var AudioFX = (function(){
     isEnabled: function(){ return enabled; }
   };
 })();
-
 // Sound toggle button in header
 (function(){
   var btn = document.getElementById('soundToggle');
@@ -2558,7 +2395,6 @@ var AudioFX = (function(){
     }
   });
 })();
-
 /* ---------- Circuit-Trace Background Canvas ---------- */
 (function(){
   var canvas = document.getElementById('bgCanvas');
@@ -2567,7 +2403,6 @@ var AudioFX = (function(){
   var w, h, nodes = [];
   function resize(){ w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
   resize(); window.addEventListener('resize', resize);
-
   var cols = 15, rows = 10;
   for(var i = 0; i < cols; i++){
     for(var j = 0; j < rows; j++){
@@ -2584,7 +2419,6 @@ var AudioFX = (function(){
     var ambient = document.getElementById('ambientGlow');
     if(ambient){ ambient.style.transform = 'translate(' + (e.clientX - 325) + 'px,' + (e.clientY - 325) + 'px)'; }
   });
-
   function draw(t){
     ctx.clearRect(0, 0, w, h);
     ctx.strokeStyle = 'rgba(0, 255, 136, 0.08)';
@@ -2628,7 +2462,6 @@ var AudioFX = (function(){
   }
   requestAnimationFrame(draw);
 })();
-
 /* ---------- Custom Smooth Magnetic Cursor ---------- */
 (function(){
   if(window.matchMedia('(max-width: 900px)').matches) return;
@@ -2650,7 +2483,6 @@ var AudioFX = (function(){
     el.addEventListener('mouseleave', function(){ ring.classList.remove('active'); });
   });
 })();
-
 /* ---------- Scroll Progress Bar ---------- */
 (function(){
   var rail = document.getElementById('progressRail');
@@ -2660,7 +2492,6 @@ var AudioFX = (function(){
     rail.style.width = pct + '%';
   });
 })();
-
 /* ---------- Photo Breakout Sequence & 3D Tilt ---------- */
 var photoTimeline;
 (function(){
@@ -2669,13 +2500,11 @@ var photoTimeline;
   var ghostR = document.getElementById('ghostRed');
   var crtBox = document.getElementById('crtBox');
   if(!photo) return;
-
   if(reduced){
     photo.style.transform = 'translateY(0) scale(1)';
     photo.style.filter = 'none';
     return;
   }
-
   photoTimeline = gsap.timeline({ paused: true })
     .fromTo('.crt-scanner', { opacity: 0 }, { opacity: 0.85, duration: 0.4 }, 0)
     .fromTo('.hud-bracket', { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 0.85, duration: 0.6, stagger: 0.08, ease: 'back.out(1.7)' }, 0.1)
@@ -2690,7 +2519,6 @@ var photoTimeline;
     .to([ghostC, ghostR], { opacity: 0, x: 0, duration: 0.35, ease: 'power2.out' }, 0.9)
     .to(photo, { scale: 1.06, y: '-2%', duration: 0.5, ease: 'power2.inOut' }, 1.2)
     .to('.crt', { boxShadow: 'inset 0 0 60px rgba(0, 0, 0, 0.85), 0 0 60px rgba(0, 255, 136, 0.22), 0 25px 60px rgba(0, 0, 0, 0.7)', duration: 0.4 }, 0.8);
-
   // 3D Tilt on mouse move
   if(crtBox){
     crtBox.addEventListener('mousemove', function(e){
@@ -2707,7 +2535,6 @@ var photoTimeline;
     });
   }
 })();
-
 /* ---------- GSAP Scroll Orchestration ---------- */
 if(!reduced){
   var title = document.getElementById('heroTitle');
@@ -2738,7 +2565,6 @@ if(!reduced){
     .to('.intro', { opacity: 1, y: 0, duration: 0.5 }, '-=0.2')
     .to('.hero-specs', { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
     .to('.cta-row', { opacity: 1, y: 0, duration: 0.5 }, '-=0.3');
-
   gsap.utils.toArray('.reveal').forEach(function(el){
     if(el.closest('.hero')) return;
     gsap.to(el, {
@@ -2746,7 +2572,6 @@ if(!reduced){
       scrollTrigger: { trigger: el, start: 'top 86%' }
     });
   });
-
   gsap.to('#clkFill', {
     height: '100%', ease: 'none',
     scrollTrigger: { trigger: '.clk', start: 'top 70%', end: 'bottom 80%', scrub: true }
@@ -2758,7 +2583,6 @@ if(!reduced){
     });
   });
 }
-
 /* ---------- Mobile Navigation Drawer ---------- */
 (function(){
   var toggle = document.getElementById('navToggle');
@@ -2766,7 +2590,6 @@ if(!reduced){
   var menu = nav ? nav.querySelector('ul') : null;
   var backdrop = document.getElementById('navBackdrop');
   if(!toggle || !nav || !menu || !backdrop) return;
-
   function setNavOpen(open){
     nav.classList.toggle('open', open);
     toggle.classList.toggle('open', open);
@@ -2776,14 +2599,11 @@ if(!reduced){
     document.body.classList.toggle('nav-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   }
-
   function closeNav(){ setNavOpen(false); }
-
   toggle.addEventListener('click', function(){
     setNavOpen(!nav.classList.contains('open'));
     AudioFX.click();
   });
-
   // Tapping the dimmed page, the empty drawer area, or any destination closes it.
   backdrop.addEventListener('click', closeNav);
   menu.addEventListener('click', function(e){
@@ -2795,7 +2615,6 @@ if(!reduced){
       if(option.tagName === 'A') AudioFX.click();
     });
   });
-
   document.addEventListener('pointerdown', function(e){
     if(!nav.classList.contains('open')) return;
     if(!menu.contains(e.target) && !toggle.contains(e.target)) closeNav();
@@ -2810,7 +2629,6 @@ if(!reduced){
     if(window.innerWidth > 860 && nav.classList.contains('open')) closeNav();
   });
 })();
-
 /* ---------- Expandable Project Drawers ---------- */
 (function(){
   document.querySelectorAll('.proj-btn, .proj-btn-inline').forEach(function(btn){
@@ -2829,17 +2647,14 @@ if(!reduced){
     });
   });
 })();
-
 /* ─────────────────────────────────────────────────────────────
    FLAGSHIP 01: AES-128 CRYPTO SOC — TABS, ROUND ENGINE & BLOCK CHECK
    ───────────────────────────────────────────────────────────── */
 (function(){
   var card = document.getElementById('aesCard');
   if(!card) return;
-
   var tabButtons = card.querySelectorAll('.sim-tab-btn');
   var panes = card.querySelectorAll('.sim-view-pane');
-
   function openAesTab(targetId){
     tabButtons.forEach(function(btn){
       var active = btn.getAttribute('data-tab') === targetId;
@@ -2848,14 +2663,12 @@ if(!reduced){
     });
     panes.forEach(function(pane){ pane.classList.toggle('active', pane.id === targetId); });
   }
-
   tabButtons.forEach(function(btn){
     btn.addEventListener('click', function(){
       openAesTab(btn.getAttribute('data-tab'));
       AudioFX.click();
     });
   });
-
   var keyInput = document.getElementById('aesKeyInput');
   var plainInput = document.getElementById('aesPlainInput');
   var output = document.getElementById('aesCipherOutput');
@@ -2864,11 +2677,9 @@ if(!reduced){
   var labState = document.getElementById('aesLabState');
   var roundNodes = card.querySelectorAll('.aes-round-node');
   var animationTimer = null;
-
   var NIST_KEY = '2B7E151628AED2A6ABF7158809CF4F3C';
   var NIST_PLAIN = '6BC1BEE22E409F96E93D7E117393172A';
   var NIST_CIPHER = '3AD77BB40D7A3660A89ECAF32466EF97';
-
   function cleanHex(value){ return value.replace(/[^0-9a-f]/gi, '').toUpperCase().slice(0, 32); }
   function hexToBytes(hex){
     var bytes = new Uint8Array(hex.length / 2);
@@ -2878,7 +2689,6 @@ if(!reduced){
   function bytesToHex(bytes){
     return Array.prototype.map.call(bytes, function(byte){ return byte.toString(16).padStart(2, '0'); }).join('').toUpperCase();
   }
-
   [keyInput, plainInput].forEach(function(input){
     if(!input) return;
     input.addEventListener('input', function(){
@@ -2889,7 +2699,6 @@ if(!reduced){
       output.textContent = input.value.length === 32 ? 'CIPHER: READY TO ENCRYPT' : 'INPUT REQUIRES 32 HEX CHARACTERS';
     });
   });
-
   function animateRounds(){
     return new Promise(function(resolve){
       if(animationTimer) clearInterval(animationTimer);
@@ -2897,7 +2706,6 @@ if(!reduced){
       var round = 0;
       if(labState) labState.textContent = 'KEY EXPANSION · ROUND 0';
       roundNodes[0].classList.add('active');
-
       animationTimer = setInterval(function(){
         if(roundNodes[round]){
           roundNodes[round].classList.remove('active');
@@ -2917,7 +2725,6 @@ if(!reduced){
       }, 105);
     });
   }
-
   function aesEncryptBlock(keyHex, plainHex){
     if(window.crypto && window.crypto.subtle){
       var keyBytes = hexToBytes(keyHex);
@@ -2934,26 +2741,22 @@ if(!reduced){
     if(keyHex === NIST_KEY && plainHex === NIST_PLAIN) return Promise.resolve(NIST_CIPHER);
     return Promise.reject(new Error('Web Crypto API unavailable'));
   }
-
   function runEncryption(){
     var keyHex = cleanHex(keyInput.value);
     var plainHex = cleanHex(plainInput.value);
     keyInput.value = keyHex;
     plainInput.value = plainHex;
-
     if(keyHex.length !== 32 || plainHex.length !== 32){
       output.classList.add('error');
       output.textContent = 'ERROR: KEY AND PLAINTEXT MUST EACH BE 128 BITS / 32 HEX';
       AudioFX.denied();
       return;
     }
-
     output.classList.remove('error');
     output.textContent = 'CIPHER: ENGINE BUSY · 10 ROUNDS';
     openAesTab('tab-aes-rounds');
     if(runBtn) runBtn.disabled = true;
     if(heroBtn) heroBtn.disabled = true;
-
     Promise.all([aesEncryptBlock(keyHex, plainHex), animateRounds()])
       .then(function(results){
         var cipherHex = results[0];
@@ -2973,11 +2776,9 @@ if(!reduced){
         if(heroBtn) heroBtn.disabled = false;
       });
   }
-
   if(runBtn) runBtn.addEventListener('click', runEncryption);
   if(heroBtn) heroBtn.addEventListener('click', runEncryption);
 })();
-
 /* ─────────────────────────────────────────────────────────────
    FLAGSHIP 02: PIPECORE-GDS — REAL LAYOUT EVIDENCE + RTL CYCLE MODEL
    ───────────────────────────────────────────────────────────── */
@@ -2987,7 +2788,6 @@ if(!reduced){
   if(!pipecoreCard) return;
   var tabButtons = pipecoreCard.querySelectorAll('.sim-tab-btn');
   var panes = pipecoreCard.querySelectorAll('.sim-view-pane');
-
   function openPipeCoreTab(targetId){
     tabButtons.forEach(function(btn){
       var active = btn.getAttribute('data-tab') === targetId;
@@ -2997,14 +2797,12 @@ if(!reduced){
     panes.forEach(function(pane){ pane.classList.toggle('active', pane.id === targetId); });
     if(targetId === 'tab-pipeline') requestAnimationFrame(drawPipeline);
   }
-
   tabButtons.forEach(function(btn){
     btn.addEventListener('click', function(){
       openPipeCoreTab(btn.getAttribute('data-tab'));
       AudioFX.click();
     });
   });
-
   // State
   var opcode = 0;
   var inA = 42;
@@ -3016,9 +2814,7 @@ if(!reduced){
   var autoInterval = null;
   var packetProgress = 0;
   var packetFrame = null;
-
   var opNames = ['ADD', 'SUB', 'AND', 'OR', 'XOR', 'NOT', 'SLL', 'SRL'];
-
   function animatePacketForward(){
     if(packetFrame) cancelAnimationFrame(packetFrame);
     var startedAt = performance.now();
@@ -3031,7 +2827,6 @@ if(!reduced){
     }
     packetFrame = requestAnimationFrame(frame);
   }
-
   function computeALU(op, a, b){
     var r = 0;
     switch(op){
@@ -3047,7 +2842,6 @@ if(!reduced){
     }
     return r;
   }
-
   function clockTick(){
     cycleCount++;
     if(stage1_Valid){
@@ -3057,16 +2851,13 @@ if(!reduced){
       stage2_Result = 0;
       stage2_Valid = false;
     }
-
     stage1_A = inA;
     stage1_B = inB;
     stage1_Op = opcode;
     stage1_Valid = true;
-
     AudioFX.tick();
     animatePacketForward();
   }
-
   var opSelect = document.getElementById('aluOpcodeSelect');
   var inputAEl = document.getElementById('inputA');
   var inputBEl = document.getElementById('inputB');
@@ -3074,7 +2865,6 @@ if(!reduced){
   var tickBtn = document.getElementById('toggleAluRunBtn');
   var autoBtn = document.getElementById('autoAluRunBtn');
   var copyVerilogBtn = document.getElementById('copyVerilogBtn');
-
   if(opSelect){
     opSelect.addEventListener('change', function(){
       opcode = parseInt(this.value);
@@ -3134,7 +2924,6 @@ if(!reduced){
       AudioFX.click();
     });
   }
-
   if(copyVerilogBtn){
     copyVerilogBtn.addEventListener('click', function(){
       var code = document.getElementById('verilogCodeBlock').innerText;
@@ -3144,7 +2933,6 @@ if(!reduced){
       });
     });
   }
-
   /* Interactive two-stage RTL cycle model */
   var pipeCanvas = document.getElementById('pipelineCanvas');
   var pipeCtx = pipeCanvas ? pipeCanvas.getContext('2d') : null;
@@ -3153,7 +2941,6 @@ if(!reduced){
     var w = pipeCanvas.width = pipeCanvas.offsetWidth;
     var h = pipeCanvas.height = pipeCanvas.offsetHeight;
     if(w <= 0 || h <= 0) return;
-
     var ctx = pipeCtx;
     var compact = w < 500;
     var pad = compact ? 7 : 12;
@@ -3165,7 +2952,6 @@ if(!reduced){
     var s2X = compact ? w * 0.585 : w * 0.65;
     var bodyFont = compact ? 8 : 10;
     var headFont = compact ? 8.5 : 11;
-
     ctx.clearRect(0, 0, w, h);
     ctx.textAlign = 'left';
     ctx.font = (compact ? '7px' : '9px') + ' "JetBrains Mono", monospace';
@@ -3173,14 +2959,12 @@ if(!reduced){
     ctx.fillText(compact ? 'RTL CYCLE ' + cycleCount + ' · SLOWED VIEW' : 'BEHAVIORAL RTL MODEL · CYCLE ' + cycleCount + ' · VISUALIZED SLOWLY', 8, 14);
     ctx.fillStyle = '#556c64';
     ctx.fillText(compact ? 'SIGNOFF DATA → REPORT TAB' : 'POST-ROUTE TIMING AND PHYSICAL RESULTS ARE REPORTED IN THE SIGNOFF TAB', 8, h - 7);
-
     // Stage 1 register bank
     ctx.fillStyle = stage1_Valid ? 'rgba(0, 240, 255, 0.1)' : 'rgba(10, 20, 22, 0.6)';
     ctx.strokeStyle = stage1_Valid ? '#00f0ff' : '#1c3637';
     ctx.lineWidth = 1.5;
     ctx.fillRect(s1X, boxY, boxW, boxH);
     ctx.strokeRect(s1X, boxY, boxW, boxH);
-
     ctx.font = 'bold ' + headFont + 'px "JetBrains Mono", monospace';
     ctx.fillStyle = '#00f0ff';
     ctx.fillText(compact ? 'STAGE 1 · LATCH' : 'STAGE 1: LATCH', s1X + pad, boxY + 20);
@@ -3191,13 +2975,11 @@ if(!reduced){
     ctx.fillText((compact ? 'OP ' : 'Op_reg:  ') + opNames[stage1_Op] + ' [' + stage1_Op + ']', s1X + pad, boxY + 91);
     ctx.fillStyle = stage1_Valid ? '#00ff88' : '#556c64';
     ctx.fillText((compact ? 'VLD ' : 'Valid1:  ') + (stage1_Valid ? '1 · ACTIVE' : '0 · IDLE'), s1X + pad, boxY + 115);
-
     // Stage 2 ALU and output register
     ctx.fillStyle = stage2_Valid ? 'rgba(0, 255, 136, 0.1)' : 'rgba(10, 20, 22, 0.6)';
     ctx.strokeStyle = stage2_Valid ? '#00ff88' : '#1c3637';
     ctx.fillRect(s2X, boxY, boxW, boxH);
     ctx.strokeRect(s2X, boxY, boxW, boxH);
-
     ctx.font = 'bold ' + headFont + 'px "JetBrains Mono", monospace';
     ctx.fillStyle = '#00ff88';
     ctx.fillText(compact ? 'STAGE 2 · ALU' : 'STAGE 2: EXEC/OUT', s2X + pad, boxY + 20);
@@ -3212,7 +2994,6 @@ if(!reduced){
     ctx.fillText('DEC ' + stage2_Result, s2X + pad, boxY + 94);
     ctx.fillStyle = stage2_Valid ? '#00ff88' : '#556c64';
     ctx.fillText((compact ? 'VLD ' : 'Valid:   ') + (stage2_Valid ? '1 · VALID' : '0 · IDLE'), s2X + pad, boxY + 116);
-
     var busX1 = s1X + boxW;
     var busX2 = s2X;
     ctx.strokeStyle = 'rgba(255, 184, 0, 0.82)';
@@ -3221,14 +3002,12 @@ if(!reduced){
     ctx.moveTo(busX1, midY);
     ctx.lineTo(busX2, midY);
     ctx.stroke();
-
     // Arrow and packet make left-to-right data direction unambiguous.
     ctx.beginPath();
     ctx.moveTo(busX2 - 8, midY - 5);
     ctx.lineTo(busX2, midY);
     ctx.lineTo(busX2 - 8, midY + 5);
     ctx.stroke();
-
     var packetX = busX1 + (busX2 - busX1) * packetProgress;
     ctx.beginPath();
     ctx.fillStyle = '#00ff88';
@@ -3237,7 +3016,6 @@ if(!reduced){
     ctx.arc(packetX, midY, compact ? 4 : 5, 0, Math.PI * 2);
     ctx.fill();
     ctx.shadowBlur = 0;
-
     ctx.font = (compact ? '7px' : '9px') + ' "JetBrains Mono", monospace';
     ctx.fillStyle = '#ffb800';
     ctx.textAlign = 'center';
@@ -3245,21 +3023,17 @@ if(!reduced){
     ctx.fillText(compact ? '2 CLK' : 'LATENCY: 2 CYCLES', (busX1 + busX2) / 2, midY + 18);
     ctx.textAlign = 'left';
   }
-
   drawPipeline();
   window.addEventListener('resize', drawPipeline);
 })();
-
 /* ─────────────────────────────────────────────────────────────
    FLAGSHIP 03: APEX (NEURALEDGE) INTERACTIVE TABS & CANVAS
    ───────────────────────────────────────────────────────────── */
 (function(){
   var apexCard = document.getElementById('apexCard');
   if(!apexCard) return;
-
   var tabButtons = apexCard.querySelectorAll('.sim-tab-btn');
   var panes = apexCard.querySelectorAll('.sim-view-pane');
-
   function openApexTab(targetId){
     tabButtons.forEach(function(btn){
       var active = btn.getAttribute('data-tab') === targetId;
@@ -3269,14 +3043,12 @@ if(!reduced){
     panes.forEach(function(pane){ pane.classList.toggle('active', pane.id === targetId); });
     if(targetId === 'tab-apex-stackup') requestAnimationFrame(drawStackup);
   }
-
   tabButtons.forEach(function(btn){
     btn.addEventListener('click', function(){
       openApexTab(btn.getAttribute('data-tab'));
       AudioFX.click();
     });
   });
-
   // Canvas View 2: 6-Layer Stackup Visualizer
   var stackCanvas = document.getElementById('stackupCanvas');
   var sCtx = stackCanvas ? stackCanvas.getContext('2d') : null;
@@ -3285,11 +3057,9 @@ if(!reduced){
     var w = stackCanvas.width = stackCanvas.offsetWidth;
     var h = stackCanvas.height = stackCanvas.offsetHeight;
     if(w <= 0 || h <= 0) return;
-
     var ctx = sCtx;
     var compact = w < 500;
     ctx.clearRect(0, 0, w, h);
-
     var layers = [
       { name: 'L1 · TOP SIGNAL', type: '35 µm Cu · finish TBD', color: '#ffb800', desc: 'Components and general routing' },
       { name: 'L2 · GROUND', type: 'Solid reference plane', color: '#00f0ff', desc: 'Primary high-speed return reference' },
@@ -3298,11 +3068,9 @@ if(!reduced){
       { name: 'L5 · GROUND', type: 'Solid reference plane', color: '#00f0ff', desc: 'Bottom-layer return reference' },
       { name: 'L6 · BOTTOM SIGNAL', type: '35 µm Cu · finish TBD', color: '#ffb800', desc: 'Low-speed and support routing' }
     ];
-
     var marginX = compact ? 8 : 18;
     var marginY = compact ? 8 : 14;
     var layerH = (h - marginY * 2) / layers.length;
-
     for(var i = 0; i < layers.length; i++){
       var ly = marginY + i * layerH;
       var lay = layers[i];
@@ -3311,36 +3079,30 @@ if(!reduced){
       ctx.strokeStyle = lay.color;
       ctx.lineWidth = 1.2;
       ctx.strokeRect(marginX, ly + 2, w - marginX * 2, layerH - 4);
-
       ctx.textAlign = 'left';
       ctx.font = 'bold ' + (compact ? 7 : 9) + 'px "JetBrains Mono", monospace';
       ctx.fillStyle = lay.color;
       ctx.fillText(lay.name, marginX + (compact ? 6 : 10), ly + layerH * 0.43);
-
       ctx.font = (compact ? 6 : 8) + 'px "JetBrains Mono", monospace';
       ctx.fillStyle = '#c9d9d6';
       ctx.fillText(lay.desc, marginX + (compact ? 6 : 10), ly + layerH * 0.76);
-
       if(!compact){
         ctx.fillStyle = '#8ba29a';
         ctx.textAlign = 'right';
         ctx.fillText(lay.type, w - marginX - 10, ly + layerH * 0.48);
       }
     }
-
     ctx.textAlign = 'right';
     ctx.font = (compact ? 6 : 7) + 'px "JetBrains Mono", monospace';
     ctx.fillStyle = '#ffb800';
     ctx.fillText('PLANNED STACKUP · FABRICATOR GEOMETRY NOT FROZEN', w - marginX, h - 2);
     ctx.textAlign = 'left';
   }
-
   drawStackup();
   window.addEventListener('resize', function(){
     drawStackup();
   });
 })();
-
 /* ─────────────────────────────────────────────────────────────
    RADAR CANVAS PREVIEW (PROJECT 03)
    ───────────────────────────────────────────────────────────── */
@@ -3355,10 +3117,8 @@ if(!reduced){
     { a: 2.30, r: 0.48, alpha: 0 },
     { a: 2.85, r: 0.75, alpha: 0 }
   ];
-
   function resize(){ canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
   resize(); window.addEventListener('resize', resize);
-
   canvas.addEventListener('click', function(e){
     var rect = canvas.getBoundingClientRect();
     var cx = canvas.width / 2, cy = canvas.height * 0.85;
@@ -3370,15 +3130,12 @@ if(!reduced){
     blips.push({ a: a, r: Math.min(0.9, Math.max(0.2, r)), alpha: 1 });
     AudioFX.click();
   });
-
   function draw(){
     var w = canvas.width, h = canvas.height;
     var cx = w / 2, cy = h * 0.82;
     var R = Math.min(w * 0.44, h * 0.72);
-
     ctx.fillStyle = 'rgba(4, 8, 9, 0.22)';
     ctx.fillRect(0, 0, w, h);
-
     ctx.strokeStyle = 'rgba(0, 255, 136, 0.2)';
     ctx.lineWidth = 1;
     for(var ring = 1; ring <= 4; ring++){
@@ -3386,7 +3143,6 @@ if(!reduced){
       ctx.arc(cx, cy, R * (ring / 4), Math.PI, 0, false);
       ctx.stroke();
     }
-
     for(var deg = 0; deg <= 180; deg += 30){
       var rad = Math.PI + (deg * Math.PI / 180);
       ctx.beginPath();
@@ -3394,7 +3150,6 @@ if(!reduced){
       ctx.lineTo(cx + R * Math.cos(rad), cy + R * Math.sin(rad));
       ctx.stroke();
     }
-
     var sweepAngle = Math.PI + angle;
     ctx.beginPath();
     ctx.moveTo(cx, cy);
@@ -3405,7 +3160,6 @@ if(!reduced){
     ctx.shadowBlur = 10;
     ctx.stroke();
     ctx.shadowBlur = 0;
-
     for(var k = 0; k < blips.length; k++){
       var b = blips[k];
       var diff = Math.abs(sweepAngle - b.a);
@@ -3423,20 +3177,17 @@ if(!reduced){
         ctx.shadowBlur = 0;
       }
     }
-
     ctx.font = '9px "JetBrains Mono", monospace';
     ctx.fillStyle = '#00ff88';
     var curDeg = Math.floor((angle / Math.PI) * 180);
     ctx.fillText('SERVO_ANGLE: ' + curDeg + '°', 10, 18);
     ctx.fillText('HC-SR04: 40kHz SONAR', 10, 32);
-
     angle += 0.02;
     if(angle > Math.PI) angle = 0;
     requestAnimationFrame(draw);
   }
   draw();
 })();
-
 /* ─────────────────────────────────────────────────────────────
    SMART LOCK CANVAS (PROJECT 04)
    ───────────────────────────────────────────────────────────── */
@@ -3446,13 +3197,11 @@ if(!reduced){
   var ctx = canvas.getContext('2d');
   function resize(){ canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
   resize(); window.addEventListener('resize', resize);
-
   var keys = [['1','2','3'], ['4','5','6'], ['7','8','9'], ['*','0','#']];
   var PASS = '1234';
   var input = '';
   var locked = true;
   var statusMsg = '';
-
   canvas.addEventListener('click', function(e){
     var rect = canvas.getBoundingClientRect();
     var mx = (e.clientX - rect.left) * (canvas.width / rect.width);
@@ -3460,7 +3209,6 @@ if(!reduced){
     var w = canvas.width, h = canvas.height;
     var kx0 = w * 0.06, ky0 = h * 0.24, kw = w * 0.4, kh = h * 0.65;
     var cellW = kw / 3, cellH = kh / 4;
-
     for(var r = 0; r < 4; r++){
       for(var c = 0; c < 3; c++){
         var kx = kx0 + c * cellW, ky = ky0 + r * cellH;
@@ -3488,13 +3236,11 @@ if(!reduced){
       }
     }
   });
-
   function draw(){
     var w = canvas.width, h = canvas.height;
     ctx.clearRect(0, 0, w, h);
     ctx.fillStyle = '#040809';
     ctx.fillRect(0, 0, w, h);
-
     var kx0 = w * 0.06, ky0 = h * 0.24, kw = w * 0.4, kh = h * 0.65;
     var cellW = kw / 3, cellH = kh / 4;
     for(var r = 0; r < 4; r++){
@@ -3505,21 +3251,18 @@ if(!reduced){
         ctx.strokeStyle = 'rgba(0, 255, 136, 0.25)';
         ctx.lineWidth = 1;
         ctx.strokeRect(kx + 2, ky + 2, cellW - 4, cellH - 4);
-
         ctx.font = 'bold 12px "JetBrains Mono", monospace';
         ctx.fillStyle = '#00ff88';
         ctx.textAlign = 'center';
         ctx.fillText(keys[r][c], kx + cellW / 2, ky + cellH / 2 + 4);
       }
     }
-
     var lx = w * 0.52, ly = h * 0.15, lw = w * 0.42, lh = h * 0.35;
     ctx.fillStyle = '#071813';
     ctx.fillRect(lx, ly, lw, lh);
     ctx.strokeStyle = 'rgba(0, 255, 136, 0.5)';
     ctx.lineWidth = 1.5;
     ctx.strokeRect(lx, ly, lw, lh);
-
     ctx.font = '10px "JetBrains Mono", monospace';
     ctx.fillStyle = '#00ff88';
     ctx.textAlign = 'center';
@@ -3528,18 +3271,15 @@ if(!reduced){
     ctx.fillText(line1, lx + lw / 2, ly + lh * 0.4);
     ctx.fillStyle = locked ? '#ffb800' : '#00ff88';
     ctx.fillText(line2, lx + lw / 2, ly + lh * 0.75);
-
     var lockX = lx + lw / 2, lockY = ly + lh + h * 0.22;
     ctx.font = 'bold 11px "JetBrains Mono", monospace';
     ctx.fillStyle = locked ? '#ffb800' : '#00ff88';
     ctx.fillText(locked ? '🔒 DEADBOLT: ENGAGED' : '🔓 DEADBOLT: RETRACTED', lockX, lockY);
     ctx.textAlign = 'left';
-
     requestAnimationFrame(draw);
   }
   draw();
 })();
-
 /* ─────────────────────────────────────────────────────────────
    INTERACTIVE DIGITAL LOGIC WORKBENCH
    ───────────────────────────────────────────────────────────── */
@@ -3554,7 +3294,6 @@ if(!reduced){
   var tableLabel = document.getElementById('tableGateLabel');
   var gateCanvas = document.getElementById('gateCanvas');
   var gCtx = gateCanvas ? gateCanvas.getContext('2d') : null;
-
   function updateLogic(){
     var out = 0;
     switch(curGate){
@@ -3566,60 +3305,49 @@ if(!reduced){
       case 'NOT': out = (!inA) ? 1 : 0; break;
     }
     if(valOut) valOut.textContent = out;
-
     var rowKey = '' + inA + (curGate === 'NOT' ? '0' : inB);
     document.querySelectorAll('#truthTable tbody tr').forEach(function(tr){
       var r = tr.getAttribute('data-row');
       if(r === rowKey){ tr.classList.add('active-row'); }
       else { tr.classList.remove('active-row'); }
     });
-
     drawGateSchematic(out);
   }
-
   function drawGateSchematic(out){
     if(!gateCanvas || !gCtx) return;
     var w = gateCanvas.width = gateCanvas.offsetWidth;
     var h = gateCanvas.height = gateCanvas.offsetHeight;
     var ctx = gCtx;
     ctx.clearRect(0, 0, w, h);
-
     var midY = h / 2;
     var gateX = w * 0.45, gateY = midY;
     var gw = 70, gh = 50;
-
     ctx.strokeStyle = inA ? '#00ff88' : '#556c64';
     ctx.lineWidth = 2.5;
     ctx.beginPath();
     ctx.moveTo(w * 0.1, midY - 14); ctx.lineTo(gateX, midY - 14);
     ctx.stroke();
-
     if(curGate !== 'NOT'){
       ctx.strokeStyle = inB ? '#00ff88' : '#556c64';
       ctx.beginPath();
       ctx.moveTo(w * 0.1, midY + 14); ctx.lineTo(gateX, midY + 14);
       ctx.stroke();
     }
-
     ctx.fillStyle = 'rgba(0, 240, 255, 0.12)';
     ctx.strokeStyle = '#00f0ff';
     ctx.lineWidth = 2;
     ctx.fillRect(gateX, gateY - gh / 2, gw, gh);
     ctx.strokeRect(gateX, gateY - gh / 2, gw, gh);
-
     ctx.font = 'bold 12px "JetBrains Mono", monospace';
     ctx.fillStyle = '#fff';
     ctx.textAlign = 'center';
     ctx.fillText(curGate, gateX + gw / 2, gateY + 5);
-
     ctx.strokeStyle = out ? '#00ff88' : '#556c64';
     ctx.beginPath();
     ctx.moveTo(gateX + gw, midY); ctx.lineTo(w * 0.88, midY);
     ctx.stroke();
-
     ctx.textAlign = 'left';
   }
-
   if(switchA){
     switchA.addEventListener('click', function(){
       inA = inA ? 0 : 1;
@@ -3638,7 +3366,6 @@ if(!reduced){
       updateLogic();
     });
   }
-
   document.querySelectorAll('.wb-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
       document.querySelectorAll('.wb-btn').forEach(function(b){ b.classList.remove('active'); });
@@ -3651,11 +3378,9 @@ if(!reduced){
       updateLogic();
     });
   });
-
   updateLogic();
   window.addEventListener('resize', updateLogic);
 })();
-
 /* ─────────────────────────────────────────────────────────────
    CONTACT FORM & EMAIL COPY LOGIC
    ───────────────────────────────────────────────────────────── */
@@ -3663,7 +3388,6 @@ if(!reduced){
   var form = document.getElementById('txForm');
   var status = document.getElementById('txStatus');
   var emailCopyBtn = document.getElementById('emailCopyBtn');
-
   if(emailCopyBtn){
     emailCopyBtn.addEventListener('click', function(e){
       e.preventDefault();
@@ -3674,26 +3398,22 @@ if(!reduced){
       });
     });
   }
-
   if(form){
     form.addEventListener('submit', function(e){
       e.preventDefault();
       var name = form.name.value.trim();
       var email = form.email.value.trim();
       var msg = form.message.value.trim();
-
       if(!name || !email || !msg){
         status.textContent = '◈ ALL FIELDS REQUIRED FOR TRANSMISSION';
         status.style.color = '#ff4d4d';
         AudioFX.denied();
         return;
       }
-
       var btn = form.querySelector('button[type="submit"]');
       btn.textContent = '◈ TRANSMITTING DATA STREAM…';
       btn.disabled = true;
       AudioFX.click();
-
       var data = new FormData(form);
       fetch('https://api.web3forms.com/submit', {
         method: 'POST', body: data
@@ -3725,6 +3445,5 @@ if(!reduced){
   }
 })();
 </script>
-
 </body>
 </html>
