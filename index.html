@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="akif-no-bg.png">
-<title>Akif Mohamed J — Bidirectional AES-128 Crypto SoC, VLSI Physical Design &amp; Hardware Portfolio</title>
-<meta name="description" content="Portfolio of Akif Mohamed J — VLSI engineer behind a bidirectional AES-128 Crypto SoC (VELTRAXX'26 PS16, Team QuadraX: shared GF S-Box/InvS-Box, AMBA AXI4-Lite, 1-cycle fault zeroization, 9/9 NIST regression, Basys3 proof) and an AES-128 Crypto Accelerator SoC (Sky130 RTL-to-GDSII, 745/745 scan DFT, 4/4 NIST KAT, 200 ns measured).">
+<title>Akif Mohamed J — Smart Water Scheduler RTL→GDSII, Bidirectional AES-128 Crypto SoC, VLSI Physical Design &amp; Hardware Portfolio</title>
+<meta name="description" content="Portfolio of Akif Mohamed J — VLSI engineer behind a Smart Water Distribution Scheduler taken from Verilog RTL to a clean SAED32 GDSII at the ChipCraft 3.0 hackathon (Team LOGIC DUO: 13/13 test groups, VCS lab PASS, DC +5.71 ns, ICC2 +3.07 ns post-route, 0 DRC), a bidirectional AES-128 Crypto SoC (VELTRAXX'26 PS16, Team QuadraX: shared GF S-Box/InvS-Box, AMBA AXI4-Lite, 1-cycle fault zeroization, 9/9 NIST regression, Basys3 proof) and an AES-128 Crypto Accelerator SoC (Sky130 RTL-to-GDSII, 745/745 scan DFT, 4/4 NIST KAT, 200 ns measured).">
 <!-- Premium Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -466,6 +466,85 @@
   }
   .chip-package:hover .pill { border-color: var(--line-bright); color: var(--fg); }
   .chip-package:hover .pill.highlight { border-color: var(--neon-green); color: #fff; box-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
+  /* CHIPCRAFT 3.0 // TEAM LOGIC DUO — Smart Water Distribution Scheduler (SAED32 RTL→GDSII) */
+  .flagship-card.logicduo-theme {
+    border-color: rgba(62, 199, 255, 0.55);
+    background:
+      radial-gradient(circle at 86% 8%, rgba(62, 199, 255, 0.12), transparent 28%),
+      linear-gradient(180deg, rgba(5, 14, 22, 0.98), rgba(3, 7, 12, 0.98));
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.86), 0 0 48px rgba(62, 199, 255, 0.15);
+  }
+  .flagship-card.logicduo-theme .flagship-ribbon {
+    background: linear-gradient(90deg, rgba(62, 199, 255, 0.14), rgba(0, 255, 136, 0.05));
+    border-bottom-color: rgba(62, 199, 255, 0.36);
+  }
+  .flagship-card.logicduo-theme .github-link-btn:hover {
+    background: #3ec7ff; border-color: #3ec7ff; color: #04121c;
+    box-shadow: 0 0 20px rgba(62, 199, 255, 0.45);
+  }
+  .logicduo-theme .project-eyebrow { color: #3ec7ff; }
+  .logicduo-theme .project-role-note {
+    border-left-color: #3ec7ff; background: rgba(62, 199, 255, 0.05);
+  }
+  .logicduo-theme .evidence-strip {
+    background: rgba(62, 199, 255, 0.2); border-color: rgba(62, 199, 255, 0.3);
+  }
+  .logicduo-theme .evidence-value i { color: #3ec7ff; }
+  .logicduo-theme .sim-tab-btn.active {
+    color: #3ec7ff; border-bottom-color: #3ec7ff; background: rgba(62, 199, 255, 0.08);
+  }
+  .logicduo-theme .sim-view-pane { height: 350px; }
+  .logicduo-theme .sim-view-pane.wsim-pane { height: auto; min-height: 380px; overflow: visible; }
+  .logicduo-theme .flow-step-item.wt b { color: #3ec7ff; }
+  /* ── Live water-scheduler simulator (RTL-exact FSM + arbiter model) ── */
+  .wsim { font-family: var(--font-mono); font-size: 0.66rem; color: var(--fg-muted); display: flex; flex-direction: column; gap: 0.55rem; padding: 0.2rem; }
+  .wsim-head { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .wsim-title { color: #3ec7ff; font-weight: 700; letter-spacing: 0.1em; font-size: 0.66rem; }
+  .wsim-state { color: #031018; background: #3ec7ff; font-weight: 700; padding: 0.14rem 0.55rem; border-radius: 3px; letter-spacing: 0.08em; }
+  .wsim-state[data-st="1"] { background: var(--neon-green); color: #04140b; }
+  .wsim-state[data-st="2"] { background: var(--neon-amber); color: #171001; }
+  .wsim-state[data-st="3"] { background: var(--neon-purple); color: #120821; }
+  .wsim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.6rem; }
+  .wsim-zones, .wsim-plant { min-width: 0; border: 1px solid rgba(62, 199, 255, 0.28); border-radius: 6px; background: rgba(3, 10, 16, 0.85); padding: 0.55rem; }
+  .wsim-zone-head, .wsim-zone-row { display: grid; grid-template-columns: 1.5rem 2.7rem minmax(3.2rem, auto) minmax(3.2rem, auto) minmax(1.5rem, 1fr) minmax(1.5rem, 1fr) 1.9rem; gap: 0.3rem; align-items: center; }
+  .wsim-zone-head span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .wsim-zone-head { color: var(--fg-dim); font-size: 0.53rem; letter-spacing: 0.09em; padding-bottom: 0.3rem; border-bottom: 1px dashed rgba(62, 199, 255, 0.22); margin-bottom: 0.35rem; }
+  .wsim-zone-row { padding: 0.22rem 0; }
+  .wsim-zname { color: #fff; font-weight: 700; }
+  .wsim-req { font: 700 0.58rem var(--font-mono); letter-spacing: 0.06em; padding: 0.28rem 0.2rem; border-radius: 4px; cursor: pointer; border: 1px solid var(--line-bright); background: rgba(255,255,255,0.03); color: var(--fg-dim); transition: all .15s; }
+  .wsim-req.on { background: rgba(0, 255, 136, 0.16); border-color: var(--neon-green); color: var(--neon-green); box-shadow: 0 0 8px rgba(0,255,136,.25); }
+  .wsim-prio { font: 0.58rem var(--font-mono); width: 100%; min-width: 0; background: #06131d; color: var(--fg); border: 1px solid var(--line-bright); border-radius: 4px; padding: 0.24rem 0.15rem; }
+  .wsim-prio[data-p="3"] { color: #ff5c5c; border-color: rgba(255,92,92,.6); }
+  .wsim-prio[data-p="2"] { color: var(--neon-amber); border-color: rgba(255,184,0,.55); }
+  .wsim-demand { font: 0.62rem var(--font-mono); width: 100%; min-width: 0; background: #06131d; color: var(--fg); border: 1px solid var(--line-bright); border-radius: 4px; padding: 0.24rem 0.3rem; }
+  .wsim-lamp { display: block; height: 0.72rem; border-radius: 3px; border: 1px solid var(--line-bright); background: #02090f; transition: all .12s; }
+  .wsim-lamp.on { background: #3ec7ff; border-color: #3ec7ff; box-shadow: 0 0 10px rgba(62,199,255,.65); }
+  .wsim-lamp.ack { background: var(--neon-green); border-color: var(--neon-green); box-shadow: 0 0 10px rgba(0,255,136,.6); }
+  .wsim-lamp.bad { background: #ff5c5c; border-color: #ff5c5c; box-shadow: 0 0 12px rgba(255,92,92,.8); }
+  .wsim-zc { color: var(--fg); text-align: right; font-weight: 700; }
+  .wsim-plant-head { display: flex; justify-content: space-between; align-items: baseline; color: var(--fg-dim); font-size: 0.56rem; letter-spacing: 0.1em; }
+  .wsim-plant-head b { color: #3ec7ff; font-size: 0.95rem; }
+  .wsim input[type="range"] { width: 100%; accent-color: #3ec7ff; margin: 0.3rem 0 0.45rem; }
+  .wsim-plant-toggles { display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; }
+  .wsim-toggle { font: 700 0.56rem var(--font-mono); letter-spacing: 0.05em; padding: 0.28rem 0.5rem; border-radius: 4px; cursor: pointer; border: 1px solid var(--line-bright); background: rgba(255,255,255,0.03); color: var(--fg-dim); }
+  .wsim-toggle.on { background: rgba(62, 199, 255, 0.15); border-color: #3ec7ff; color: #3ec7ff; }
+  .wsim-flags { display: flex; gap: 0.35rem; margin-top: 0.5rem; flex-wrap: wrap; }
+  .wsim-flag { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.22rem 0.5rem; border-radius: 3px; border: 1px solid var(--line-bright); color: var(--fg-dim); }
+  .wsim-flag.on { background: rgba(255, 184, 0, 0.16); border-color: var(--neon-amber); color: var(--neon-amber); box-shadow: 0 0 8px rgba(255,184,0,.3); }
+  .wsim-flag.on.ok { background: rgba(0, 255, 136, 0.14); border-color: var(--neon-green); color: var(--neon-green); box-shadow: 0 0 8px rgba(0,255,136,.3); }
+  .wsim-flag.on.bad { background: rgba(255, 92, 92, 0.16); border-color: #ff5c5c; color: #ff5c5c; }
+  .wsim-timer { height: 0.5rem; border: 1px solid rgba(62,199,255,.35); border-radius: 3px; background: #02090f; overflow: hidden; margin-top: 0.5rem; }
+  .wsim-timer div { height: 100%; width: 0%; background: linear-gradient(90deg, #1d7fb8, #3ec7ff); transition: width .1s linear; }
+  .wsim-counters { display: flex; justify-content: space-between; margin-top: 0.4rem; font-size: 0.6rem; }
+  .wsim-counters b { color: #fff; }
+  .wsim-controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+  .wsim-presets { display: flex; gap: 0.3rem; align-items: center; flex-wrap: wrap; color: var(--fg-dim); font-size: 0.55rem; letter-spacing: 0.08em; }
+  .wsim-preset { font: 700 0.55rem var(--font-mono); padding: 0.26rem 0.5rem; border-radius: 4px; cursor: pointer; border: 1px solid rgba(62,199,255,.4); background: rgba(62,199,255,.07); color: #3ec7ff; }
+  .wsim-preset:hover { background: rgba(62,199,255,.18); }
+  .wsim-log { border: 1px dashed rgba(62,199,255,.28); border-radius: 5px; background: rgba(2, 8, 13, 0.9); padding: 0.45rem 0.55rem; height: 74px; overflow-y: auto; font-size: 0.58rem; line-height: 1.55; color: var(--fg-dim); }
+  .wsim-log b { color: #3ec7ff; }
+  .wsim-log .g { color: var(--neon-green); }
+  .wsim-log .a { color: var(--neon-amber); }
   /* ─────────────────────────────────────────────────────────────
      FLAGSHIP FEATURED PROJECTS (PIPECORE-GDS & APEX NEURALEDGE)
      ───────────────────────────────────────────────────────────── */
@@ -1105,56 +1184,6 @@
   .proj-btn .arrow { transition: transform 0.3s; }
   .proj-btn.open .arrow { transform: rotate(180deg); }
   /* ─────────────────────────────────────────────────────────────
-     INTERACTIVE SILICON WORKBENCH / LOGIC LAB
-     ───────────────────────────────────────────────────────────── */
-  .workbench-box {
-    border: 1px solid var(--line); background: var(--bg-card); border-radius: 12px;
-    padding: clamp(1.4rem, 3vw, 2.4rem); position: relative; overflow: hidden;
-  }
-  .workbench-header {
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.6rem;
-  }
-  .wb-circuit-select { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .wb-btn {
-    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600;
-    padding: 0.45rem 0.85rem; border-radius: 4px; border: 1px solid var(--line-bright);
-    background: rgba(255, 255, 255, 0.02); color: var(--fg-muted); cursor: pointer; transition: all 0.2s;
-  }
-  .wb-btn:hover { color: #fff; border-color: var(--neon-cyan); }
-  .wb-btn.active { color: #030708; background: var(--neon-cyan); border-color: var(--neon-cyan); box-shadow: 0 0 14px var(--cyan-glow); }
-  .wb-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.6rem; }
-  @media (max-width: 780px) { .wb-grid { grid-template-columns: 1fr; } }
-  
-  .wb-schematic-pane {
-    background: #030708; border: 1px solid var(--line-bright); border-radius: 8px;
-    padding: 1.2rem; min-height: 250px; display: flex; flex-direction: column; justify-content: space-between;
-  }
-  .wb-switches { display: flex; gap: 1.2rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
-  .switch-label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--fg-muted); display: flex; align-items: center; gap: 0.5rem; }
-  .toggle-switch {
-    width: 44px; height: 22px; background: #132223; border-radius: 999px; position: relative;
-    cursor: pointer; transition: background 0.2s; border: 1px solid var(--line-bright);
-  }
-  .toggle-switch.on { background: var(--neon-green); border-color: var(--neon-green); box-shadow: 0 0 10px var(--phosphor-glow); }
-  .toggle-switch .knob {
-    width: 16px; height: 16px; border-radius: 50%; background: #fff; position: absolute;
-    top: 2px; left: 3px; transition: transform 0.2s;
-  }
-  .toggle-switch.on .knob { transform: translateX(22px); background: #030708; }
-  #gateCanvas { width: 100%; height: 150px; display: block; }
-  .wb-table-pane {
-    background: #030708; border: 1px solid var(--line-bright); border-radius: 8px;
-    padding: 1.2rem; font-family: var(--font-mono); font-size: 0.76rem;
-  }
-  .wb-table-pane table { width: 100%; border-collapse: collapse; text-align: center; }
-  .wb-table-pane th {
-    padding: 0.5rem; color: var(--neon-cyan); border-bottom: 1px solid var(--line-bright); font-size: 0.68rem;
-  }
-  .wb-table-pane td { padding: 0.5rem; color: var(--fg-muted); border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
-  .wb-table-pane tr.active-row td {
-    background: rgba(0, 255, 136, 0.12); color: var(--neon-green); font-weight: 700;
-  }
-  /* ─────────────────────────────────────────────────────────────
      TIMELINE / EXPERIENCE SECTION
      ───────────────────────────────────────────────────────────── */
   .clk { position: relative; padding-left: 2.6rem; }
@@ -1329,7 +1358,6 @@
       <li><a href="#about" class="magnetic">ABOUT</a></li>
       <li><a href="#skills" class="magnetic">SKILLS</a></li>
       <li><a href="#projects" class="magnetic">PROJECTS</a></li>
-      <li><a href="#workbench" class="magnetic">WORKBENCH</a></li>
       <li><a href="#experience" class="magnetic">TIMELINE</a></li>
       <li><a href="#contact" class="magnetic">CONTACT</a></li>
       <li>
@@ -1353,20 +1381,20 @@
         </div>
         <h1 id="heroTitle">Akif Mohamed <i>J</i></h1>
         <div class="hero-title-sub reveal">
-          <span>◈ Bidirectional AES-128 SoC</span>
+          <span>◈ Smart Water Scheduler → GDSII</span>
           <span>·</span>
-          <span>VELTRAXX'26 · PS16 Wildcard</span>
+          <span>ChipCraft 3.0 · LOGIC DUO</span>
           <span>·</span>
-          <span>FPGA Hardware Validation</span>
+          <span>SAED32 · 100 MHz MET</span>
         </div>
         <p class="intro reveal">
-          Final-year Electronics &amp; Communication Engineering student at <b>GCE Srirangam (2023–2027)</b>, focused on <b>VLSI physical design and secure hardware</b>. Most recently, as team lead of <b>QuadraX</b>, I delivered a <b>bidirectional AES-128 Crypto SoC for the VELTRAXX'26 National Design Challenge (PS16 Wildcard)</b>—shared Galois-field S-Box/InvS-Box, AMBA AXI4-Lite memory map and active fault-tamper detection with 1-cycle key zeroization, verified 9/9 against NIST vectors and demonstrated end-to-end on a Basys3. Before that, I led the physical implementation, design-for-test and FPGA validation of an AES-128 Crypto Accelerator SoC—Sky130 floorplan through nine-corner signoff, 745/745 scan-cell mapping plus a March C⁻ memory BIST, then Basys3 proof against four NIST known-answer vectors. <b>Seeking internship or full-time roles in Physical Design, ASIC/SoC, DFT, FPGA, or hardware security.</b>
+          Final-year ECE undergraduate at <b>GCE Srirangam (2023–2027)</b> who takes silicon from <b>RTL to GDSII</b>. Latest: as <b>Team LOGIC DUO</b> at the <b>ChipCraft 3.0 hackathon</b>, a <b>Smart Water Distribution Scheduler</b> carried from Verilog through VCS, Design Compiler and ICC2 to a <b>clean SAED32 GDSII</b> — 13/13 test groups, <b>+3.07 ns post-route slack, 0 DRC</b>. Before that: lead of the <b>QuadraX bidirectional AES-128 SoC</b> (VELTRAXX'26 PS16 — shared GF S-Box, AXI4-Lite, 1-cycle fault zeroization, 9/9 NIST, Basys3-proven) and owner of physical design, DFT &amp; FPGA validation for a <b>Sky130 AES-128 accelerator</b> (745/745 scan, 9-corner signoff, 4/4 NIST measured on hardware). <b>Seeking internship or full-time roles in Physical Design, ASIC/SoC, DFT, FPGA, or hardware security.</b>
         </p>
         <!-- Telemetry Matrix -->
         <div class="hero-specs reveal">
           <div class="hero-spec-item">
             <div class="hero-spec-label">Newest Silicon Project</div>
-            <div class="hero-spec-val">QuadraX AES-128 <span>[VELTRAXX'26 · PS16]</span></div>
+            <div class="hero-spec-val">Water Sched GDSII <span>[ChipCraft 3.0 · LOGIC DUO]</span></div>
           </div>
           <div class="hero-spec-item cyan">
             <div class="hero-spec-label">NIST Regression</div>
@@ -1383,7 +1411,6 @@
         </div>
         <div class="cta-row reveal">
           <a class="btn magnetic" href="#projects">★ VIEW PROJECTS</a>
-          <a class="btn cyan magnetic" href="#workbench">⚡ LOGIC LAB</a>
           <a class="btn ghost magnetic" href="#contact">◈ TRANSMIT LINK</a>
         </div>
       </div>
@@ -1396,7 +1423,7 @@
           <div class="hud-bracket br"></div>
           <div class="crt-head">
             <span>CHIP_TELEMETRY: AKIF_J</span>
-            <span>SKY130 · AES-128 · 50MHz LOCK</span>
+            <span>SAED32 · SKY130 · 100MHz MET</span>
           </div>
           <div class="crt-window">
             <div class="crt-scanner"></div>
@@ -1455,13 +1482,17 @@
           <span class="pill highlight">ASIC / RTL→GDS</span>
         </div>
         <h3>VLSI Physical Design &amp; Crypto RTL</h3>
-        <span class="chip-sub">OpenLane 2 &amp; SkyWater Sky130A</span>
-        <p class="chip-desc">Full RTL-to-GDSII implementation for compute and AES-128 hardware: floorplanning, placement, CTS, routing, timing closure, netlist-level DFT insertion, SPEF power analysis, and physical signoff.</p>
+        <span class="chip-sub">Synopsys DC + ICC2 (SAED32) · OpenLane 2 &amp; SkyWater Sky130A</span>
+        <p class="chip-desc">Full RTL-to-GDSII implementation on two flows: Synopsys Design Compiler + ICC2 on SAED 32 nm (hackathon water-scheduler GDSII, +3.07 ns post-route, 0 DRC) and OpenLane 2 on SkyWater 130 nm for compute and AES-128 hardware — floorplanning, placement, CTS, routing, timing closure, netlist-level DFT insertion, SPEF power analysis, and physical signoff.</p>
         <div class="pill-row">
+          <span class="pill highlight">Design Compiler</span>
+          <span class="pill highlight">ICC2 (PnR → GDSII)</span>
+          <span class="pill highlight">SAED32 32 nm</span>
+          <span class="pill highlight">Synopsys VCS</span>
           <span class="pill highlight">OpenLane 2</span>
           <span class="pill highlight">Sky130A PDK</span>
           <span class="pill highlight">Verilog HDL</span>
-          <span class="pill highlight">AES-128 SoC</span>
+          <span class="pill">Gate-Level Sim</span>
           <span class="pill">Yosys (Synth)</span>
           <span class="pill">OpenROAD (PnR)</span>
           <span class="pill">OpenSTA (9 Corners)</span>
@@ -1596,8 +1627,262 @@
   <section id="projects">
     <div class="module-tag reveal">MODULE_04 // CRYPTO_SILICON &amp; HARDWARE_LAB</div>
     <h2 class="reveal">Featured Projects</h2>
-    <p class="lede reveal">From NIST-verified crypto silicon and timing-clean GDSII to an honestly documented pre-layout PCB architecture and embedded hardware systems.</p>
-    <!-- ★ FLAGSHIP PROJECT 00: VELTRAXX'26 PS16 — QUADRAX BIDIRECTIONAL AES-128 SOC -->
+    <p class="lede reveal">From a hackathon-proven SAED32 RTL→GDSII water scheduler and NIST-verified crypto silicon to an honestly documented pre-layout PCB architecture and embedded hardware systems.</p>
+    <!-- ★ FLAGSHIP PROJECT 00: CHIPCRAFT 3.0 — TEAM LOGIC DUO SMART WATER DISTRIBUTION SCHEDULER (SAED32 RTL→GDSII) -->
+    <article class="flagship-card logicduo-theme reveal" id="logicduoCard">
+      <div class="flagship-ribbon">
+        <div class="ribbon-badges">
+          <span class="ribbon-tag star" style="background:#3ec7ff; box-shadow:0 0 14px rgba(62,199,255,.5); color:#04121c;">★ CHIPCRAFT 3.0 HACKATHON · PS32</span>
+          <span class="ribbon-tag pdk" style="background:rgba(0,255,136,.1); border-color:var(--neon-green); color:var(--neon-green);">TEAM LOGIC DUO · GCE SRIRANGAM</span>
+          <span class="ribbon-tag" style="background:rgba(62,199,255,.12); border:1px solid #3ec7ff; color:#3ec7ff;">RTL → GDSII · SAED32 32 nm</span>
+          <span class="ribbon-tag" style="background:rgba(0,240,255,.1); border:1px solid var(--neon-cyan); color:var(--neon-cyan);">13/13 GROUPS · 35 CHECKS</span>
+          <span class="ribbon-tag timing">+3.07 ns POST-ROUTE · 0 DRC</span>
+        </div>
+        <a href="https://github.com/akifmohamed/chipcraft3.0-logic_duo" target="_blank" rel="noopener" class="github-link-btn magnetic" aria-label="View LOGIC DUO water scheduler source and evidence on GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          chipcraft3.0-logic_duo ↗
+        </a>
+      </div>
+      <div class="flagship-body">
+        <div class="flagship-info">
+          <div class="project-eyebrow">LOGIC DUO // CHIPCRAFT 3.0 RTL-TO-PHYSICAL-DESIGN HACKATHON — KARE · IEEE EDS / SSCS / IETE · PS32</div>
+          <h3>Smart Water Distribution Scheduler — RTL → GDSII</h3>
+          <div class="flagship-subtitle">One-hot valve arbitration · emergency pre-emption · skip-to-fit policy · SAED32 floorplan-to-GDSII on Synopsys DC + ICC2</div>
+          <p class="flagship-desc">
+            Four city zones share <b>one supply line</b>: every clock, the chip decides who gets water. A two-pass combinational arbiter opens <b>exactly one valve</b> (one-hot, conflict-free in every run), lets <b>priority-3 Emergency zones jump the queue</b>, and — our innovation — <b>skips-to-fit</b>: when the winning request exceeds available supply the controller serves a smaller zone that <i>does</i> fit instead of stalling the city, while a live <code>insufficient</code> flag tracks the blocked zone. The frozen 223-line RTL passed <b>13/13 self-checking groups (35 checks)</b> in an official VCS lab regression, then went through <b>Design Compiler</b> (+5.71 ns WNS at the ss/0.95 V/125 °C corner) and <b>ICC2</b> floorplan → place → CTS → route to a <b>signoff-clean 32 nm GDSII</b>: +3.07 ns post-route slack, 0 hold violations, 0 DRCs, 0.03 ns skew.
+          </p>
+          <div class="project-role-note">
+            <b>Team LOGIC DUO:</b> Akif Mohamed J (RTL design, verification, synthesis &amp; physical-design flow) · Nandikha M (verification, documentation, presentation) — ChipCraft 3.0 hackathon at KARE, Kalasalingam Academy of Research and Education (IEEE EDS / SSCS / IETE), Problem Statement #32, SAED 32 nm educational PDK.
+          </div>
+          <div class="metrics-hud">
+            <div class="metric-box glow-cyan">
+              <div class="metric-label">Post-Route WNS</div>
+              <div class="metric-val cyan">+3.07 <span>ns · ICC2 · 100 MHz</span></div>
+            </div>
+            <div class="metric-box glow-green">
+              <div class="metric-label">Synthesis WNS</div>
+              <div class="metric-val">+5.71 <span>ns · DC · ss corner</span></div>
+            </div>
+            <div class="metric-box glow-cyan">
+              <div class="metric-label">Cell Area</div>
+              <div class="metric-val cyan">1,794.26 <span>µm² routed · 1,758.68 synth</span></div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-label">Post-Route Power</div>
+              <div class="metric-val amber">89.7 <span>µW ICC2 · 160.81 µW DC</span></div>
+            </div>
+            <div class="metric-box glow-green">
+              <div class="metric-label">Valve Conflicts</div>
+              <div class="metric-val">0 <span>one-hot · 88 transitions</span></div>
+            </div>
+            <div class="metric-box" style="border-color:rgba(62,199,255,.42);">
+              <div class="metric-label">Regression</div>
+              <div class="metric-val" style="color:#3ec7ff;">13 / 13 <span>groups · 35 checks</span></div>
+            </div>
+          </div>
+          <div class="evidence-strip" aria-label="LOGIC DUO water scheduler verification evidence">
+            <div class="evidence-item"><span class="evidence-label">VCS LAB RUN</span><span class="evidence-value">25 SEP 2026 <i>PASS · errors=0</i></span></div>
+            <div class="evidence-item"><span class="evidence-label">GDSII</span><span class="evidence-value">505 KB <i>ICC2 routed</i></span></div>
+            <div class="evidence-item"><span class="evidence-label">VCD AUDIT</span><span class="evidence-value">8 / 8 <i>one-hot · counters</i></span></div>
+            <div class="evidence-item"><span class="evidence-label">GATE-LEVEL SIM</span><span class="evidence-value">31 / 36 <i>5 TB-param artifacts</i></span></div>
+          </div>
+          <div style="display:flex; gap:.8rem; flex-wrap:wrap;">
+            <button class="btn ghost sm magnetic proj-btn-inline" data-drawer="drawerLogicDuo" style="color:#3ec7ff; border-color:rgba(62,199,255,.45);">◈ VIEW ROUNDS &amp; EVIDENCE ▾</button>
+          </div>
+        </div>
+        <div class="sim-container" aria-label="Interactive LOGIC DUO water scheduler project console">
+          <div class="sim-nav" role="tablist" aria-label="LOGIC DUO project views">
+            <button class="sim-tab-btn active" data-tab="tab-wsim" role="tab">⚡ LIVE SCHEDULER</button>
+            <button class="sim-tab-btn" data-tab="tab-wgds" role="tab">◈ GDSII CHIP</button>
+            <button class="sim-tab-btn" data-tab="tab-wzoom" role="tab">⌕ ROUTED DETAIL</button>
+            <button class="sim-tab-btn" data-tab="tab-wwave" role="tab">~ VCS WAVEFORM</button>
+            <button class="sim-tab-btn" data-tab="tab-wsign" role="tab">✓ SIGNOFF REPORT</button>
+          </div>
+          <!-- Tab 1: RTL-exact interactive model of water_sched.v -->
+          <div class="sim-view-pane wsim-pane active" id="tab-wsim" role="tabpanel">
+            <div class="wsim" id="wsimPanel">
+              <div class="wsim-head">
+                <span class="wsim-title">WATER_SCHED // LIVE FSM + TWO-PASS ARBITER (RTL-EXACT MODEL OF rtl/water_sched.v)</span>
+                <span class="wsim-state" id="wsimState" data-st="0">IDLE</span>
+              </div>
+              <div class="wsim-grid">
+                <div class="wsim-zones">
+                  <div class="wsim-zone-head"><span>ZONE</span><span>REQ</span><span>PRIO</span><span>DEMAND</span><span>VALVE</span><span>ACK</span><span>CYC</span></div>
+                  <div class="wsim-zone-row" data-z="0">
+                    <span class="wsim-zname">Z0</span>
+                    <button class="wsim-req on" data-z="0" aria-label="Zone 0 request">REQ</button>
+                    <select class="wsim-prio" data-z="0" data-p="1" aria-label="Zone 0 priority"><option value="0">LOW</option><option value="1" selected>MED</option><option value="2">HIGH</option><option value="3">EMERG</option></select>
+                    <input type="number" class="wsim-demand" data-z="0" min="0" max="255" value="40" aria-label="Zone 0 demand">
+                    <span class="wsim-lamp" data-l="v0"></span>
+                    <span class="wsim-lamp" data-l="a0"></span>
+                    <span class="wsim-zc" data-z="0">0</span>
+                  </div>
+                  <div class="wsim-zone-row" data-z="1">
+                    <span class="wsim-zname">Z1</span>
+                    <button class="wsim-req" data-z="1" aria-label="Zone 1 request">REQ</button>
+                    <select class="wsim-prio" data-z="1" data-p="0" aria-label="Zone 1 priority"><option value="0" selected>LOW</option><option value="1">MED</option><option value="2">HIGH</option><option value="3">EMERG</option></select>
+                    <input type="number" class="wsim-demand" data-z="1" min="0" max="255" value="25" aria-label="Zone 1 demand">
+                    <span class="wsim-lamp" data-l="v1"></span>
+                    <span class="wsim-lamp" data-l="a1"></span>
+                    <span class="wsim-zc" data-z="1">0</span>
+                  </div>
+                  <div class="wsim-zone-row" data-z="2">
+                    <span class="wsim-zname">Z2</span>
+                    <button class="wsim-req" data-z="2" aria-label="Zone 2 request">REQ</button>
+                    <select class="wsim-prio" data-z="2" data-p="2" aria-label="Zone 2 priority"><option value="0">LOW</option><option value="1">MED</option><option value="2" selected>HIGH</option><option value="3">EMERG</option></select>
+                    <input type="number" class="wsim-demand" data-z="2" min="0" max="255" value="90" aria-label="Zone 2 demand">
+                    <span class="wsim-lamp" data-l="v2"></span>
+                    <span class="wsim-lamp" data-l="a2"></span>
+                    <span class="wsim-zc" data-z="2">0</span>
+                  </div>
+                  <div class="wsim-zone-row" data-z="3">
+                    <span class="wsim-zname">Z3</span>
+                    <button class="wsim-req" data-z="3" aria-label="Zone 3 request">REQ</button>
+                    <select class="wsim-prio" data-z="3" data-p="3" aria-label="Zone 3 priority"><option value="0">LOW</option><option value="1">MED</option><option value="2">HIGH</option><option value="3" selected>EMERG</option></select>
+                    <input type="number" class="wsim-demand" data-z="3" min="0" max="255" value="150" aria-label="Zone 3 demand">
+                    <span class="wsim-lamp" data-l="v3"></span>
+                    <span class="wsim-lamp" data-l="a3"></span>
+                    <span class="wsim-zc" data-z="3">0</span>
+                  </div>
+                </div>
+                <div class="wsim-plant">
+                  <div class="wsim-plant-head"><span>SUPPLY_AVAIL [7:0]</span><b id="wsimSupplyVal">120</b></div>
+                  <input type="range" id="wsimSupply" min="0" max="255" value="120" aria-label="Supply available">
+                  <div class="wsim-plant-toggles">
+                    <button class="wsim-toggle on" id="wsimValidBtn">SUPPLY_VALID</button>
+                    <button class="wsim-toggle" id="wsimStrictBtn">STRICT_PRIO=0</button>
+                    <select class="wsim-prio" id="wsimServeSel" aria-label="Serve cycles parameter"><option value="16" selected>SERVE=16</option><option value="4">SERVE=4 (TB)</option></select>
+                  </div>
+                  <div class="wsim-flags">
+                    <span class="wsim-flag" id="wsimInsuff">INSUFFICIENT</span>
+                    <span class="wsim-flag" id="wsimBusy">BUSY</span>
+                    <span class="wsim-flag ok on" id="wsimOnehot">ONE-HOT ✓</span>
+                  </div>
+                  <div class="wsim-timer" aria-label="Serve timer"><div id="wsimTimerFill"></div></div>
+                  <div class="wsim-counters"><span>CYCLES_DONE <b id="wsimCycles">0</b></span><span>CLK <b id="wsimClk">0</b></span></div>
+                </div>
+              </div>
+              <div class="wsim-controls">
+                <button class="btn sm magnetic" id="wsimStepBtn">⏱ STEP CLOCK</button>
+                <button class="btn cyan sm magnetic" id="wsimRunBtn">▶ AUTO-RUN</button>
+                <button class="btn ghost sm magnetic" id="wsimResetBtn">⟲ ASYNC RESET</button>
+                <span class="wsim-presets">SCENARIOS:
+                  <button class="wsim-preset" data-p="skip">SKIP-TO-FIT</button>
+                  <button class="wsim-preset" data-p="emerg">EMERGENCY JUMP</button>
+                  <button class="wsim-preset" data-p="wait">SHORTAGE → WAIT</button>
+                  <button class="wsim-preset" data-p="strict">STRICT BLOCK</button>
+                </span>
+              </div>
+              <div class="wsim-log" id="wsimLog" aria-live="polite"></div>
+            </div>
+          </div>
+          <!-- Tab 2: Authentic ICC2 layout of the routed chip -->
+          <div class="sim-view-pane" id="tab-wgds" role="tabpanel">
+            <div class="silicon-media contain">
+              <img src="chipcraft-gds-full.png" loading="lazy" decoding="async" alt="ICC2 layout of the routed SAED32 water scheduler chip with a net query on cycles_done[2]">
+              <div class="silicon-media-caption"><b>ICC2 · SAED32 1P9M ROUTED CHIP</b><span>net query: cycles_done[2] · M2 · 0.056 µm</span></div>
+            </div>
+          </div>
+          <!-- Tab 3: Routed standard-cell detail with voltage-area query -->
+          <div class="sim-view-pane" id="tab-wzoom" role="tabpanel">
+            <div class="silicon-media contain">
+              <img src="chipcraft-gds-zoom.png" loading="lazy" decoding="async" alt="Zoomed ICC2 view of routed SAED32 standard cells, rails and vias with a voltage-area query">
+              <div class="silicon-media-caption"><b>ROUTED CELLS · SAED32 RVT</b><span>DFFARX1 / OA21X1 · voltage-area query · M2–M4 metal</span></div>
+            </div>
+          </div>
+          <!-- Tab 4: Authentic VCS lab waveform -->
+          <div class="sim-view-pane" id="tab-wwave" role="tabpanel">
+            <div class="silicon-media contain">
+              <img src="chipcraft-vcs-wave.png" loading="lazy" decoding="async" alt="GTKWave trace of the lab VCS run: valve_open one-hot pulses, grant_ack, insufficient and WAIT states">
+              <div class="silicon-media-caption"><b>VCS LAB 25 SEP 2026 · 5546 ns</b><span>WAIT + insufficient → skip-to-fit serve → ack</span></div>
+            </div>
+          </div>
+          <!-- Tab 4: Signoff console sourced from results/synth and results/pnr reports -->
+          <div class="sim-view-pane" id="tab-wsign" role="tabpanel">
+            <div class="signoff-console">
+              <div class="signoff-console-head"><span>DC W-2024.09-SP5-3 // saed32 ss0p95v125c · 10 ns</span><b>CONSTRAINTS MET</b></div>
+              <div class="signoff-row"><span>SYNTH WNS / TNS</span><strong>+5.71 ns / 0.00</strong><i class="signoff-pass">MET</i></div>
+              <div class="signoff-row"><span>SYNTH CELLS / AREA</span><strong>548 / 1,758.68 µm²</strong><i class="signoff-pass">MAPPED</i></div>
+              <div class="signoff-row"><span>SYNTH POWER (ss, WLM)</span><strong>160.81 µW</strong><i class="signoff-pass">74.83 dyn + 85.98 leak</i></div>
+              <div class="signoff-console-head"><span>ICC2 X-2025.06-SP1 // POST-ROUTE · REAL RC + CTS</span><b>0 VIOLATIONS</b></div>
+              <div class="signoff-row"><span>ROUTE WNS in2reg / r2r / r2out</span><strong>+3.07 / +5.04 / +6.73 ns</strong><i class="signoff-pass">MET</i></div>
+              <div class="signoff-row"><span>HOLD / DRC / LEGALITY</span><strong>0 / 0 / succeeded</strong><i class="signoff-pass">CLEAN</i></div>
+              <div class="signoff-row"><span>SKEW / CELLS / AREA</span><strong>0.03 ns / 557 / 1,794.26 µm²</strong><i class="signoff-pass">ROUTED</i></div>
+              <div class="signoff-row"><span>GLS (ROUTED NETLIST)</span><strong>31 PASS / 5 explained</strong><i class="signoff-pass">TB-param artifacts</i></div>
+              <div class="signoff-console-foot"><span>SOURCE: results/synth/*.rpt · results/pnr/*.rpt · water_sched.gds</span><b>GDSII SHIPPED</b></div>
+            </div>
+          </div>
+          <div class="sim-facts">
+            <div class="sim-facts-head">◈ PPA &amp; VERIFICATION NUMBERS · 100 MHz · SAED32 RVT</div>
+            <div class="sim-facts-grid">
+              <div><span>TEST GROUPS</span><b>13 / 13 · 35 checks</b></div>
+              <div><span>VCS LAB</span><b>PASS · onehot_bad=0</b></div>
+              <div><span>VCD AUDIT</span><b>8 / 8 independent</b></div>
+              <div><span>DC WNS</span><b>+5.71 ns MET</b></div>
+              <div><span>DC AREA / PWR</span><b>1,758.68 µm² · 160.81 µW</b></div>
+              <div><span>ICC2 WNS</span><b>+3.07 ns MET</b></div>
+              <div><span>ICC2 AREA / PWR</span><b>1,794.26 µm² · 89.7 µW</b></div>
+              <div><span>FLIP-FLOPS</span><b>122 · 1 clock domain</b></div>
+              <div><span>NET LENGTH</span><b>8,011 µm routed</b></div>
+            </div>
+          </div>
+          <div class="sim-tools">
+            <div class="sim-facts-head">◈ TOOLCHAIN</div>
+            <div class="pill-row" style="margin-bottom:0;">
+              <span class="pill" style="color:#3ec7ff; border-color:rgba(62,199,255,.42);">SAED32 32 nm</span>
+              <span class="pill highlight">Verilog HDL</span>
+              <span class="pill highlight">Synopsys VCS</span>
+              <span class="pill highlight">Design Compiler</span>
+              <span class="pill highlight">ICC2</span>
+              <span class="pill cyan">Icarus Verilog 12.0</span>
+              <span class="pill cyan">GTKWave</span>
+              <span class="pill">SDC 100 MHz</span>
+              <span class="pill">Gate-Level Sim</span>
+              <span class="pill">VCD Audit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-drawer" id="drawerLogicDuo">
+        <div class="proj-drawer-inner">
+          <span class="logic-title" style="color:#3ec7ff;">◈ CHIPCRAFT 3.0 PS32 // ROUND-BY-ROUND FLOW, INNOVATION &amp; SIGNOFF EVIDENCE</span>
+          <div class="flow-steps-grid">
+            <div class="flow-step-item wt"><b>01. PS32 BRIEF</b>4 zones · 1 supply line</div>
+            <div class="flow-step-item wt"><b>02. RTL FREEZE</b>water_sched.v · 223 LOC</div>
+            <div class="flow-step-item"><b>03. 13-GROUP TB</b>35 self-checks · 2 DUTs</div>
+            <div class="flow-step-item"><b>04. VCS LAB</b>25 Sep · PASS · 5546 ns</div>
+            <div class="flow-step-item"><b>05. VCD AUDIT</b>8/8 · no simulator</div>
+            <div class="flow-step-item cyan"><b>06. DC SYNTH</b>+5.71 ns · 1,758.68 µm²</div>
+            <div class="flow-step-item cyan"><b>07. ICC2 P&amp;R</b>floorplan → CTS → route</div>
+            <div class="flow-step-item"><b>08. GDSII</b>0 DRC · skew 0.03 ns</div>
+            <div class="flow-step-item"><b>09. GLS</b>routed netlist equivalence</div>
+          </div>
+          <div class="project-deep-grid">
+            <div>
+              <ol>
+                <li><b>One-hot valve safety:</b> the valve bus is decoded one-hot and re-checked by a continuous testbench monitor (<code>onehot_bad</code>) <i>and</i> independently in a simulator-free VCD audit — <b>zero conflicts</b> across all 83 main + 5 strict-policy valve transitions. A started serve always finishes: no mid-flush abort.</li>
+                <li><b>Priority + emergency pre-emption:</b> among zones that fit the current supply, highest <code>zone_prio</code> wins and ties break to the lowest index; priority-3 Emergency requests jump the queue at the next arbitration.</li>
+                <li><b>Skip-to-fit — the team's innovation:</b> if the highest-priority request does <i>not</i> fit <code>supply_avail</code>, the controller does not stall the city: it serves a smaller zone that does fit while the live <code>insufficient</code> flag stays high for the blocked zone. No request is ever dropped — the stuck zone is served the moment supply allows.</li>
+                <li><b>Configurable policy:</b> <code>STRICT_PRIO</code> parameter — 0 = work-conserving skip-to-fit (shipped config), 1 = strict priority where a stuck high-priority zone blocks all lower zones. Both policies are simulation-proven (T6/T7 vs T13).</li>
+              </ol>
+            </div>
+            <div>
+              <ol start="5">
+                <li><b>Verification depth:</b> 13 self-checking groups (T1–T13), 35 checks, two parameterized DUT instances; official lab VCS regression <b>PASS</b> (25 Sep 2026, <code>errors=0</code>, 5546 ns / 555 clock edges dumped, 41 valve pulses vs 40 acks — the missing ack is the reset-killed serve, explained in the audit); independent VCD re-derivation <b>8/8</b>.</li>
+                <li><b>Synthesis (Design Compiler, ss/0.95 V/125 °C, 10 ns):</b> compile clean — WNS <b>+5.71 ns MET</b>, TNS 0, 0 violating paths, 0 hold violations, 548 cells, <b>1,758.68 µm²</b>, <b>160.81 µW</b>; netlist fully mapped to SAED32 (0 GTECH cells).</li>
+                <li><b>Physical design (ICC2, SAED32 1p9m RVT):</b> floorplan → place → CTS → route → <b>GDSII (505 KB)</b>; WNS <b>+3.07 ns</b> (in2reg), reg2reg +5.04, reg2out +6.73, TNS 0, <b>0 hold, 0 DRC</b>, legality succeeded, skew <b>0.03 ns</b>, 557 cells, 1,794.26 µm², 8,011 µm net; post-route power 89.7 µW with real RC.</li>
+                <li><b>Honest gate-level signoff:</b> 31/36 checks PASS on the routed netlist — the 5 FAILs are testbench-parameter artifacts of a fixed netlist (<code>SERVE_CYCLES=4</code>, <code>NZONES=2</code>, <code>STRICT_PRIO=1</code> overrides cannot apply to a compiled netlist), documented in <code>results/gls/README.md</code>. Antenna checking was not active in ICC2 and is claimed nowhere.</li>
+              </ol>
+            </div>
+          </div>
+          <div style="border-top:1px dashed var(--line); padding-top:.9rem; margin-top:1rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.7rem;">
+            <span style="color:#3ec7ff;">◈ Team LOGIC DUO — Akif Mohamed J (RTL · verification · synth · PD) · Nandikha M (verification · docs · deck) &nbsp;|&nbsp; ChipCraft 3.0 @ KARE</span>
+            <a href="https://github.com/akifmohamed/chipcraft3.0-logic_duo" target="_blank" rel="noopener" style="color:var(--neon-cyan); font-weight:600;">Explore RTL, TB, reports, GDSII &amp; waveforms on GitHub →</a>
+          </div>
+        </div>
+      </div>
+    </article>
+    <!-- ★ FLAGSHIP PROJECT 01: VELTRAXX'26 PS16 — QUADRAX BIDIRECTIONAL AES-128 SOC -->
     <article class="flagship-card veltraxx-theme reveal" id="veltraxxCard">
       <div class="flagship-ribbon">
         <div class="ribbon-badges">
@@ -1786,7 +2071,7 @@
         </div>
       </div>
     </article>
-    <!-- ★ FLAGSHIP PROJECT 01: AES-128 CRYPTO ACCELERATOR SOC -->
+    <!-- ★ FLAGSHIP PROJECT 02: AES-128 CRYPTO ACCELERATOR SOC -->
     <article class="flagship-card crypto-theme reveal" id="aesCard">
       <div class="flagship-ribbon">
         <div class="ribbon-badges">
@@ -2021,7 +2306,7 @@
         </div>
       </div>
     </article>
-    <!-- ★ FLAGSHIP PROJECT 02: PIPECORE-GDS -->
+    <!-- ★ FLAGSHIP PROJECT 03: PIPECORE-GDS -->
     <article class="flagship-card pipecore-theme reveal" id="pipecoreCard">
       <div class="flagship-ribbon">
         <div class="ribbon-badges">
@@ -2270,7 +2555,7 @@
         </div>
       </div>
     </article>
-    <!-- ★ FLAGSHIP PROJECT 03: APEX (NEURALEDGE) 6-LAYER PCB -->
+    <!-- ★ FLAGSHIP PROJECT 04: APEX (NEURALEDGE) 6-LAYER PCB -->
     <article class="flagship-card apex-theme reveal" id="apexCard">
       <div class="flagship-ribbon">
         <div class="ribbon-badges">
@@ -2475,7 +2760,7 @@
           <div class="proj-badge">LIVE SIM</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num">◉ PROJECT_04 // PHYSICAL COMPUTING</div>
+          <div class="proj-num">◉ PROJECT_05 // PHYSICAL COMPUTING</div>
           <h3>Arduino Radar System</h3>
           <p>A real-time ultrasonic object-detection radar using Arduino UNO, HC-SR04 sonar sensor, and a servo motor. Visualized in Processing IDE as a scanning PPI radar display with live distance and polar angle mapping.</p>
           <div class="pill-row">
@@ -2510,7 +2795,7 @@
           <div class="proj-badge">INTERACTIVE KEYPAD</div>
         </div>
         <div class="proj-body">
-          <div class="proj-num">◉ PROJECT_05 // SECURITY FIRMWARE</div>
+          <div class="proj-num">◉ PROJECT_06 // SECURITY FIRMWARE</div>
           <h3>Smart Lock Access Control</h3>
           <p>A password-secured electronic lock utilizing a 4×4 matrix keypad, LCD feedback display, EEPROM credential validation, and a servo-driven mechanical deadbolt mechanism.</p>
           <div class="pill-row">
@@ -2541,80 +2826,37 @@
     </div>
   </section>
   <!-- ─────────────────────────────────────────────────────────────
-       INTERACTIVE SILICON WORKBENCH (LOGIC GATES & OSCILLOSCOPE)
-       ───────────────────────────────────────────────────────────── -->
-  <section id="workbench">
-    <div class="module-tag reveal">MODULE_05 // INTERACTIVE_SILICON_WORKBENCH</div>
-    <h2 class="reveal">Digital Logic <em>&amp;</em> Waveform Lab</h2>
-    <p class="lede reveal">Test fundamental gate primitives and verify truth tables in real time.</p>
-    <div class="workbench-box reveal">
-      <div class="workbench-header">
-        <div>
-          <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--neon-green); font-weight:600;">ACTIVE GATE SIMULATOR</span>
-          <div style="font-size:0.85rem; color:var(--fg-muted);">Click switches A &amp; B below or select a gate primitive.</div>
-        </div>
-        <div class="wb-circuit-select">
-          <button class="wb-btn active magnetic" data-gate="AND">AND (a &amp; b)</button>
-          <button class="wb-btn magnetic" data-gate="OR">OR (a | b)</button>
-          <button class="wb-btn magnetic" data-gate="XOR">XOR (a ^ b)</button>
-          <button class="wb-btn magnetic" data-gate="NAND">NAND (~(a&amp;b))</button>
-          <button class="wb-btn magnetic" data-gate="NOR">NOR (~(a|b))</button>
-          <button class="wb-btn magnetic" data-gate="NOT">NOT (~a)</button>
-        </div>
-      </div>
-      <div class="wb-grid">
-        <!-- Interactive Circuit Schematic & Toggle Switches -->
-        <div class="wb-schematic-pane">
-          <div class="wb-switches">
-            <div class="switch-label">
-              <span>INPUT A:</span>
-              <div class="toggle-switch on" id="switchA"><div class="knob"></div></div>
-              <span id="valA" style="font-family:var(--font-mono); color:var(--neon-green); font-weight:bold;">1</span>
-            </div>
-            <div class="switch-label" id="switchBGroup">
-              <span>INPUT B:</span>
-              <div class="toggle-switch on" id="switchB"><div class="knob"></div></div>
-              <span id="valB" style="font-family:var(--font-mono); color:var(--neon-green); font-weight:bold;">1</span>
-            </div>
-            <div style="margin-left:auto; font-family:var(--font-mono); font-size:0.85rem;">
-              <span style="color:var(--fg-dim);">OUT:</span> <b id="valOut" style="color:var(--neon-green); font-size:1.1rem; text-shadow:0 0 10px var(--phosphor-glow);">1</b>
-            </div>
-          </div>
-          
-          <canvas id="gateCanvas"></canvas>
-        </div>
-        <!-- Real-Time Truth Table -->
-        <div class="wb-table-pane">
-          <div style="color:var(--neon-cyan); font-weight:600; margin-bottom:0.6rem; display:flex; justify-content:space-between;">
-            <span>TRUTH TABLE VERIFICATION</span>
-            <span id="tableGateLabel">GATE: AND</span>
-          </div>
-          <table id="truthTable">
-            <thead>
-              <tr><th>A</th><th>B</th><th>OUTPUT (Y)</th><th>STATE</th></tr>
-            </thead>
-            <tbody>
-              <tr data-row="00"><td>0</td><td>0</td><td>0</td><td>LOW</td></tr>
-              <tr data-row="01"><td>0</td><td>1</td><td>0</td><td>LOW</td></tr>
-              <tr data-row="10"><td>1</td><td>0</td><td>0</td><td>LOW</td></tr>
-              <tr data-row="11" class="active-row"><td>1</td><td>1</td><td>1</td><td>HIGH (ACTIVE)</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ─────────────────────────────────────────────────────────────
        TIMELINE & EXPERIENCE SECTION
        ───────────────────────────────────────────────────────────── -->
   <section id="experience">
-    <div class="module-tag reveal">MODULE_06 // TIMING_DIAGRAM_CLOCK</div>
+    <div class="module-tag reveal">MODULE_05 // TIMING_DIAGRAM_CLOCK</div>
     <h2 class="reveal">Experience <em>&amp;</em> Milestones</h2>
     <p class="lede reveal">Career progression plotted as synchronized rising-edge clock pulses.</p>
     <div class="clk">
       <div class="clk-line"><div class="fill" id="clkFill"></div></div>
       <div class="tick reveal">
-        <div class="rise">R↑ 01 // RISING EDGE 01 — CRYPTO SILICON HARDWARE PROOF</div>
+        <div class="rise">R↑ 01 // RISING EDGE 01 — CHIPCRAFT 3.0 RTL-TO-GDSII HACKATHON</div>
+        <h3>Smart Water Distribution Scheduler — Verilog RTL → SAED32 GDSII (Team LOGIC DUO)</h3>
+        <div class="org">ChipCraft 3.0 · Problem Statement #32 · KARE (Kalasalingam Academy of Research and Education) · IEEE EDS / SSCS / IETE · SAED 32 nm educational PDK</div>
+        <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--neon-cyan); margin-bottom:0.6rem;">
+          ◈ RTL frozen 25.09.2026 · VCS lab PASS 25.09 · DC +5.71 ns 25.09 · ICC2 GDSII +3.07 ns 26.09.2026 · 0 DRC · skew 0.03 ns
+        </div>
+        <p>Designed and implemented a <b>one-hot valve-arbitrated water scheduler</b> for four city zones sharing one supply line: two-pass priority arbiter with <b>emergency pre-emption</b> and our <b>skip-to-fit</b> innovation (a blocked oversized request never stalls the city — a smaller zone that fits is served while a live <code>insufficient</code> flag tracks the shortage), plus a jury-selectable <code>STRICT_PRIO</code> policy. Verified the frozen 223-line RTL with <b>13 self-checking groups / 35 checks</b> and an official lab VCS regression (PASS, 5546 ns dump, independent VCD audit 8/8), then ran the full Synopsys flow: <b>Design Compiler</b> at the ss/0.95 V/125 °C corner (+5.71 ns WNS, 548 cells, 1,758.68 µm², 160.81 µW) and <b>ICC2</b> floorplan → place → CTS → route to a <b>signoff-clean GDSII</b> (+3.07 ns post-route, 0 hold, 0 DRC, legality succeeded, 557 cells, 1,794.26 µm²), closing with an honest gate-level signoff of the routed netlist.</p>
+        <div class="pill-row" style="margin-top:0.75rem;">
+          <span class="pill highlight">RTL → GDSII</span>
+          <span class="pill highlight">SAED32 32 nm</span>
+          <span class="pill highlight">Synopsys VCS</span>
+          <span class="pill highlight">Design Compiler</span>
+          <span class="pill highlight">ICC2</span>
+          <span class="pill cyan">13/13 Groups · 35 Checks</span>
+          <span class="pill cyan">VCD Audit 8/8</span>
+          <span class="pill amber">+3.07 ns Post-Route</span>
+          <span class="pill amber">0 DRC · 0 Hold</span>
+          <span class="pill">Gate-Level Sim</span>
+        </div>
+      </div>
+      <div class="tick reveal">
+        <div class="rise">R↑ 02 // RISING EDGE 02 — CRYPTO SILICON HARDWARE PROOF</div>
         <h3>Physical Design, DFT &amp; FPGA Validation — AES-128 Crypto Accelerator SoC</h3>
         <div class="org">Team Project · Sky130 ASIC Implementation · Digilent Basys3 Demonstration · IEEE paper (VLSIA 2026)</div>
         <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--neon-purple); margin-bottom:0.6rem;">
@@ -2634,7 +2876,7 @@
         </div>
       </div>
       <div class="tick reveal">
-        <div class="rise">R↑ 02 // RISING EDGE 02 — EMBEDDED AI &amp; IOT INTERNSHIP</div>
+        <div class="rise">R↑ 03 // RISING EDGE 03 — EMBEDDED AI &amp; IOT INTERNSHIP</div>
         <h3>Intern — Embedded Systems with AI &amp; IoT</h3>
         <div class="org">NSIC Technical Services Centre (The National Small Industries Corporation Ltd. · A Govt. of India Enterprise)</div>
         <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--neon-amber); margin-bottom:0.6rem;">
@@ -2651,7 +2893,7 @@
         </div>
       </div>
       <div class="tick reveal">
-        <div class="rise">R↑ 03 // RISING EDGE 03 — ASIC / EDA INTERNSHIP</div>
+        <div class="rise">R↑ 04 // RISING EDGE 04 — ASIC / EDA INTERNSHIP</div>
         <h3>VLSI Domain Intern (Remote)</h3>
         <div class="org">InternPe — VLSI Division</div>
         <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--neon-cyan); margin-bottom:0.6rem;">
@@ -2667,7 +2909,7 @@
         </div>
       </div>
       <div class="tick reveal">
-        <div class="rise">R↑ 04 // RISING EDGE 04 — LEADERSHIP &amp; OPERATIONS</div>
+        <div class="rise">R↑ 05 // RISING EDGE 05 — LEADERSHIP &amp; OPERATIONS</div>
         <h3>Overall Coordinator</h3>
         <div class="org">Zentronix '26 — National Level Technical Symposium · GCE Srirangam</div>
         <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--neon-green); margin-bottom:0.6rem;">
@@ -2682,7 +2924,7 @@
         </div>
       </div>
       <div class="tick reveal">
-        <div class="rise">R↑ 05 // RISING EDGE 05 — CERTIFICATIONS &amp; ACCREDITATIONS</div>
+        <div class="rise">R↑ 06 // RISING EDGE 06 — CERTIFICATIONS &amp; ACCREDITATIONS</div>
         <h3>Technical Certifications</h3>
         <div class="org"> NSIC · Xilinx · Cadence · LinkedIn Learning</div>
         <p>Formal accreditations in advanced embedded AI, VLSI architectures, EDA tools, and PCB design.</p>
@@ -2700,7 +2942,7 @@
        CONTACT SECTION & TRANSCEIVER
        ───────────────────────────────────────────────────────────── -->
   <section id="contact">
-    <div class="module-tag reveal">MODULE_07 // COMMUNICATION_PORT</div>
+    <div class="module-tag reveal">MODULE_06 // COMMUNICATION_PORT</div>
     <div class="tx reveal">
       <h2>Get in <em>Touch</em></h2>
       <p>Open to VLSI physical design, ASIC/SoC, FPGA, hardware security, embedded systems, and hardware architecture opportunities. The TX communication link is live.</p>
@@ -2726,7 +2968,7 @@
       <div class="links">
         <button class="link-card magnetic" id="emailCopyBtn" style="cursor:pointer; font-size:0.85rem;">
           <svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <span id="emailText">akifmohamed2217@gmail.com</span>
+          <span id="emailText"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7a1b11131c1715121b171f1e48484b4d3a1d171b131654191517">[email&#160;protected]</a></span>
         </button>
         <a href="https://www.linkedin.com/in/akifmohamed" target="_blank" rel="noopener" class="link-card magnetic">
           <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -2747,7 +2989,7 @@
 <!-- ─────────────────────────────────────────────────────────────
      JAVASCRIPT LOGIC, AUDIO SYNTHESIS & INTERACTIVE SIMULATORS
      ───────────────────────────────────────────────────────────── -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 gsap.registerPlugin(ScrollTrigger);
 var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* ---------- Toast Notification Helper ---------- */
@@ -3081,7 +3323,208 @@ if(!reduced){
   });
 })();
 /* ─────────────────────────────────────────────────────────────
-   FLAGSHIP 00: VELTRAXX'26 PS16 QUADRAX — EVIDENCE TABS
+   FLAGSHIP 00: CHIPCRAFT 3.0 LOGIC DUO — TABS + LIVE WATER-SCHEDULER SIM
+   (cycle-accurate JS model of rtl/water_sched.v: two-pass arbiter + FSM)
+   ───────────────────────────────────────────────────────────── */
+(function(){
+  var card = document.getElementById('logicduoCard');
+  if(!card) return;
+  /* ---- evidence tabs ---- */
+  var tabButtons = card.querySelectorAll('.sim-tab-btn');
+  var panes = card.querySelectorAll('.sim-view-pane');
+  function openLogicDuoTab(targetId){
+    tabButtons.forEach(function(btn){
+      var active = btn.getAttribute('data-tab') === targetId;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    panes.forEach(function(pane){ pane.classList.toggle('active', pane.id === targetId); });
+  }
+  tabButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      openLogicDuoTab(btn.getAttribute('data-tab'));
+      AudioFX.click();
+    });
+  });
+  /* ---- live scheduler: registers of water_sched.v ---- */
+  var ST_IDLE = 0, ST_SERVE = 1, ST_WAIT = 2, ST_DONE = 3;
+  var ST_NAMES = ['IDLE', 'SERVE', 'WAIT', 'DONE'];
+  var NZ = 4;
+  var reg = { state: ST_IDLE, valve: 0, win: 0, timer: 0, cycles: 0, zc: [0,0,0,0], insuff: 0 };
+  var clk = 0;
+  var inp = { req: [1,0,0,0], prio: [1,0,2,3], demand: [40,25,90,150], supply: 120, valid: 1, strict: 0, serve: 16 };
+  var runTimer = null;
+  var $ = function(id){ return document.getElementById(id); };
+  var panel = $('wsimPanel');
+  if(!panel) return;
+  var reqBtns = panel.querySelectorAll('.wsim-req');
+  var prioSels = panel.querySelectorAll('.wsim-prio[data-z]');
+  var demandIns = panel.querySelectorAll('.wsim-demand');
+  var lampsV = [panel.querySelector('[data-l="v0"]'), panel.querySelector('[data-l="v1"]'), panel.querySelector('[data-l="v2"]'), panel.querySelector('[data-l="v3"]')];
+  var lampsA = [panel.querySelector('[data-l="a0"]'), panel.querySelector('[data-l="a1"]'), panel.querySelector('[data-l="a2"]'), panel.querySelector('[data-l="a3"]')];
+  var zcEls = panel.querySelectorAll('.wsim-zc');
+  var stateEl = $('wsimState'), supplyRange = $('wsimSupply'), supplyVal = $('wsimSupplyVal');
+  var validBtn = $('wsimValidBtn'), strictBtn = $('wsimStrictBtn'), serveSel = $('wsimServeSel');
+  var insuffFlag = $('wsimInsuff'), busyFlag = $('wsimBusy'), onehotFlag = $('wsimOnehot');
+  var timerFill = $('wsimTimerFill'), cyclesEl = $('wsimCycles'), clkEl = $('wsimClk'), logEl = $('wsimLog');
+  function popcount(x){ var c = 0; while(x){ c += x & 1; x >>= 1; } return c; }
+  function log(html){
+    var line = document.createElement('div');
+    line.innerHTML = html;
+    logEl.insertBefore(line, logEl.firstChild);
+    while(logEl.children.length > 60) logEl.removeChild(logEl.lastChild);
+  }
+  /* combinational two-pass arbitration, exactly as the RTL */
+  function arbitrate(){
+    var unserved = 0, maxStuck = 0, pick = 0, found = 0, best = 0, i, blocked;
+    for(i = 0; i < NZ; i++){
+      if(inp.req[i] && !(inp.valid && inp.demand[i] <= inp.supply)){
+        unserved = 1;
+        if(inp.prio[i] > maxStuck) maxStuck = inp.prio[i];
+      }
+    }
+    for(i = 0; i < NZ; i++){
+      blocked = inp.strict && unserved && (maxStuck > inp.prio[i]);
+      if(inp.req[i] && inp.valid && inp.demand[i] <= inp.supply && !blocked){
+        if(!found || inp.prio[i] > best){ found = 1; best = inp.prio[i]; pick = 1 << i; }
+      }
+    }
+    return { found: found, pick: pick, unserved: unserved };
+  }
+  function winnerIdx(mask){ for(var i = 0; i < NZ; i++) if(mask & (1 << i)) return i; return -1; }
+  /* one posedge clk */
+  function step(){
+    clk++;
+    var c = arbitrate();
+    var msg = null;
+    if(reg.state === ST_IDLE){
+      reg.valve = 0;
+      if(c.found){
+        reg.win = c.pick; reg.valve = c.pick; reg.timer = inp.serve; reg.state = ST_SERVE;
+        var w = winnerIdx(c.pick);
+        msg = 'clk ' + clk + ': <b>SERVE Z' + w + '</b> prio=' + inp.prio[w] + ' demand=' + inp.demand[w] + ' ≤ supply=' + inp.supply + ' · valve one-hot ' + reg.valve.toString(2).padStart(4, '0');
+      } else if(c.unserved){
+        reg.state = ST_WAIT;
+        msg = 'clk ' + clk + ': <span class="a">WAIT</span> — a zone wants water it cannot get · insufficient ← 1';
+      }
+    } else if(reg.state === ST_SERVE){
+      if(reg.timer <= 1){ reg.timer = 0; reg.valve = 0; reg.state = ST_DONE; }
+      else reg.timer--;
+    } else if(reg.state === ST_DONE){
+      reg.cycles++;
+      var wi = winnerIdx(reg.win);
+      if(wi >= 0) reg.zc[wi]++;
+      msg = 'clk ' + clk + ': <span class="g">grant_ack Z' + wi + '</span> · cycles_done=' + reg.cycles;
+      reg.state = ST_IDLE;
+    } else if(reg.state === ST_WAIT){
+      if(c.found){
+        reg.win = c.pick; reg.valve = c.pick; reg.timer = inp.serve; reg.state = ST_SERVE;
+        var w2 = winnerIdx(c.pick);
+        msg = 'clk ' + clk + ': supply fits → <b>SERVE Z' + w2 + '</b> (demand ' + inp.demand[w2] + ' ≤ ' + inp.supply + ')';
+      } else if(!c.unserved){ reg.state = ST_IDLE; }
+    }
+    reg.insuff = c.unserved;   // registered live shortage flag
+    if(msg) log(msg);
+    render();
+  }
+  function render(){
+    stateEl.textContent = ST_NAMES[reg.state];
+    stateEl.setAttribute('data-st', String(reg.state));
+    for(var i = 0; i < NZ; i++){
+      lampsV[i].className = 'wsim-lamp' + ((reg.valve >> i) & 1 ? ' on' : '');
+      var ack = (reg.state === ST_DONE) ? ((reg.win >> i) & 1) : 0;
+      lampsA[i].className = 'wsim-lamp' + (ack ? ' ack' : '');
+      zcEls[i].textContent = reg.zc[i];
+    }
+    var pc = popcount(reg.valve);
+    onehotFlag.textContent = pc <= 1 ? 'ONE-HOT ✓' : 'ONE-HOT BAD!';
+    onehotFlag.className = 'wsim-flag on ' + (pc <= 1 ? 'ok' : 'bad');
+    lampsV.forEach(function(l){ if(pc > 1) l.classList.add('bad'); });
+    insuffFlag.className = 'wsim-flag' + (reg.insuff ? ' on' : '');
+    busyFlag.className = 'wsim-flag' + (reg.state === ST_SERVE ? ' on ok' : '');
+    timerFill.style.width = (reg.state === ST_SERVE ? Math.round(100 * reg.timer / inp.serve) : 0) + '%';
+    cyclesEl.textContent = reg.cycles;
+    clkEl.textContent = clk;
+  }
+  function readInputs(){
+    reqBtns.forEach(function(b){ inp.req[+b.getAttribute('data-z')] = b.classList.contains('on') ? 1 : 0; });
+    prioSels.forEach(function(s){ var z = +s.getAttribute('data-z'); inp.prio[z] = +s.value; s.setAttribute('data-p', s.value); });
+    demandIns.forEach(function(d){ var v = Math.max(0, Math.min(255, +d.value || 0)); inp.demand[+d.getAttribute('data-z')] = v; });
+    inp.supply = +supplyRange.value;
+    supplyVal.textContent = inp.supply;
+    inp.valid = validBtn.classList.contains('on') ? 1 : 0;
+    inp.strict = strictBtn.classList.contains('on') ? 1 : 0;
+    inp.serve = +serveSel.value;
+  }
+  function syncControls(){
+    supplyRange.value = inp.supply;
+    supplyVal.textContent = inp.supply;
+    reqBtns.forEach(function(b){ b.classList.toggle('on', !!inp.req[+b.getAttribute('data-z')]); });
+    prioSels.forEach(function(s){ s.value = String(inp.prio[+s.getAttribute('data-z')]); s.setAttribute('data-p', String(inp.prio[+s.getAttribute('data-z')])); });
+    demandIns.forEach(function(d){ d.value = inp.demand[+d.getAttribute('data-z')]; });
+    validBtn.classList.toggle('on', !!inp.valid);
+    strictBtn.classList.toggle('on', !!inp.strict);
+    strictBtn.textContent = 'STRICT_PRIO=' + inp.strict;
+    serveSel.value = String(inp.serve);
+  }
+  function stopRun(){ if(runTimer){ clearInterval(runTimer); runTimer = null; $('wsimRunBtn').textContent = '▶ AUTO-RUN'; } }
+  /* wiring */
+  ['wsimStepBtn'].forEach(function(id){ $(id).addEventListener('click', function(){ readInputs(); step(); AudioFX.click(); }); });
+  $('wsimRunBtn').addEventListener('click', function(){
+    if(runTimer){ stopRun(); }
+    else { runTimer = setInterval(function(){ readInputs(); step(); }, 240); this.textContent = '■ STOP'; }
+    AudioFX.click();
+  });
+  $('wsimResetBtn').addEventListener('click', function(){
+    stopRun();
+    reg = { state: ST_IDLE, valve: 0, win: 0, timer: 0, cycles: 0, zc: [0,0,0,0], insuff: 0 };
+    clk = 0; logEl.innerHTML = '';
+    log('<span class="a">async reset (rst_n=0)</span> — state=IDLE · counters cleared · insufficient=0');
+    render(); AudioFX.click();
+  });
+  reqBtns.forEach(function(b){ b.addEventListener('click', function(){ b.classList.toggle('on'); readInputs(); render(); }); });
+  prioSels.forEach(function(s){ s.addEventListener('change', function(){ readInputs(); render(); }); });
+  demandIns.forEach(function(d){ d.addEventListener('input', function(){ readInputs(); render(); }); });
+  supplyRange.addEventListener('input', function(){ readInputs(); render(); });
+  validBtn.addEventListener('click', function(){ validBtn.classList.toggle('on'); readInputs(); render(); });
+  strictBtn.addEventListener('click', function(){
+    inp.strict = inp.strict ? 0 : 1;
+    strictBtn.classList.toggle('on', !!inp.strict);
+    strictBtn.textContent = 'STRICT_PRIO=' + inp.strict;
+    log('policy → <b>STRICT_PRIO=' + inp.strict + '</b> (' + (inp.strict ? 'stuck high-prio blocks lower zones' : 'skip-to-fit work-conserving') + ')');
+    render();
+  });
+  serveSel.addEventListener('change', function(){ readInputs(); render(); });
+  var presets = {
+    skip:  { req: [0,1,0,1], prio: [1,0,2,3], demand: [40,60,90,200], supply: 100, valid: 1, strict: 0, serve: 4,
+             note: 'Z3 EMERG wants 200 > supply 100 → stuck; Z1 (LOW, 60) fits and is served first — city never stalls' },
+    emerg: { req: [1,0,0,1], prio: [1,0,2,3], demand: [50,25,90,150], supply: 200, valid: 1, strict: 0, serve: 4,
+             note: 'both fit → priority-3 Emergency Z3 jumps the queue over MED Z0' },
+    wait:  { req: [1,0,0,0], prio: [2,0,2,3], demand: [90,25,90,150], supply: 30, valid: 1, strict: 0, serve: 4,
+             note: 'nobody fits supply 30 → WAIT + insufficient; drag SUPPLY_AVAIL up and watch it serve' },
+    strict:{ req: [0,1,0,1], prio: [1,0,2,3], demand: [40,50,90,200], supply: 100, valid: 1, strict: 1, serve: 4,
+             note: 'STRICT_PRIO=1: stuck EMERG Z3 now BLOCKS fitting Z1 → WAIT (compare SKIP-TO-FIT)' }
+  };
+  panel.querySelectorAll('.wsim-preset').forEach(function(b){
+    b.addEventListener('click', function(){
+      var p = presets[b.getAttribute('data-p')];
+      if(!p) return;
+      stopRun();
+      inp.req = p.req.slice(); inp.prio = p.prio.slice(); inp.demand = p.demand.slice();
+      inp.supply = p.supply; inp.valid = p.valid; inp.strict = p.strict; inp.serve = p.serve;
+      reg = { state: ST_IDLE, valve: 0, win: 0, timer: 0, cycles: 0, zc: [0,0,0,0], insuff: 0 };
+      clk = 0; logEl.innerHTML = '';
+      syncControls();
+      log('<b>SCENARIO ' + b.getAttribute('data-p').toUpperCase() + '</b> — ' + p.note + ' · press ▶ AUTO-RUN');
+      render(); AudioFX.click();
+    });
+  });
+  syncControls();
+  log('water_sched model loaded — frozen RTL semantics (223 LOC). Press <b>▶ AUTO-RUN</b> or a scenario chip.');
+  render();
+})();
+/* ─────────────────────────────────────────────────────────────
+   FLAGSHIP 01: VELTRAXX'26 PS16 QUADRAX — EVIDENCE TABS
    ───────────────────────────────────────────────────────────── */
 (function(){
   var card = document.getElementById('veltraxxCard');
@@ -3104,7 +3547,7 @@ if(!reduced){
   });
 })();
 /* ─────────────────────────────────────────────────────────────
-   FLAGSHIP 01: AES-128 CRYPTO SOC — TABS, ROUND ENGINE & BLOCK CHECK
+   FLAGSHIP 02: AES-128 CRYPTO SOC — TABS, ROUND ENGINE & BLOCK CHECK
    ───────────────────────────────────────────────────────────── */
 (function(){
   var card = document.getElementById('aesCard');
@@ -3277,7 +3720,7 @@ if(!reduced){
   if(heroBtn) heroBtn.addEventListener('click', runEncryption);
 })();
 /* ─────────────────────────────────────────────────────────────
-   FLAGSHIP 02: PIPECORE-GDS — REAL LAYOUT EVIDENCE + RTL CYCLE MODEL
+   FLAGSHIP 03: PIPECORE-GDS — REAL LAYOUT EVIDENCE + RTL CYCLE MODEL
    ───────────────────────────────────────────────────────────── */
 (function(){
   // Evidence and model tabs for PipeCore-GDS
@@ -3524,7 +3967,7 @@ if(!reduced){
   window.addEventListener('resize', drawPipeline);
 })();
 /* ─────────────────────────────────────────────────────────────
-   FLAGSHIP 03: APEX (NEURALEDGE) INTERACTIVE TABS & CANVAS
+   FLAGSHIP 04: APEX (NEURALEDGE) INTERACTIVE TABS & CANVAS
    ───────────────────────────────────────────────────────────── */
 (function(){
   var apexCard = document.getElementById('apexCard');
@@ -3778,107 +4221,6 @@ if(!reduced){
   draw();
 })();
 /* ─────────────────────────────────────────────────────────────
-   INTERACTIVE DIGITAL LOGIC WORKBENCH
-   ───────────────────────────────────────────────────────────── */
-(function(){
-  var curGate = 'AND';
-  var inA = 1, inB = 1;
-  var switchA = document.getElementById('switchA');
-  var switchB = document.getElementById('switchB');
-  var valA = document.getElementById('valA');
-  var valB = document.getElementById('valB');
-  var valOut = document.getElementById('valOut');
-  var tableLabel = document.getElementById('tableGateLabel');
-  var gateCanvas = document.getElementById('gateCanvas');
-  var gCtx = gateCanvas ? gateCanvas.getContext('2d') : null;
-  function updateLogic(){
-    var out = 0;
-    switch(curGate){
-      case 'AND': out = (inA && inB) ? 1 : 0; break;
-      case 'OR': out = (inA || inB) ? 1 : 0; break;
-      case 'XOR': out = (inA ^ inB) ? 1 : 0; break;
-      case 'NAND': out = !(inA && inB) ? 1 : 0; break;
-      case 'NOR': out = !(inA || inB) ? 1 : 0; break;
-      case 'NOT': out = (!inA) ? 1 : 0; break;
-    }
-    if(valOut) valOut.textContent = out;
-    var rowKey = '' + inA + (curGate === 'NOT' ? '0' : inB);
-    document.querySelectorAll('#truthTable tbody tr').forEach(function(tr){
-      var r = tr.getAttribute('data-row');
-      if(r === rowKey){ tr.classList.add('active-row'); }
-      else { tr.classList.remove('active-row'); }
-    });
-    drawGateSchematic(out);
-  }
-  function drawGateSchematic(out){
-    if(!gateCanvas || !gCtx) return;
-    var w = gateCanvas.width = gateCanvas.offsetWidth;
-    var h = gateCanvas.height = gateCanvas.offsetHeight;
-    var ctx = gCtx;
-    ctx.clearRect(0, 0, w, h);
-    var midY = h / 2;
-    var gateX = w * 0.45, gateY = midY;
-    var gw = 70, gh = 50;
-    ctx.strokeStyle = inA ? '#00ff88' : '#556c64';
-    ctx.lineWidth = 2.5;
-    ctx.beginPath();
-    ctx.moveTo(w * 0.1, midY - 14); ctx.lineTo(gateX, midY - 14);
-    ctx.stroke();
-    if(curGate !== 'NOT'){
-      ctx.strokeStyle = inB ? '#00ff88' : '#556c64';
-      ctx.beginPath();
-      ctx.moveTo(w * 0.1, midY + 14); ctx.lineTo(gateX, midY + 14);
-      ctx.stroke();
-    }
-    ctx.fillStyle = 'rgba(0, 240, 255, 0.12)';
-    ctx.strokeStyle = '#00f0ff';
-    ctx.lineWidth = 2;
-    ctx.fillRect(gateX, gateY - gh / 2, gw, gh);
-    ctx.strokeRect(gateX, gateY - gh / 2, gw, gh);
-    ctx.font = 'bold 12px "JetBrains Mono", monospace';
-    ctx.fillStyle = '#fff';
-    ctx.textAlign = 'center';
-    ctx.fillText(curGate, gateX + gw / 2, gateY + 5);
-    ctx.strokeStyle = out ? '#00ff88' : '#556c64';
-    ctx.beginPath();
-    ctx.moveTo(gateX + gw, midY); ctx.lineTo(w * 0.88, midY);
-    ctx.stroke();
-    ctx.textAlign = 'left';
-  }
-  if(switchA){
-    switchA.addEventListener('click', function(){
-      inA = inA ? 0 : 1;
-      switchA.classList.toggle('on', inA === 1);
-      valA.textContent = inA;
-      AudioFX.click();
-      updateLogic();
-    });
-  }
-  if(switchB){
-    switchB.addEventListener('click', function(){
-      inB = inB ? 0 : 1;
-      switchB.classList.toggle('on', inB === 1);
-      valB.textContent = inB;
-      AudioFX.click();
-      updateLogic();
-    });
-  }
-  document.querySelectorAll('.wb-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      document.querySelectorAll('.wb-btn').forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      curGate = btn.getAttribute('data-gate');
-      if(tableLabel) tableLabel.textContent = 'GATE: ' + curGate;
-      var switchBGrp = document.getElementById('switchBGroup');
-      if(switchBGrp) switchBGrp.style.display = (curGate === 'NOT') ? 'none' : 'flex';
-      AudioFX.click();
-      updateLogic();
-    });
-  });
-  updateLogic();
-  window.addEventListener('resize', updateLogic);
-})();
-/* ─────────────────────────────────────────────────────────────
    CONTACT FORM & EMAIL COPY LOGIC
    ───────────────────────────────────────────────────────────── */
 (function(){
@@ -3942,5 +4284,5 @@ if(!reduced){
   }
 })();
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a429b8261ceb8c9a',t:'MTc5MDY3MTYwNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
